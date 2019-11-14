@@ -67,7 +67,9 @@ public class UsuarioDAO extends ConexionBD implements InterfaceCrud {
 
     @Override
     public ArrayList<UsuarioVO> consultarRegistro() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ArrayList<UsuarioVO> usuarioVO = new ArrayList<>();
+        
+        return usuarioVO;
     }
      @Override
     public ArrayList consultarGeneral() {
