@@ -66,10 +66,20 @@ public class UsuarioDAO extends ConexionBD implements InterfaceCrud {
     }
 
     @Override
-    public ArrayList<UsuarioVO> consultarRegistro() {
-        ArrayList<UsuarioVO> usuarioVO = new ArrayList<>();
+    public ArrayList<UsuarioVO> consultarRegistro(String identificador) {
         
-        return usuarioVO;
+        ArrayList<UsuarioVO> usuArray = new ArrayList<>();
+        try {
+            query ="";
+            resultSet=statement.executeQuery(query);
+            while (resultSet.next()) {                
+                UsuarioVO usuarioTmp = new UsuarioVO();
+                 
+            }
+        } catch (Exception e) {
+            System.out.println("Error al consultar Usuario" + e.toString());
+        }
+        return usuArray;
     }
      @Override
     public ArrayList consultarGeneral() {
