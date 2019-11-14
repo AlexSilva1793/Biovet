@@ -51,7 +51,7 @@ public class GeneroDAO extends ConexionBD implements InterfaceCR {
     }
 
     @Override
-    public boolean consultarRegistro() {
+    public ArrayList consultarRegistro() {
         try {
             query = "SELECT * FROM genero;";
             statement.executeUpdate(query);

@@ -52,7 +52,7 @@ public class ExamenDAO extends ConexionBD implements InterfaceCR {
     }
 
     @Override
-    public boolean consultarRegistro() {
+    public ArrayList consultarRegistro() {
         try {
             query = "SELECT * FROM examen;";
             statement.executeUpdate(query);

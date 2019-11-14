@@ -55,7 +55,7 @@ public class HistoriaClinicaDAO extends ConexionBD implements InterfaceCR {
     }
 
     @Override
-    public boolean consultarRegistro() {
+    public ArrayList consultarRegistro() {
         try {
             query = "SELECT historiaclinica.idHistoriaClinica, historiaclinica.fechaApertura, historiaclinica.fkMascota, mascota.nombreMascota, usuario.nombreUsuario, usuario.apellidoUsuario"
                   + "FROM historiaclinica "

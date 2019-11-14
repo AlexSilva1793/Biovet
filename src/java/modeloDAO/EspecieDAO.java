@@ -52,7 +52,7 @@ public class EspecieDAO extends ConexionBD implements InterfaceCR {
     }
 
     @Override
-    public boolean consultarRegistro() {
+    public ArrayList consultarRegistro() {
         try {
             query = "SELECT * FROM especie;";
             statement.executeQuery(query);

@@ -63,7 +63,7 @@ public class AgendaDAO extends ConexionBD implements InterfaceCrud {
     }
 
     @Override
-    public boolean consultarRegistro() {
+    public ArrayList consultarRegistro() {
 
         try {
             //El query a continuación se puede reducir todo a una sola linea con una vista
