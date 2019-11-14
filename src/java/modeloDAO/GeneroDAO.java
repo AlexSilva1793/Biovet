@@ -8,6 +8,7 @@ package modeloDAO;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import modeloVO.GeneroVO;
 import util.ConexionBD;
 import util.InterfaceCR;
@@ -52,6 +53,7 @@ public class GeneroDAO extends ConexionBD implements InterfaceCR {
 
     @Override
     public ArrayList consultarRegistro() {
+       ArrayList<GeneroVO> generoVO = new ArrayList<>();
         try {
             query = "SELECT * FROM genero;";
             statement.executeUpdate(query);
@@ -59,7 +61,7 @@ public class GeneroDAO extends ConexionBD implements InterfaceCR {
         } catch (Exception e) {
             System.out.println("No existen datos de Genero");
         }
-        return operacion;
+        return generoVO;
     }
 
 }
