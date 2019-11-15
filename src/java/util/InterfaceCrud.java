@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public interface InterfaceCrud {
     public abstract boolean agregarRegistro();
-    public abstract ArrayList consultarRegistro(String identificador);
+    public abstract ArrayList consultarRegistro();
     public abstract ArrayList consultarGeneral();
     public abstract boolean actualizarRegistro();
     public abstract boolean eliminarRegistro(); 

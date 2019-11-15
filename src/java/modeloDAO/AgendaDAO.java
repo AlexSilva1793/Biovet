@@ -64,7 +64,7 @@ public class AgendaDAO extends ConexionBD implements InterfaceCrud {
     }
 
     @Override
-    public ArrayList consultarRegistro(String identificador) {
+    public ArrayList consultarRegistro() {
         ArrayList<AgendaVO> agendaVO = new ArrayList<>();
         try {
             //El query a continuación se puede reducir todo a una sola linea con una vista
