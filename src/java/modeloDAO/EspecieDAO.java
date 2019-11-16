@@ -8,6 +8,7 @@ package modeloDAO;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import modeloVO.EspecieVO;
 import util.ConexionBD;
 import util.InterfaceCR;
@@ -53,6 +54,7 @@ public class EspecieDAO extends ConexionBD implements InterfaceCR {
 
     @Override
     public ArrayList consultarRegistro() {
+        ArrayList<EspecieVO> especieVO = new ArrayList<>();
         try {
             query = "SELECT * FROM especie;";
             statement.executeQuery(query);
@@ -60,7 +62,7 @@ public class EspecieDAO extends ConexionBD implements InterfaceCR {
         } catch (Exception e) {
             System.out.println("No existen datos de Especie" + e.toString());
         }
-        return operacion;
+        return especieVO;
     }
 
 }

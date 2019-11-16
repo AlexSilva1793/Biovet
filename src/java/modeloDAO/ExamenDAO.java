@@ -8,6 +8,7 @@ package modeloDAO;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import modeloVO.ExamenVO;
 import util.ConexionBD;
 import util.InterfaceCR;
@@ -53,6 +54,7 @@ public class ExamenDAO extends ConexionBD implements InterfaceCR {
 
     @Override
     public ArrayList consultarRegistro() {
+       ArrayList<ExamenVO> examenVO = new ArrayList<>();
         try {
             query = "SELECT * FROM examen;";
             statement.executeUpdate(query);
@@ -60,7 +62,7 @@ public class ExamenDAO extends ConexionBD implements InterfaceCR {
         } catch (Exception e) {
             System.out.println("No existen datos de Examen");
         }
-        return operacion;
+        return examenVO;
     }
 
 }

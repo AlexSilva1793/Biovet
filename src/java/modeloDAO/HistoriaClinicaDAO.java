@@ -8,6 +8,7 @@ package modeloDAO;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import modeloVO.HistoriaClinicaVO;
 import util.ConexionBD;
 import util.InterfaceCR;
@@ -56,6 +57,7 @@ public class HistoriaClinicaDAO extends ConexionBD implements InterfaceCR {
 
     @Override
     public ArrayList consultarRegistro() {
+        ArrayList<HistoriaClinicaVO> historiaClinicaVOs = new ArrayList<>();
         try {
             query = "SELECT historiaclinica.idHistoriaClinica, historiaclinica.fechaApertura, historiaclinica.fkMascota, mascota.nombreMascota, usuario.nombreUsuario, usuario.apellidoUsuario"
                   + "FROM historiaclinica "
@@ -67,7 +69,7 @@ public class HistoriaClinicaDAO extends ConexionBD implements InterfaceCR {
         } catch (Exception e) {
             System.out.println("No existe historia clinica relacionada" + e.toString());
         }
-        return operacion;
+        return historiaClinicaVOs;
     }
 
 }

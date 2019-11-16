@@ -5,6 +5,8 @@
  */
 package util;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author PC1
@@ -12,5 +14,5 @@ package util;
 public interface InterfaceCR {
 
     public abstract boolean agregarRegistro();
-    public abstract boolean consultarRegistro();
+    public abstract ArrayList consultarRegistro();
 }

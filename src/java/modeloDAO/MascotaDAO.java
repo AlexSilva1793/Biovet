@@ -8,6 +8,7 @@ package modeloDAO;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import modeloVO.MascotaVO;
 import util.ConexionBD;
 import util.InterfaceCrud;
@@ -69,15 +70,15 @@ public class MascotaDAO extends ConexionBD implements InterfaceCrud {
 
     @Override
     public ArrayList consultarRegistro() {
-
+        ArrayList<MascotaVO> mascotaVO = new ArrayList<>();
         try {
             query = "select * from mascota where fkUsuario='" + fkUsuario + "';";
             statement.executeUpdate(query);
-            operacion=true;
+            operacion = true;
         } catch (Exception e) {
-            System.out.println("Error"+e.toString());
+            System.out.println("Error" + e.toString());
         }
-        return operacion;
+        return mascotaVO;
     }
 
     @Override
@@ -105,6 +106,11 @@ public class MascotaDAO extends ConexionBD implements InterfaceCrud {
             System.out.println("Error" + e.toString());
         }
         return operacion;
+    }
+
+    @Override
+    public ArrayList consultarGeneral() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
