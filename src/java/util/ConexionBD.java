@@ -21,7 +21,7 @@ public class ConexionBD {
     public ConexionBD() {
 
         driver = "com.mysql.jdbc.Driver";
-        bd = "biovet";
+        bd = "Biovet";
         user = "root";
         pass = "";
         url = "jdbc:mysql://localhost:3306/" + bd;
