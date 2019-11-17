@@ -26,7 +26,7 @@ public class ConsultaMedicaDAO extends ConexionBD implements InterfaceCrud {
     private String query = null;
     private boolean operacion = false;
 
-    private String idConsulta, motivoConsulta, fechaConsulta, descripcionConsulta, peso, estado, fkHistoriaClinica;
+    private String idConsulta="", motivoConsulta="", fechaConsulta="", descripcionConsulta="", peso="", estado="", fkHistoriaClinica="";
 
     public ConsultaMedicaDAO(ConsultaMedicaVO conMedicaVO) {
         super();
@@ -54,7 +54,7 @@ public class ConsultaMedicaDAO extends ConexionBD implements InterfaceCrud {
             statement.executeUpdate(query);
             operacion = true;
         } catch (Exception e) {
-            System.out.println("Error al registrar Usuario " + e.toString());
+            System.out.println("Error al registrar Consulta Medica " + e.toString());
         }
         return operacion;
     }
@@ -107,7 +107,7 @@ public class ConsultaMedicaDAO extends ConexionBD implements InterfaceCrud {
             }
 
         } catch (Exception e) {
-            System.out.println("Error al consultar Consulta Medica " + e.toString());
+            System.out.println("Error al consultar Consultas Medicas " + e.toString());
         }
         return consultaArray;
     }
@@ -119,7 +119,7 @@ public class ConsultaMedicaDAO extends ConexionBD implements InterfaceCrud {
             statement.execute(query);
             operacion = true;
         } catch (Exception e) {
-            System.out.println("Error al consultar Consulta Medica " + e.toString());
+            System.out.println("Error al actualizar Consulta Medica " + e.toString());
         }
         return operacion;
     }
@@ -131,7 +131,7 @@ public class ConsultaMedicaDAO extends ConexionBD implements InterfaceCrud {
             statement.executeUpdate(query);
             operacion = true;
         } catch (Exception e) {
-            System.out.println("Error al registrar Usuario " + e.toString());
+            System.out.println("Error al eliminar Consulta Medica " + e.toString());
         }
         return operacion;
     }
