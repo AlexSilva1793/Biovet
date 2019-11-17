@@ -10,7 +10,7 @@ package modeloVO;
  * @author Usuario
  */
 public class MascotaVO {
-    
+
     private String idMascota;
     private String nombreMascota;
     private String fechaNacimiento;
@@ -18,11 +18,12 @@ public class MascotaVO {
     private String fkRaza;
     private String fkGenero;
     private String colorMascota;
+    private String estadoMascota;
 
     public MascotaVO() {
     }
 
-    public MascotaVO(String idMascota, String nombreMascota, String fechaNacimiento, String fkIdUsuario, String fkIdRaza, String fkIdGenero, String colorMascota) {
+    public MascotaVO(String idMascota, String nombreMascota, String fechaNacimiento, String fkIdUsuario, String fkIdRaza, String fkIdGenero, String colorMascota, String estadoMascota) {
         this.idMascota = idMascota;
         this.nombreMascota = nombreMascota;
         this.fechaNacimiento = fechaNacimiento;
@@ -30,6 +31,7 @@ public class MascotaVO {
         this.fkRaza = fkIdRaza;
         this.fkGenero = fkIdGenero;
         this.colorMascota = colorMascota;
+        this.estadoMascota = estadoMascota;
     }
 
     public String getIdMascota() {
@@ -88,10 +90,17 @@ public class MascotaVO {
         this.colorMascota = colorMascota;
     }
 
+    public String getEstadoMascota() {
+        return estadoMascota;
+    }
+
+    public void setEstadoMascota(String estadoMascota) {
+        this.estadoMascota = estadoMascota;
+    }
+
     @Override
     public String toString() {
-        return "MascotaVO{" + "idMascota=" + idMascota + ", nombreMascota=" + nombreMascota + ", fechaNacimiento=" + fechaNacimiento + ", fkUsuario=" + fkUsuario + ", fkRaza=" + fkRaza + ", fkGenero=" + fkGenero + ", colorMascota=" + colorMascota + '}';
+        return "MascotaVO{" + "idMascota=" + idMascota + ", nombreMascota=" + nombreMascota + ", fechaNacimiento=" + fechaNacimiento + ", fkUsuario=" + fkUsuario + ", fkRaza=" + fkRaza + ", fkGenero=" + fkGenero + ", colorMascota=" + colorMascota + ", estadoMascota=" + estadoMascota + '}';
     }
-    
-    
+
 }
