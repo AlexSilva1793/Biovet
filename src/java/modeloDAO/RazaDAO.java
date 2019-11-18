@@ -21,7 +21,7 @@ public class RazaDAO extends ConexionBD implements InterfaceCR {
 
     private Connection conection = null;
     private Statement statement = null;
-    private ResultSet resultSEt = null;
+    private ResultSet resultSet = null;
 
     private String query = null;
     private boolean operacion = false;
@@ -67,13 +67,47 @@ public class RazaDAO extends ConexionBD implements InterfaceCR {
     }
 
     @Override
-    public ArrayList consultarRegistro() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public ArrayList<RazaVO> consultarRegistro() {
+        ArrayList<RazaVO> razaArray=new ArrayList<>();
+        try {
+            query="select * from raza where idRaza='"+idRaza+"';";
+            resultSet=statement.executeQuery(query);
+            
+            while(resultSet.next()){
+                RazaVO razaTmp=new RazaVO();
+                
+                razaTmp.setIdRaza(resultSet.getString(1));
+                razaTmp.setTipoRaza(resultSet.getString(2));
+                
+                razaArray.add(razaTmp);
+            }
+            
+        } catch (Exception e) {
+            System.out.println("Error"+e.toString());
+        }
+        return razaArray;
     }
 
     @Override
     public ArrayList consultarGeneral() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ArrayList<RazaVO> razaArray=new ArrayList<>();
+        try {
+            query="select * from raza;";
+            resultSet=statement.executeQuery(query);
+            
+            while(resultSet.next()){
+                RazaVO razaTmp=new RazaVO();
+                
+                razaTmp.setIdRaza(resultSet.getString(1));
+                razaTmp.setTipoRaza(resultSet.getString(2));
+                
+                razaArray.add(razaTmp);
+            }
+            
+        } catch (Exception e) {
+            System.out.println("Error"+e.toString());
+        }
+        return razaArray;
     }
 
 }

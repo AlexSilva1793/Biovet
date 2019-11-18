@@ -17,50 +17,90 @@ import util.InterfaceCR;
  *
  * @author Usuario
  */
+public class RolDAO extends ConexionBD implements InterfaceCR {
 
-public class RolDAO extends ConexionBD implements InterfaceCR{
-    
     private Connection conection = null;
     private Statement statement = null;
     private ResultSet resultSet = null;
 
     private String query = null;
     private boolean operacion = false;
-    
-    private String idRol="";
-    private String tipoRol="";
+
+    private String idRol = "";
+    private String tipoRol = "";
 
     public RolDAO(RolVO rolVO) {
-        
+
         super();
-        
+
         try {
             conection = this.obtenerConexion();
             statement = conection.createStatement();
-            
-            idRol=rolVO.getIdRol();
-            tipoRol=rolVO.getTipoRol();
-            
+
+            idRol = rolVO.getIdRol();
+            tipoRol = rolVO.getTipoRol();
+
         } catch (Exception e) {
-            System.out.println("Error"+e.toString());
+            System.out.println("Error" + e.toString());
         }
     }
 
     @Override
     public boolean agregarRegistro() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            query = "select into rol (tipoRol) values('" + tipoRol + "')";
+            statement.executeLargeUpdate(query);
+            operacion = true;
+        } catch (Exception e) {
+            System.out.println("Error" + e.toString());
+        }
+        return operacion;
     }
 
     @Override
-    public ArrayList consultarRegistro() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public ArrayList<RolVO> consultarRegistro() {
+        ArrayList<RolVO> rolArray = new ArrayList<>();
+
+        try {
+            query = "select * from rol where idRol='" + idRol + "';";
+            resultSet = statement.executeQuery(query);
+
+            while (resultSet.next()) {
+                RolVO roltmp=new RolVO();
+                
+                roltmp.setIdRol(resultSet.getString(1));
+                roltmp.setTipoRol(resultSet.getString(2));
+                
+                rolArray.add(roltmp);
+
+            }
+        } catch (Exception e) {
+            System.out.println("Error"+e.toString());
+        }
+        return rolArray;
     }
 
     @Override
     public ArrayList consultarGeneral() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ArrayList<RolVO> rolArray = new ArrayList<>();
+
+        try {
+            query = "select * from rol;";
+            resultSet = statement.executeQuery(query);
+
+            while (resultSet.next()) {
+                RolVO roltmp=new RolVO();
+                
+                roltmp.setIdRol(resultSet.getString(1));
+                roltmp.setTipoRol(resultSet.getString(2));
+                
+                rolArray.add(roltmp);
+
+            }
+        } catch (Exception e) {
+            System.out.println("Error"+e.toString());
+        }
+        return rolArray;
     }
-    
-    
-    
+
 }

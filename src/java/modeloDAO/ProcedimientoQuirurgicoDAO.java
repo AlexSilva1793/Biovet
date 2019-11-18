@@ -21,7 +21,7 @@ public class ProcedimientoQuirurgicoDAO extends ConexionBD implements InterfaceC
     
     private Connection conection=null;
     private Statement statement=null;
-    private ResultSet resultSEt=null;
+    private ResultSet resultSet=null;
     
     private String query =null;
     private boolean operacion=false;
@@ -61,13 +61,45 @@ public class ProcedimientoQuirurgicoDAO extends ConexionBD implements InterfaceC
     }
 
     @Override
-    public ArrayList consultarRegistro() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public ArrayList<ProcedimientoQuirurgicoVO> consultarRegistro() {
+        ArrayList<ProcedimientoQuirurgicoVO> proceArray=new ArrayList<>();
+        
+        try {
+            query="select * from procedimientoQuirurgico where idProcedimientoQuirurgico='"+idProcedimientoQuirurgico+"';";
+            resultSet=statement.executeQuery(query);
+            
+            ProcedimientoQuirurgicoVO proceTmp=new ProcedimientoQuirurgicoVO();
+            
+            proceTmp.setIdProcedimientoQuirurgico(resultSet.getString(1));
+            proceTmp.setTipoPorcedimientoQuirurgico(resultSet.getString(2));
+            proceArray.add(proceTmp);
+            
+            
+        } catch (Exception e) {
+            System.out.println("Error"+e.toString());
+        }
+        return proceArray;
     }
 
     @Override
     public ArrayList consultarGeneral() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ArrayList<ProcedimientoQuirurgicoVO> proceArray=new ArrayList<>();
+        
+        try {
+            query="select * from procedimientoQuirurgico;";
+            resultSet=statement.executeQuery(query);
+            
+            ProcedimientoQuirurgicoVO proceTmp=new ProcedimientoQuirurgicoVO();
+            
+            proceTmp.setIdProcedimientoQuirurgico(resultSet.getString(1));
+            proceTmp.setTipoPorcedimientoQuirurgico(resultSet.getString(2));
+            proceArray.add(proceTmp);
+            
+            
+        } catch (Exception e) {
+            System.out.println("Error"+e.toString());
+        }
+        return proceArray;
     }
     
 }
