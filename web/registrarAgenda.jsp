@@ -50,7 +50,7 @@
             </div>
             <br>
             <div class="row justify-content-md-center">
-                <button type="button" class="btn btn-primary">Registrar</button>
+                <button class="btn btn-primary">Registrar</button>
                 <input type="hidden" name="opcion" value="1">
             </div>
         </form>
