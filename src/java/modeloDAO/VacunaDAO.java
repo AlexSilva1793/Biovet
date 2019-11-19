@@ -76,6 +76,11 @@ public class VacunaDAO extends ConexionBD implements InterfaceCR {
         }
         return vacunaArray;
     }
+
+    @Override
+    public ArrayList consultarGeneral() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
 }

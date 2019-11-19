@@ -53,15 +53,29 @@ public class GeneroDAO extends ConexionBD implements InterfaceCR {
 
     @Override
     public ArrayList consultarRegistro() {
-       ArrayList<GeneroVO> generoVO = new ArrayList<>();
+
+        ArrayList<GeneroVO> generoArray = new ArrayList<>();
         try {
-            query = "SELECT * FROM genero;";
-            statement.executeUpdate(query);
-            operacion = true;
+            query = "SELECT * FROM genero";
+            resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                GeneroVO generoTmp = new GeneroVO();
+
+                generoTmp.setIdGenero(resultSet.getString(1));
+                generoTmp.setTipoSexo(resultSet.getString(2));
+                System.out.println(generoTmp);
+                generoArray.add(generoTmp);
+
+            }
         } catch (Exception e) {
-            System.out.println("No existen datos de Genero");
+            System.out.println("Error al consultar Agenda " + e.toString());
         }
-        return generoVO;
+        return generoArray;
+    }
+
+    @Override
+    public ArrayList consultarGeneral() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

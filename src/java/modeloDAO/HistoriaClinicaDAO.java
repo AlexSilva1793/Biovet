@@ -57,19 +57,30 @@ public class HistoriaClinicaDAO extends ConexionBD implements InterfaceCR {
 
     @Override
     public ArrayList consultarRegistro() {
-        ArrayList<HistoriaClinicaVO> historiaClinicaVOs = new ArrayList<>();
+        
+        ArrayList<HistoriaClinicaVO> historiaArray = new ArrayList<>();
         try {
-            query = "SELECT historiaclinica.idHistoriaClinica, historiaclinica.fechaApertura, historiaclinica.fkMascota, mascota.nombreMascota, usuario.nombreUsuario, usuario.apellidoUsuario"
-                  + "FROM historiaclinica "
-                  + "INNER JOIN mascota ON historiaclinica.fkMascota = mascota.idMascota "
-                  + "INNER JOIN usuario ON mascota.fkUsuario = usuario.idUsuario "
-                  + "WHERE idHistoriaClinica = '"+idHistoriaClinica+"';";
-            statement.executeUpdate(query);
-            operacion = true;
+            query = "SELECT * FROM historiaclinica";
+            resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                HistoriaClinicaVO historiaTmp = new HistoriaClinicaVO();
+
+                historiaTmp.setIdHistoriaClinica(resultSet.getString(1));
+                historiaTmp.setFechaApertura(resultSet.getString(2));
+                historiaTmp.setFkMascota(resultSet.getString(3));
+                System.out.println(historiaTmp);
+                historiaArray.add(historiaTmp);
+
+            }
         } catch (Exception e) {
-            System.out.println("No existe historia clinica relacionada" + e.toString());
+            System.out.println("Error al consultar Agenda " + e.toString());
         }
-        return historiaClinicaVOs;
+        return historiaArray;
+    }
+
+    @Override
+    public ArrayList consultarGeneral() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
