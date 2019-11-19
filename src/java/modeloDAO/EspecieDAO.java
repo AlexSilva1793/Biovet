@@ -74,4 +74,9 @@ public class EspecieDAO extends ConexionBD implements InterfaceCR {
         return especieArray;
     }
 
+    @Override
+    public ArrayList consultarGeneral() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

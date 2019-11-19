@@ -73,4 +73,9 @@ public class GeneroDAO extends ConexionBD implements InterfaceCR {
         return generoArray;
     }
 
+    @Override
+    public ArrayList consultarGeneral() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }
