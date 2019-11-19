@@ -92,7 +92,7 @@ public class AgendaDAO extends ConexionBD implements InterfaceCrud {
 
         ArrayList<AgendaVO> agendaArray = new ArrayList<>();
         try {
-            query = "SELECT * FROM agenda WHERE fechaAgenda = '" + fechaAgenda + "');"; //1 Seria Activa, 2 Seria En Proceso, 3 Seria Cancelada
+            query = "SELECT * FROM agenda WHERE fechaAgenda = '" + fechaAgenda + "');";
             resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
                 AgendaVO agendaTmp = new AgendaVO();
