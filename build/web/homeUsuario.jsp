@@ -12,6 +12,6 @@
         <title>Home Usuario</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Bienvenido Usuario!</h1>
     </body>
 </html>
