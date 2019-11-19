@@ -78,4 +78,9 @@ public class HistoriaClinicaDAO extends ConexionBD implements InterfaceCR {
         return historiaArray;
     }
 
+    @Override
+    public ArrayList consultarGeneral() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }
