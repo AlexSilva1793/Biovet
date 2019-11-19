@@ -74,4 +74,9 @@ public class ExamenDAO extends ConexionBD implements InterfaceCR {
         return examenArray;
     }
 
+    @Override
+    public ArrayList consultarGeneral() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }
