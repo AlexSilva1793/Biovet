@@ -60,7 +60,7 @@ public class HistoriaClinicaDAO extends ConexionBD implements InterfaceCR {
         
         ArrayList<HistoriaClinicaVO> historiaArray = new ArrayList<>();
         try {
-            query = "SELECT * FROM historiaclinica";
+            query = "SELECT * FROM historiaclinica WHERE idHistoriaClinica = '"+idHistoriaClinica+"'";
             resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
                 HistoriaClinicaVO historiaTmp = new HistoriaClinicaVO();
@@ -80,7 +80,24 @@ public class HistoriaClinicaDAO extends ConexionBD implements InterfaceCR {
 
     @Override
     public ArrayList consultarGeneral() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                ArrayList<HistoriaClinicaVO> historiaArray = new ArrayList<>();
+        try {
+            query = "SELECT * FROM historiaclinica";
+            resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                HistoriaClinicaVO historiaTmp = new HistoriaClinicaVO();
+
+                historiaTmp.setIdHistoriaClinica(resultSet.getString(1));
+                historiaTmp.setFechaApertura(resultSet.getString(2));
+                historiaTmp.setFkMascota(resultSet.getString(3));
+                System.out.println(historiaTmp);
+                historiaArray.add(historiaTmp);
+
+            }
+        } catch (Exception e) {
+            System.out.println("Error al consultar Agenda " + e.toString());
+        }
+        return historiaArray;
     }
 
 }
