@@ -48,7 +48,7 @@ public class AgendaControlador extends HttpServlet {
 
         switch (opcion) {
 
-            case 1: //agregar vehiculo
+            case 1: //agregar agenda
                 if ((agendaDAO.agregarRegistro())) {
 
                     request.setAttribute("mensajeExito", "¡ La agenda se realizo exitosamente!");
