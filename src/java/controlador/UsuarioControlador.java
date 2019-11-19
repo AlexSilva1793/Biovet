@@ -41,7 +41,10 @@ public class UsuarioControlador extends HttpServlet {
         String cedula = request.getParameter("textCedula");
         String nombreUsuario = request.getParameter("textNombreUsuario");
         String apellidoUsuario = request.getParameter("textApellidoUsuario");
-        String contraseñaUsuario = request.getParameter("textContraseñaUsuario");
+        String contraseñaUsuario = request.getParameter("pass");
+        
+        System.out.println("Contraseña " + contraseñaUsuario+" cedula "+cedula);
+        
         String direccion = request.getParameter("textDireccion");
         String celular = request.getParameter("textCelular");
         String telefonoFijo = request.getParameter("textTelefonoFijo");
@@ -53,17 +56,27 @@ public class UsuarioControlador extends HttpServlet {
 
         UsuarioVO usuarioVO = new UsuarioVO(idUsuario, cedula, nombreUsuario, apellidoUsuario, contraseñaUsuario, direccion, celular, telefonoFijo, correoUsuario, estadoUsuario, fkTipoDocu, fkRol, fkGenero);
         UsuarioDAO usuarioDAO = new UsuarioDAO(usuarioVO);
-        
+
         switch (opcion) {
             case 1: //Registrar Usuario
                 if (usuarioDAO.agregarRegistro()) {
-                    
+
                     request.getRequestDispatcher("homeUsuario.jsp").forward(request, response);
                 } else {
                     request.setAttribute("mensajeError", "El usuario no pudo ser registrado");
                     request.getRequestDispatcher("index.jsp").forward(request, response);
                 }
                 break;
+            case 3://Iniciar sesión
+                
+                if (usuarioDAO.iniciarSesion()) {
+
+                    request.getRequestDispatcher("homeUsuario.jsp").forward(request, response);
+                } else {
+                    request.setAttribute("mensajeError", "¡El usuario y/o la contraseña son incorrectos!");
+                    request.getRequestDispatcher("login.jsp").forward(request, response);
+
+                }
         }
 
     }

@@ -12,7 +12,7 @@
         <title>Biovet</title>
     </head>
     <body>
-
+        <a href="login.jsp">Ingresar </a><br>
         <h1>Registrar Usuario</h1>
         <form method="post" action="Usuario">
 
@@ -27,7 +27,7 @@
                         Apellido:<br>
                         <input type="text" name="textApellidoUsuario"><br><br>
                         Contraseña:<br>
-                        <input type="password" name="textContraseñaUsuario"><br><br>
+                        <input type="password" name="pass"><br><br>
                         Correo:<br>
                         <input type="email" name="textCorreoUsuario"><br><br>
                         <select  id="tipoDocumento" name="textFkTipoDocu" required>
@@ -54,6 +54,7 @@
         <% } else { %>
         ${mensajeExito}
         <% }%>
+        <br><br>
 
     </body>
 </html>
