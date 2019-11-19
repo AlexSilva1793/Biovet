@@ -30,10 +30,10 @@ public class EspecieDAO extends ConexionBD implements InterfaceCR {
         try {
             conection = this.obtenerConexion();
             statement = conection.createStatement();
-            
+
             idEspecie = especieVO.getIdEspecie();
             tipoEspecie = especieVO.getTipoEspecie();
-            
+
         } catch (Exception e) {
             System.out.println("Error" + e.toString());
         }
@@ -43,7 +43,7 @@ public class EspecieDAO extends ConexionBD implements InterfaceCR {
     @Override
     public boolean agregarRegistro() {
         try {
-            query = "INSERT INTO especie (tipoEspecie) VALUES ('"+tipoEspecie+"');";
+            query = "INSERT INTO especie (tipoEspecie) VALUES ('" + tipoEspecie + "');";
             statement.executeUpdate(query);
             operacion = true;
         } catch (Exception e) {
@@ -54,15 +54,24 @@ public class EspecieDAO extends ConexionBD implements InterfaceCR {
 
     @Override
     public ArrayList consultarRegistro() {
-        ArrayList<EspecieVO> especieVO = new ArrayList<>();
+
+        ArrayList<EspecieVO> especieArray = new ArrayList<>();
         try {
-            query = "SELECT * FROM especie;";
-            statement.executeQuery(query);
-            operacion = true;
+            query = "SELECT * FROM especie";
+            resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                EspecieVO especieTmp = new EspecieVO();
+
+                especieTmp.setIdEspecie(resultSet.getString(1));
+                especieTmp.setTipoEspecie(resultSet.getString(2));
+                System.out.println(especieTmp);
+                especieArray.add(especieTmp);
+
+            }
         } catch (Exception e) {
-            System.out.println("No existen datos de Especie" + e.toString());
+            System.out.println("Error al consultar Agenda " + e.toString());
         }
-        return especieVO;
+        return especieArray;
     }
 
 }

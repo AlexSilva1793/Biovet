@@ -43,7 +43,7 @@ public class ExamenDAO extends ConexionBD implements InterfaceCR {
     @Override
     public boolean agregarRegistro() {
         try {
-            query = "INSERT INTO examen (tipoExamen) VALUES ('"+tipoExamen+"');";
+            query = "INSERT INTO examen (tipoExamen) VALUES ('" + tipoExamen + "');";
             statement.executeUpdate(query);
             operacion = true;
         } catch (Exception e) {
@@ -54,15 +54,24 @@ public class ExamenDAO extends ConexionBD implements InterfaceCR {
 
     @Override
     public ArrayList consultarRegistro() {
-       ArrayList<ExamenVO> examenVO = new ArrayList<>();
+
+        ArrayList<ExamenVO> examenArray = new ArrayList<>();
         try {
-            query = "SELECT * FROM examen;";
-            statement.executeUpdate(query);
-            operacion = true;
+            query = "SELECT * FROM examen";
+            resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                ExamenVO examenTmp = new ExamenVO();
+
+                examenTmp.setIdExamen(resultSet.getString(1));
+                examenTmp.setTipoExamen(resultSet.getString(2));
+                System.out.println(examenTmp);
+                examenArray.add(examenTmp);
+
+            }
         } catch (Exception e) {
-            System.out.println("No existen datos de Examen");
+            System.out.println("Error al consultar Agenda " + e.toString());
         }
-        return examenVO;
+        return examenArray;
     }
 
 }
