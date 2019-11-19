@@ -33,9 +33,9 @@ public class VacunaDAO extends ConexionBD implements InterfaceCR {
         try {
             conection = this.obtenerConexion();
             statement = conection.createStatement();
-            
-            idVacuna=vacunaVO.getIdVacuna();
-            tipoVacuna=vacunaVO.getTipoVacuna();
+
+            idVacuna = vacunaVO.getIdVacuna();
+            tipoVacuna = vacunaVO.getTipoVacuna();
         } catch (Exception e) {
             System.out.println("Error" + e.toString());
         }
@@ -44,9 +44,9 @@ public class VacunaDAO extends ConexionBD implements InterfaceCR {
     @Override
     public boolean agregarRegistro() {
         try {
-            query="INSERT INTO `Vacuna` (`idVacuna`, `tipoVacuna`) VALUES (NULL, '"+tipoVacuna+"')";
+            query = "INSERT INTO `Vacuna` (`idVacuna`, `tipoVacuna`) VALUES (NULL, '" + tipoVacuna + "')";
             statement.executeQuery(query);
-            operacion=true;
+            operacion = true;
         } catch (Exception e) {
             System.out.println("Error al agregar una vacuna " + e.toString());
         }
@@ -55,20 +55,18 @@ public class VacunaDAO extends ConexionBD implements InterfaceCR {
 
     @Override
     public ArrayList consultarRegistro() {
-        ArrayList<VacunaVO> vacunaArray =new ArrayList<>();
+        ArrayList<VacunaVO> vacunaArray = new ArrayList<>();
         try {
-            if (idVacuna=="0") {
-                query="SELECT * FROM `Vacuna`";
-            }else{
-                query="SELECT * FROM `Vacuna` WHERE idVacuna =  "+idVacuna;
-            }
+
+            query = "SELECT * FROM `Vacuna` WHERE idVacuna =  " + idVacuna;
+
             resultSet = statement.executeQuery(query);
-            while (resultSet.next()) {                
+            while (resultSet.next()) {
                 VacunaVO vacunaTmp = new VacunaVO();
-                
+
                 vacunaTmp.setIdVacuna(resultSet.getString(1));
                 vacunaTmp.setTipoVacuna(resultSet.getString(2));
-                
+
                 vacunaArray.add(vacunaTmp);
             }
         } catch (Exception e) {
@@ -79,8 +77,24 @@ public class VacunaDAO extends ConexionBD implements InterfaceCR {
 
     @Override
     public ArrayList consultarGeneral() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ArrayList<VacunaVO> vacunasArray = new ArrayList<>();
+        try {
+
+            query = "SELECT * FROM `Vacuna`";
+
+            resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                VacunaVO vacunaTmp = new VacunaVO();
+
+                vacunaTmp.setIdVacuna(resultSet.getString(1));
+                vacunaTmp.setTipoVacuna(resultSet.getString(2));
+
+                vacunasArray.add(vacunaTmp);
+            }
+        } catch (Exception e) {
+            System.out.println("Error al consultar las vacunas " + e.toString());
+        }
+        return vacunasArray;
     }
-    
-    
+
 }
