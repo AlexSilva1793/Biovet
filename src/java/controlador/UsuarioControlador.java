@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import modeloDAO.UsuarioDAO;
 import modeloVO.UsuarioVO;
 
@@ -68,10 +69,11 @@ public class UsuarioControlador extends HttpServlet {
                 }
                 break;
             case 3://Iniciar sesión
-
+                HttpSession session = request.getSession();
                 if (usuarioDAO.iniciarSesion()) {
                     usuariosArray = usuarioDAO.consultarRegistro();
-                    System.out.println(usuariosArray);
+                    session.setAttribute("usuariosArray", usuariosArray);
+
                     request.getRequestDispatcher("homeUsuario.jsp").forward(request, response);
                 } else {
                     request.setAttribute("mensajeError", "¡El usuario y/o la contraseña son incorrectos!");
