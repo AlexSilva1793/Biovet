@@ -7,6 +7,7 @@ package controlador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -51,6 +52,8 @@ public class UsuarioControlador extends HttpServlet {
         String fkRol = request.getParameter("textFkRol");
         String fkGenero = request.getParameter("textFkGenero");
 
+        ArrayList<UsuarioVO> usuariosArray = new ArrayList<>();
+
         UsuarioVO usuarioVO = new UsuarioVO(idUsuario, cedula, nombreUsuario, apellidoUsuario, contraseñaUsuario, direccion, celular, telefonoFijo, correoUsuario, estadoUsuario, fkTipoDocu, fkRol, fkGenero);
         UsuarioDAO usuarioDAO = new UsuarioDAO(usuarioVO);
 
@@ -67,7 +70,8 @@ public class UsuarioControlador extends HttpServlet {
             case 3://Iniciar sesión
 
                 if (usuarioDAO.iniciarSesion()) {
-
+                    usuariosArray = usuarioDAO.consultarRegistro();
+                    System.out.println(usuariosArray);
                     request.getRequestDispatcher("homeUsuario.jsp").forward(request, response);
                 } else {
                     request.setAttribute("mensajeError", "¡El usuario y/o la contraseña son incorrectos!");
