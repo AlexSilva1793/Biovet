@@ -58,8 +58,8 @@ public class MascotaDAO extends ConexionBD implements InterfaceCrud {
     @Override
     public boolean agregarRegistro() {
         try {
-            query = "insert into mascota (NombreMascota, FechaNacimiento, fkUsuario, fkRaza, fkGenero, ColorMascota)"
-                    + "values('" + nombreMascota + "','" + fechaNacimiento + "','" + fkUsuario + "','" + fkRaza + "','" + fkGenero + "','" + colorMascota + "');";
+            query = "insert into Mascota (NombreMascota, FechaNacimiento, fkUsuario, fkRaza, fkGenero, ColorMascota,estadoMascota)"
+                    + "values('" + nombreMascota + "','" + fechaNacimiento + "','" + fkUsuario + "','" + fkRaza + "','" + fkGenero + "','" + colorMascota + "',1);";
             statement.executeUpdate(query);
             operacion = true;
         } catch (Exception e) {
@@ -69,18 +69,32 @@ public class MascotaDAO extends ConexionBD implements InterfaceCrud {
     }
 
     @Override
-    public ArrayList consultarRegistro() {
-        ArrayList<MascotaVO> mascotaVO = new ArrayList<>();
+    public ArrayList<MascotaVO> consultarRegistro() {
+        ArrayList<MascotaVO> mascotArray = new ArrayList<>();
         try {
             query = "select * from mascota where fkUsuario='" + fkUsuario + "';";
-            statement.executeUpdate(query);
-            operacion = true;
+            resultSet=statement.executeQuery(query);
+            while (resultSet.next()){
+                
+                MascotaVO mascotaTemp=new MascotaVO();
+                
+                mascotaTemp.setIdMascota(resultSet.getString(1));
+                mascotaTemp.setNombreMascota(resultSet.getString(2));
+                mascotaTemp.setFechaNacimiento(resultSet.getString(3));
+                mascotaTemp.setFkUsuario(resultSet.getString(4));
+                mascotaTemp.setFkRaza(resultSet.getString(5));
+                mascotaTemp.setFkGenero(resultSet.getString(6));
+                mascotaTemp.setColorMascota(resultSet.getString(7));
+                mascotaTemp.setEstadoMascota(resultSet.getString(8));
+                System.out.println(mascotaTemp);
+                mascotArray.add(mascotaTemp);
+            }
         } catch (Exception e) {
             System.out.println("Error" + e.toString());
         }
-        return mascotaVO;
+        return mascotArray;
     }
-
+    
     @Override
     public boolean actualizarRegistro() {
 
@@ -110,7 +124,29 @@ public class MascotaDAO extends ConexionBD implements InterfaceCrud {
 
     @Override
     public ArrayList consultarGeneral() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ArrayList<MascotaVO> mascotArray = new ArrayList<>();
+        try {
+            query = "select * from mascota;";
+            resultSet=statement.executeQuery(query);
+            while (resultSet.next()){
+                
+                MascotaVO mascotaTemp=new MascotaVO();
+                
+                mascotaTemp.setIdMascota(resultSet.getString(1));
+                mascotaTemp.setNombreMascota(resultSet.getString(2));
+                mascotaTemp.setFechaNacimiento(resultSet.getString(3));
+                mascotaTemp.setFkUsuario(resultSet.getString(4));
+                mascotaTemp.setFkRaza(resultSet.getString(5));
+                mascotaTemp.setFkGenero(resultSet.getString(6));
+                mascotaTemp.setColorMascota(resultSet.getString(7));
+                mascotaTemp.setEstadoMascota(resultSet.getString(8));
+                System.out.println(mascotaTemp);
+                mascotArray.add(mascotaTemp);
+            }
+        } catch (Exception e) {
+            System.out.println("Error" + e.toString());
+        }
+        return mascotArray;
     }
 
 }

@@ -15,4 +15,5 @@ public interface InterfaceCR {
 
     public abstract boolean agregarRegistro();
     public abstract ArrayList consultarRegistro();
+    public abstract ArrayList consultarGeneral();
 }

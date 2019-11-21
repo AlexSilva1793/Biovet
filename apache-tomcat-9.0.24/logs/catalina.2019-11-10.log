@@ -1,0 +1,63 @@
+10-Nov-2019 12:14:47.694 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Nombre de la versión del servidor:   Apache Tomcat/9.0.24
+
+10-Nov-2019 12:14:47.709 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Aug 14 2019 21:16:42 UTC
+10-Nov-2019 12:14:47.709 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Número de versión de servidor:         9.0.24.0
+10-Nov-2019 12:14:47.709 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 10
+10-Nov-2019 12:14:47.710 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Versión de Systema Operativo:      10.0
+
+10-Nov-2019 12:14:47.710 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Arquitectura:          amd64
+
+10-Nov-2019 12:14:47.710 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             C:\Program Files\Java\jdk1.8.0_111\jre
+10-Nov-2019 12:14:47.710 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_111-b14
+10-Nov-2019 12:14:47.710 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Vededor JVM:     Oracle Corporation
+10-Nov-2019 12:14:47.710 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         C:\apache-tomcat-9.0.24
+10-Nov-2019 12:14:47.710 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         C:\apache-tomcat-9.0.24
+10-Nov-2019 12:14:47.728 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=C:\apache-tomcat-9.0.24\conf\logging.properties
+10-Nov-2019 12:14:47.728 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+10-Nov-2019 12:14:47.728 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dhttp.nonProxyHosts=localhost|127.0.0.1|DESKTOP-3OHAOEJ
+10-Nov-2019 12:14:47.729 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+10-Nov-2019 12:14:47.729 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+10-Nov-2019 12:14:47.729 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+10-Nov-2019 12:14:47.729 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=C:\apache-tomcat-9.0.24
+10-Nov-2019 12:14:47.729 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=C:\apache-tomcat-9.0.24
+10-Nov-2019 12:14:47.729 INFORMACIÓN [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=C:\apache-tomcat-9.0.24\temp
+10-Nov-2019 12:14:47.729 INFORMACIÓN [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Cargada la biblioteca nativa APR de Apache Tomcat [1.2.23] con la versión APR [1.7.0].
+10-Nov-2019 12:14:47.729 INFORMACIÓN [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Capacidades APR: IPv6 [true], enviar fichero [true], aceptar filtros [false], aleatorio [true].
+10-Nov-2019 12:14:47.729 INFORMACIÓN [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+10-Nov-2019 12:14:47.750 INFORMACIÓN [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL inicializado correctamente [OpenSSL 1.1.1c  28 May 2019]
+10-Nov-2019 12:14:48.251 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.init Inicializando el manejador de protocolo ["http-nio-8080"]
+
+10-Nov-2019 12:14:48.354 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.init Inicializando el manejador de protocolo ["ajp-nio-8009"]
+
+10-Nov-2019 12:14:48.357 INFORMACIÓN [main] org.apache.catalina.startup.Catalina.load Server initialization in [882] milliseconds
+10-Nov-2019 12:14:48.393 INFORMACIÓN [main] org.apache.catalina.core.StandardService.startInternal Arrancando servicio [Catalina]
+10-Nov-2019 12:14:48.393 INFORMACIÓN [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.24]
+10-Nov-2019 12:14:48.403 INFORMACIÓN [main] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\apache-tomcat-9.0.24\conf\Catalina\localhost\MiSite.xml]
+10-Nov-2019 12:14:48.422 ADVERTENCIA [main] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/MiSite] in deployment descriptor [C:\apache-tomcat-9.0.24\conf\Catalina\localhost\MiSite.xml] has been ignored
+10-Nov-2019 12:14:48.954 INFORMACIÓN [main] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+10-Nov-2019 12:14:49.005 INFORMACIÓN [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\apache-tomcat-9.0.24\conf\Catalina\localhost\MiSite.xml] has finished in [602] ms
+10-Nov-2019 12:14:49.005 INFORMACIÓN [main] org.apache.catalina.startup.HostConfig.deployDescriptor Desplieque del descriptor de configuración [C:\apache-tomcat-9.0.24\conf\Catalina\localhost\WebSite.xml]
+10-Nov-2019 12:14:49.010 ADVERTENCIA [main] org.apache.catalina.startup.HostConfig.deployDescriptor The path attribute with value [/WebSite] in deployment descriptor [C:\apache-tomcat-9.0.24\conf\Catalina\localhost\WebSite.xml] has been ignored
+10-Nov-2019 12:14:49.196 INFORMACIÓN [main] org.apache.jasper.servlet.TldScanner.scanJars Al menos un JAR, que se ha explorado buscando TLDs, aún no contenía TLDs. Activar historial de depuración para este historiador para una completa lista de los JARs que fueron explorados y de los que nos se halló TLDs. Saltarse JARs no necesarios durante la exploración puede dar lugar a una mejora de tiempo significativa en el arranque y compilación de JSP .
+10-Nov-2019 12:14:49.198 INFORMACIÓN [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\apache-tomcat-9.0.24\conf\Catalina\localhost\WebSite.xml] has finished in [193] ms
+10-Nov-2019 12:14:49.199 INFORMACIÓN [main] org.apache.catalina.startup.HostConfig.deployDirectory Desplegando el directorio [C:\apache-tomcat-9.0.24\webapps\docs] de la aplicación web
+10-Nov-2019 12:14:49.223 INFORMACIÓN [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\apache-tomcat-9.0.24\webapps\docs] has finished in [23] ms
+10-Nov-2019 12:14:49.223 INFORMACIÓN [main] org.apache.catalina.startup.HostConfig.deployDirectory Desplegando el directorio [C:\apache-tomcat-9.0.24\webapps\examples] de la aplicación web
+10-Nov-2019 12:14:50.175 INFORMACIÓN [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\apache-tomcat-9.0.24\webapps\examples] has finished in [952] ms
+10-Nov-2019 12:14:50.175 INFORMACIÓN [main] org.apache.catalina.startup.HostConfig.deployDirectory Desplegando el directorio [C:\apache-tomcat-9.0.24\webapps\host-manager] de la aplicación web
+10-Nov-2019 12:14:50.212 INFORMACIÓN [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\apache-tomcat-9.0.24\webapps\host-manager] has finished in [37] ms
+10-Nov-2019 12:14:50.213 INFORMACIÓN [main] org.apache.catalina.startup.HostConfig.deployDirectory Desplegando el directorio [C:\apache-tomcat-9.0.24\webapps\manager] de la aplicación web
+10-Nov-2019 12:14:50.245 INFORMACIÓN [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\apache-tomcat-9.0.24\webapps\manager] has finished in [32] ms
+10-Nov-2019 12:14:50.245 INFORMACIÓN [main] org.apache.catalina.startup.HostConfig.deployDirectory Desplegando el directorio [C:\apache-tomcat-9.0.24\webapps\ROOT] de la aplicación web
+10-Nov-2019 12:14:50.270 INFORMACIÓN [main] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\apache-tomcat-9.0.24\webapps\ROOT] has finished in [25] ms
+10-Nov-2019 12:14:50.285 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+10-Nov-2019 12:14:50.297 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-nio-8009"]
+10-Nov-2019 12:14:50.298 INFORMACIÓN [main] org.apache.catalina.startup.Catalina.start Server startup in [1.941] milliseconds
+10-Nov-2019 15:44:51.577 INFORMACIÓN [main] org.apache.catalina.core.StandardServer.await Se ha recibido un comando de apagado a través del puerto de apagado. Parando la instancia del Servidor.
+10-Nov-2019 15:44:51.577 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+10-Nov-2019 15:44:51.656 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+10-Nov-2019 15:44:51.856 INFORMACIÓN [main] org.apache.catalina.core.StandardService.stopInternal Parando servicio [Catalina]
+10-Nov-2019 15:44:51.915 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+10-Nov-2019 15:44:51.917 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+10-Nov-2019 15:44:51.918 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+10-Nov-2019 15:44:51.919 INFORMACIÓN [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]
