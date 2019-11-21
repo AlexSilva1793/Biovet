@@ -13,5 +13,8 @@
     </head>
     <body>
         <h1>Bienvenido Usuario!</h1>
+        
+        <a href="registrarMascota.jsp">Registrar Mascota</a><br>
+        <a href="registrarAgenda.jsp">Agendar Servicio </a><br>
     </body>
 </html>

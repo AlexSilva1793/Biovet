@@ -12,12 +12,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modeloDAO.AgendaDAO;
+import modeloVO.AgendaVO;
 
 /**
  *
  * @author PC1
  */
-@WebServlet(name = "agendaControlador", urlPatterns = {"/agendaControlador"})
+@WebServlet(name = "AgendaControlador", urlPatterns = {"/Agenda"})
 public class AgendaControlador extends HttpServlet {
 
     /**
@@ -33,9 +35,35 @@ public class AgendaControlador extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        
+
+        int opcion = Integer.parseInt(request.getParameter("opcion"));
+        String idAgenda = request.getParameter("txtIdAgenda");
+        String fechaAgenda = request.getParameter("txtFechaAgenda");
+        String fkServicio = request.getParameter("txtFkServicio");
+        String fkMascota = request.getParameter("txtFkMascota");
+        String fkEstadoAgenda = request.getParameter("txtFkEstadoAgenda");
+
+        AgendaVO agendaVO = new AgendaVO(idAgenda, fechaAgenda, fkServicio, fkMascota, fkEstadoAgenda);
+        AgendaDAO agendaDAO = new AgendaDAO(agendaVO);
+
+        switch (opcion) {
+
+            case 1: //agregar agenda
+                if ((agendaDAO.agregarRegistro())) {
+
+                    request.setAttribute("mensajeExito", "¡ La agenda se realizo exitosamente!");
+
+                } else {
+
+                    request.setAttribute("mensajeError", "¡ No se pudo realizar la agenda correctamente !");
+
+                }
+                request.getRequestDispatcher("registrarAgenda.jsp").forward(request, response);
+                break;
+
         }
-    
+    }
+
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

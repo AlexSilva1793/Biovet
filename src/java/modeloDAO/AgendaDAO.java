@@ -52,8 +52,8 @@ public class AgendaDAO extends ConexionBD implements InterfaceCrud {
     public boolean agregarRegistro() {
 
         try {
-            query = "INSERT INTO agenda (fechaAgenda, fkServicio, fkMascota, fkEstadoAgenda) "
-                    + "VALUES ('" + fechaAgenda + "','" + fkServicio + "','" + fkMascota + "','" + fkEstadoAgenda + "');";
+            query = "INSERT INTO Agenda (fechaAgenda, fkServicio, fkMascota, fkEstadoAgenda) "
+                    + "VALUES ('" + fechaAgenda + "','" + fkServicio + "','" + fkMascota + "','1');";
             statement.executeUpdate(query);
             operacion = true;
 
@@ -92,7 +92,7 @@ public class AgendaDAO extends ConexionBD implements InterfaceCrud {
 
         ArrayList<AgendaVO> agendaArray = new ArrayList<>();
         try {
-            query = "SELECT * FROM agenda WHERE fechaAgenda = '" + fechaAgenda + "');"; //1 Seria Activa, 2 Seria En Proceso, 3 Seria Cancelada
+            query = "SELECT * FROM agenda WHERE fechaAgenda = '" + fechaAgenda + "');";
             resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
                 AgendaVO agendaTmp = new AgendaVO();

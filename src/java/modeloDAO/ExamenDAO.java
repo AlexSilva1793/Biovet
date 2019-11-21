@@ -57,7 +57,7 @@ public class ExamenDAO extends ConexionBD implements InterfaceCR {
 
         ArrayList<ExamenVO> examenArray = new ArrayList<>();
         try {
-            query = "SELECT * FROM examen";
+            query = "SELECT * FROM examen where tipoExamen = '"+tipoExamen+"'";
             resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
                 ExamenVO examenTmp = new ExamenVO();
@@ -76,7 +76,23 @@ public class ExamenDAO extends ConexionBD implements InterfaceCR {
 
     @Override
     public ArrayList consultarGeneral() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                ArrayList<ExamenVO> examenArray = new ArrayList<>();
+        try {
+            query = "SELECT * FROM examen";
+            resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                ExamenVO examenTmp = new ExamenVO();
+
+                examenTmp.setIdExamen(resultSet.getString(1));
+                examenTmp.setTipoExamen(resultSet.getString(2));
+                System.out.println(examenTmp);
+                examenArray.add(examenTmp);
+
+            }
+        } catch (Exception e) {
+            System.out.println("Error al consultar Agenda " + e.toString());
+        }
+        return examenArray;
     }
 
 }
