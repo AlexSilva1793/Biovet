@@ -18,29 +18,29 @@ import util.InterfaceCR;
  * @author master
  */
 public class TipoDocumentoDAO extends ConexionBD implements InterfaceCR {
-    
+
     private Connection conection = null;
     private Statement statement = null;
     private ResultSet resultSet = null;
-    
+
     private String query = null;
     private boolean operacion = false;
-    
+
     private String idTipoDocu = "", tipoDocu = "";
-    
+
     public TipoDocumentoDAO(TipoDocumentoVO tipoDocVO) {
         super();
         try {
             conection = this.obtenerConexion();
             statement = conection.createStatement();
-            
+
             idTipoDocu = tipoDocVO.getIdTipoDocu();
             tipoDocu = tipoDocVO.getTipoDocu();
         } catch (Exception e) {
             System.out.println("Error" + e.toString());
         }
     }
-    
+
     @Override
     public boolean agregarRegistro() {
         try {
@@ -52,23 +52,21 @@ public class TipoDocumentoDAO extends ConexionBD implements InterfaceCR {
         }
         return operacion;
     }
-    
+
     @Override
     public ArrayList consultarRegistro() {
         ArrayList<TipoDocumentoVO> tipoDocumentoArray = new ArrayList<>();
         try {
-            if (idTipoDocu == "0") {
-                query = "SELECT * FROM `TipoDocumento`";
-            } else {
-                query = "SELECT * FROM `TipoDocumento` WHERE idTipoDocu = " + idTipoDocu;
-            }
+
+            query = "SELECT * FROM `TipoDocumento` WHERE idTipoDocu = " + idTipoDocu;
+
             resultSet = statement.executeQuery(query);
-            while (resultSet.next()) {                
+            while (resultSet.next()) {
                 TipoDocumentoVO tipoDocumentoTmp = new TipoDocumentoVO();
-                
+
                 tipoDocumentoTmp.setIdTipoDocu(resultSet.getString(1));
                 tipoDocumentoTmp.setTipoDocu(resultSet.getString(2));
-                
+
                 tipoDocumentoArray.add(tipoDocumentoTmp);
             }
         } catch (Exception e) {
@@ -79,7 +77,24 @@ public class TipoDocumentoDAO extends ConexionBD implements InterfaceCR {
 
     @Override
     public ArrayList consultarGeneral() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ArrayList<TipoDocumentoVO> tiposDocumentosArray = new ArrayList<>();
+        try {
+
+            query = "SELECT * FROM `TipoDocumento`";
+
+            resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                TipoDocumentoVO tipoDocumentoTmp = new TipoDocumentoVO();
+
+                tipoDocumentoTmp.setIdTipoDocu(resultSet.getString(1));
+                tipoDocumentoTmp.setTipoDocu(resultSet.getString(2));
+
+                tiposDocumentosArray.add(tipoDocumentoTmp);
+            }
+        } catch (Exception e) {
+            System.out.println("Error al consultar los tipos de documentos  " + e.toString());
+        }
+        return tiposDocumentosArray;
     }
-    
+
 }

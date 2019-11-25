@@ -45,7 +45,7 @@ public class ServicioDAO extends ConexionBD implements InterfaceCR {
     @Override
     public boolean agregarRegistro() {
         try {
-            query = "INSERT INTO `Servicio` (`idServicio`, `descripcionServicio`) VALUES (NULL, '"+descripcionServicio+"')";
+            query = "INSERT INTO `Servicio` (`idServicio`, `descripcionServicio`) VALUES (NULL, '" + descripcionServicio + "')";
             statement.executeUpdate(query);
             operacion = true;
         } catch (Exception e) {
@@ -58,29 +58,44 @@ public class ServicioDAO extends ConexionBD implements InterfaceCR {
     public ArrayList consultarRegistro() {
         ArrayList<ServicioVO> servicioArray = new ArrayList<>();
         try {
-            if (idServicio=="0") {
-                query="SELECT * FROM `Servicio`";
-            }else{
-                query="SELECT * FROM `Servicio` WHERE idServicio = "+idServicio;
-            }
+
+            query = "SELECT * FROM `Servicio` WHERE idServicio = " + idServicio;
+
             resultSet = statement.executeQuery(query);
-            while (resultSet.next()) {                
+            while (resultSet.next()) {
                 ServicioVO servicioTmp = new ServicioVO();
-                
+
                 servicioTmp.setIdServicio(resultSet.getString(1));
                 servicioTmp.setDescripcionServicio(resultSet.getString(2));
-                
+
                 servicioArray.add(servicioTmp);
             }
         } catch (Exception e) {
-            System.out.println("Error al consultar servicios " + e.toString());
+            System.out.println("Error al consultar servicio " + e.toString());
         }
         return servicioArray;
     }
 
     @Override
     public ArrayList consultarGeneral() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ArrayList<ServicioVO> serviciosArray = new ArrayList<>();
+        try {
+
+            query = "SELECT * FROM `Servicio`";
+
+            resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                ServicioVO servicioTmp = new ServicioVO();
+
+                servicioTmp.setIdServicio(resultSet.getString(1));
+                servicioTmp.setDescripcionServicio(resultSet.getString(2));
+
+                serviciosArray.add(servicioTmp);
+            }
+        } catch (Exception e) {
+            System.out.println("Error al consultar servicios " + e.toString());
+        }
+        return serviciosArray;
     }
 
 }
