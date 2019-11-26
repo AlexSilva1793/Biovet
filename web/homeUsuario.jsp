@@ -21,7 +21,7 @@
             String redirectURL = "index.jsp";
             String nombre = usuarioVOSesion.get(0).getNombreUsuario();
             if (usuarioVOSesion != null) {
-                if (usuarioVOSesion.get(0).getFkRol() != "2") {
+                if (Integer.parseInt(usuarioVOSesion.get(0).getFkRol()) != 2) {
                     response.sendRedirect(redirectURL);
                 }
             } else {
