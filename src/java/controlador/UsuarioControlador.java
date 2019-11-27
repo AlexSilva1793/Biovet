@@ -72,9 +72,15 @@ public class UsuarioControlador extends HttpServlet {
                 HttpSession session = request.getSession();
                 if (usuarioDAO.iniciarSesion()) {
                     usuariosArray = usuarioDAO.consultarRegistro();
-                    session.setAttribute("usuariosArray", usuariosArray);
 
-                    request.getRequestDispatcher("homeUsuario.jsp").forward(request, response);
+                    if (Integer.parseInt(usuariosArray.get(0).getFkRol()) == 1) {
+                        session.setAttribute("usuariosArray", usuariosArray);
+                        request.getRequestDispatcher("homeAdministrador.jsp").forward(request, response);
+                    } else if (Integer.parseInt(usuariosArray.get(0).getFkRol()) == 2) {
+                        session.setAttribute("usuariosArray", usuariosArray);
+                        request.getRequestDispatcher("homeUsuario.jsp").forward(request, response);
+                    }
+
                 } else {
                     request.setAttribute("mensajeError", "¡El usuario y/o la contraseña son incorrectos!");
                     request.getRequestDispatcher("login.jsp").forward(request, response);
