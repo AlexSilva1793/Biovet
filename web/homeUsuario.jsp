@@ -17,10 +17,12 @@
             response.setHeader("Pragma", "no-cache");
             response.setHeader("Expires", "0");
 
+            String nombreUsuario = "";
             ArrayList<UsuarioVO> usuarioVOSesion = (ArrayList<UsuarioVO>) session.getAttribute("usuariosArray");
             String redirectURL = "index.jsp";
-            String nombre = usuarioVOSesion.get(0).getNombreUsuario();
+
             if (usuarioVOSesion != null) {
+                nombreUsuario = usuarioVOSesion.get(0).getNombreUsuario();
                 if (Integer.parseInt(usuarioVOSesion.get(0).getFkRol()) != 2) {
                     response.sendRedirect(redirectURL);
                 }
@@ -31,7 +33,7 @@
     </head>
     <body>
         <h1>Bienvenido Usuario!</h1>
-        <h2 ><%=nombre%> ></h2>
+        <h2 ><%=nombreUsuario%> ></h2>
         <a href="registrarMascota.jsp">Registrar Mascota</a><br>
         <a href="registrarAgenda.jsp">Agendar Servicio </a><br>
 
