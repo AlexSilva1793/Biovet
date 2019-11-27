@@ -42,10 +42,6 @@
                         <h6><label>Mascota</label></h6>
                         <textarea class="form-control is-invalid" id="validationTextarea" placeholder="Campo Requerido" required name ="txtFkMascota"></textarea>
                     </div>
-                    <div class="col-6 col-sm-3">
-                        <h6><label>Estado</label></h6>
-                        <textarea class="form-control is-invalid" id="validationTextarea" placeholder="Campo Requerido" required name ="txtFkEstadoAgenda">1</textarea>
-                    </div>
                 </div>
             </div>
             <br>

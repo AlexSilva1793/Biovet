@@ -52,8 +52,8 @@ public class AgendaDAO extends ConexionBD implements InterfaceCrud {
     public boolean agregarRegistro() {
 
         try {
-            query = "INSERT INTO agenda (fechaAgenda, fkServicio, fkMascota, fkEstadoAgenda) "
-                    + "VALUES ('" + fechaAgenda + "','" + fkServicio + "','" + fkMascota + "','" + fkEstadoAgenda + "');";
+            query = "INSERT INTO Agenda (fechaAgenda, fkServicio, fkMascota, fkEstadoAgenda) "
+                    + "VALUES ('" + fechaAgenda + "','" + fkServicio + "','" + fkMascota + "','1');";
             statement.executeUpdate(query);
             operacion = true;
 

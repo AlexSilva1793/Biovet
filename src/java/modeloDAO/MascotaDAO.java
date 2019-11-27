@@ -58,8 +58,8 @@ public class MascotaDAO extends ConexionBD implements InterfaceCrud {
     @Override
     public boolean agregarRegistro() {
         try {
-            query = "insert into mascota (NombreMascota, FechaNacimiento, fkUsuario, fkRaza, fkGenero, ColorMascota)"
-                    + "values('" + nombreMascota + "','" + fechaNacimiento + "','" + fkUsuario + "','" + fkRaza + "','" + fkGenero + "','" + colorMascota + "');";
+            query = "insert into Mascota (NombreMascota, FechaNacimiento, fkUsuario, fkRaza, fkGenero, ColorMascota,estadoMascota)"
+                    + "values('" + nombreMascota + "','" + fechaNacimiento + "','" + fkUsuario + "','" + fkRaza + "','" + fkGenero + "','" + colorMascota + "',1);";
             statement.executeUpdate(query);
             operacion = true;
         } catch (Exception e) {
