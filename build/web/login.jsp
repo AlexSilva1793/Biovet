@@ -19,10 +19,10 @@
 
                 <tr>
                     <th>
-                        Cedula:<br>
+                        Numero de Documento:<br>
                         <input type="text" name="textCedula"><br><br>
                         Contraseña:<br>
-                        <input type="password" name="pass"><br><br>
+                        <input type="password" name="textContrasena"><br><br>
 
                     </th>
 
@@ -31,7 +31,7 @@
             </table><br>
 
             <button>Ingresar</button>
-            <input type="hidden" name="opcion" value="3">
+            <input type="hidden" name="opcion" value="5">
 
         </form>
 

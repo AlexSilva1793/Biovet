@@ -20,22 +20,25 @@
 
                 <tr>
                     <th>
-                        Cedula:<br>
+                        Tipo de Documento<br><br>
+                        <select  id="tipoDocumento" name="textFkTipoDocu" required>
+                            <option value="1"> Cedula de Ciudadania</option>
+                            <option value="2"> Cedula de Extranjeria</option>
+                            <option value="3"> NIT</option>
+                        </select><br><br>
+                        Numero<br>
                         <input type="text" name="textCedula"><br><br>
                         Nombre:<br>
                         <input type="text" name="textNombreUsuario"><br><br>
                         Apellido:<br>
                         <input type="text" name="textApellidoUsuario"><br><br>
                         Contraseña:<br>
-                        <input type="password" name="pass"><br><br>
+                        <input type="password" name="textContrasena"><br><br>
+                        Confirme su Contraseña:<br>
+                        <input type="password" name="textContrasena"><br><br>
                         Correo:<br>
                         <input type="email" name="textCorreoUsuario"><br><br>
-                        <select  id="tipoDocumento" name="textFkTipoDocu" required>
-                            <option value="0"> Tipo de Documento </option>
-                            <option value="1"> C.C</option>
-                            <option value="2"> C.E</option>
-                            <option value="3"> NIT</option>
-                        </select>
+
                         <br><br>
 
                     </th>
