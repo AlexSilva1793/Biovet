@@ -4,12 +4,22 @@
     Author     : master
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="modeloDAO.TipoDocumentoDAO"%>
+<%@page import="modeloVO.TipoDocumentoVO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Biovet</title>
+        <%
+            TipoDocumentoVO documentoVO = new TipoDocumentoVO();
+            TipoDocumentoDAO documentoDAO = new TipoDocumentoDAO();
+
+            ArrayList<TipoDocumentoVO> arrayTipoDoc = documentoDAO.consultarGeneral();
+
+        %>
     </head>
     <body>
         <a href="login.jsp">Ingresar </a><br>
@@ -21,10 +31,13 @@
                 <tr>
                     <th>
                         Tipo de Documento<br><br>
+
                         <select  id="tipoDocumento" name="textFkTipoDocu" required>
-                            <option value="1"> Cedula de Ciudadania</option>
-                            <option value="2"> Cedula de Extranjeria</option>
-                            <option value="3"> NIT</option>
+                            <%for (int i = 0; i < arrayTipoDoc.size(); i++) {
+                                    documentoVO = arrayTipoDoc.get(i);%>
+                            <option value="<%=documentoVO.getIdTipoDocu()%>"> <%=documentoVO.getTipoDocu()%></option>
+
+                            <%}%>        
                         </select><br><br>
                         Numero<br>
                         <input type="text" name="textCedula"><br><br>
@@ -52,7 +65,8 @@
 
         </form>
 
-        <% if (request.getAttribute("mensajeError") != null) {  %> 
+        <% if (request.getAttribute(
+                    "mensajeError") != null) {  %> 
         ${mensajeError}
         <% } else { %>
         ${mensajeExito}
