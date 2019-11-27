@@ -68,7 +68,7 @@ public class UsuarioControlador extends HttpServlet {
                     request.getRequestDispatcher("index.jsp").forward(request, response);
                 }
                 break;
-            case 3://Iniciar sesión
+            case 5://Iniciar sesión
                 HttpSession session = request.getSession();
                 if (usuarioDAO.iniciarSesion()) {
                     usuariosArray = usuarioDAO.consultarRegistro();
@@ -86,6 +86,14 @@ public class UsuarioControlador extends HttpServlet {
                     request.getRequestDispatcher("login.jsp").forward(request, response);
 
                 }
+                break;
+            case 6://Salir sesiòn
+                System.out.println("Entre a cerrar sesion");
+                session = request.getSession();
+                session.removeAttribute("usuariosArray");
+                session.invalidate();
+                request.getRequestDispatcher("login.jsp").forward(request, response);
+                break;
         }
 
     }

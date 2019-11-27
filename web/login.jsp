@@ -31,7 +31,7 @@
             </table><br>
 
             <button>Ingresar</button>
-            <input type="hidden" name="opcion" value="3">
+            <input type="hidden" name="opcion" value="5">
 
         </form>
 

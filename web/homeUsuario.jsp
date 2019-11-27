@@ -34,5 +34,12 @@
         <h2 ><%=nombre%> ></h2>
         <a href="registrarMascota.jsp">Registrar Mascota</a><br>
         <a href="registrarAgenda.jsp">Agendar Servicio </a><br>
+
+        <form action="Usuario" method="post">
+
+            <button  name="cerrarSesion" >Cerrar Sesion</button>
+            <input type="hidden" name="opcion" value="6">
+
+        </form>
     </body>
 </html>
