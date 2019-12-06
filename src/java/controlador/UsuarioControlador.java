@@ -68,6 +68,12 @@ public class UsuarioControlador extends HttpServlet {
                     request.getRequestDispatcher("index.jsp").forward(request, response);
                 }
                 break;
+            case 2://Actualizar Usuario
+                if (usuarioDAO.actualizarRegistro()){
+                    
+                }
+                
+                break;
             case 5://Iniciar sesión
                 HttpSession session = request.getSession();
                 if (usuarioDAO.iniciarSesion()) {
