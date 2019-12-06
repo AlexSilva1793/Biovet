@@ -69,16 +69,22 @@ public class UsuarioControlador extends HttpServlet {
                 }
                 break;
             case 2://Actualizar Usuario
-                if (usuarioDAO.actualizarRegistro()){
-                    
+                System.out.println("-------"+contraseñaUsuario + "  " + " " + direccion+" "+celular+" "+telefonoFijo+" "+correoUsuario);
+                System.out.println("Uusario veo --- "+usuarioVO);
+                if (usuarioDAO.actualizarRegistro()) {
+                    request.getRequestDispatcher("actualizarUsuario.jsp").forward(request, response);
+                    request.setAttribute("mensajeError", "El usuario fue Actualizado");
+                } else {
+                    request.setAttribute("mensajeError", "El usuario no pudo ser Actualizado");
+                    request.getRequestDispatcher("actualizarUsuario.jsp").forward(request, response);
                 }
-                
+
                 break;
             case 5://Iniciar sesión
                 HttpSession session = request.getSession();
                 if (usuarioDAO.iniciarSesion()) {
                     usuariosArray = usuarioDAO.consultarRegistro();
-                    //System.out.println("-------------"+usuariosArray);
+                    
                     if (Integer.parseInt(usuariosArray.get(0).getFkRol()) == 1) {
                         session.setAttribute("usuariosArray", usuariosArray);
                         request.getRequestDispatcher("homeAdministrador.jsp").forward(request, response);

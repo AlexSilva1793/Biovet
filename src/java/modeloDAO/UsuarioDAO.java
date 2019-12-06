@@ -88,7 +88,7 @@ public class UsuarioDAO extends ConexionBD implements InterfaceCrud {
                 usuarioTmp.setFkTipoDocu(resultSet.getString(11));
                 usuarioTmp.setFkRol(resultSet.getString(12));
                 usuarioTmp.setFkGenero(resultSet.getString(13));
-                System.out.println("Prueba DAo + "+usuarioTmp);
+                
                 usuArray.add(usuarioTmp);
 
             }
