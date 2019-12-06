@@ -33,7 +33,7 @@
                 if (Integer.parseInt(arrayGeneros.get(i).getIdGenero())==Integer.parseInt(usuarioVOSesion.get(0).getFkGenero())) {
                         idGeneroUsu=arrayGeneros.get(i).getIdGenero();
                         generoUsu = arrayGeneros.get(i).getTipoSexo();
-                        System.out.println("pruebaaaa   "+usuarioVOSesion.get(0).getCelular());
+                        
                     }
             }
         if (Integer.parseInt(usuarioVOSesion.get(0).getFkRol()) != 2) {
