@@ -78,7 +78,7 @@ public class UsuarioControlador extends HttpServlet {
                 HttpSession session = request.getSession();
                 if (usuarioDAO.iniciarSesion()) {
                     usuariosArray = usuarioDAO.consultarRegistro();
-
+                    //System.out.println("-------------"+usuariosArray);
                     if (Integer.parseInt(usuariosArray.get(0).getFkRol()) == 1) {
                         session.setAttribute("usuariosArray", usuariosArray);
                         request.getRequestDispatcher("homeAdministrador.jsp").forward(request, response);
