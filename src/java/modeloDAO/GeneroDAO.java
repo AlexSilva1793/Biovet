@@ -87,7 +87,7 @@ public class GeneroDAO extends ConexionBD implements InterfaceCR {
     public ArrayList consultarGeneral() {
         ArrayList<GeneroVO> generoArray = new ArrayList<>();
         try {
-            query = "SELECT * FROM genero";
+            query = "SELECT * FROM Genero";
             resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
                 GeneroVO generoTmp = new GeneroVO();

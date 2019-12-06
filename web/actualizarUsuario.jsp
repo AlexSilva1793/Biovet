@@ -19,16 +19,16 @@
     GeneroDAO generosDAO = new GeneroDAO();
 
     ArrayList<GeneroVO> arrayGeneros = generosDAO.consultarGeneral();
-    ArrayList<GeneroVO> arrayGenero = new ArrayList<>();
+    //ArrayList<GeneroVO> arrayGenero = new ArrayList<>();
 
     ArrayList<UsuarioVO> usuarioVOSesion = (ArrayList<UsuarioVO>) session.getAttribute("usuariosArray");
     String redirectURL = "index.jsp";
 
     if (usuarioVOSesion != null) {
-        GeneroVO generoVO = new GeneroVO();
-        generoVO.setIdGenero(usuarioVOSesion.get(0).getFkGenero());
-        GeneroDAO generoDAO = new GeneroDAO(generoVO);
-        arrayGenero = generoDAO.consultarRegistro();
+    //    GeneroVO generoVO = new GeneroVO();
+      //  generoVO.setIdGenero(usuarioVOSesion.get(0).getFkGenero());
+       // GeneroDAO generoDAO = new GeneroDAO(generoVO);
+        //arrayGenero = generoDAO.consultarRegistro();
 
         if (Integer.parseInt(usuarioVOSesion.get(0).getFkRol()) != 2) {
             response.sendRedirect(redirectURL);
@@ -61,7 +61,7 @@
                         <input type="text" name="textContrasena" value="<%=usuarioVOSesion.get(0).getCorreoUsuario()%>"><br><br>
                         Genero<br>
                         <select  id="tipoDocumento" name="textFkTipoDocu" required>
-                            <option value="<%=arrayGenero.get(0).getIdGenero()%>"> <%=arrayGenero.get(0).getTipoSexo()%></option>
+                            
                             <%for (int i = 0; i < arrayGeneros.size(); i++) {
                                     generosVO = arrayGeneros.get(i);%>
                             <option value="<%=generosVO.getIdGenero()%>"> <%=generosVO.getTipoSexo()%></option>
