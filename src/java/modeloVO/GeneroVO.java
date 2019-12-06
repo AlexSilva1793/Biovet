@@ -34,4 +34,10 @@ public class GeneroVO {
         this.tipoSexo = tipoSexo;
     }
 
+    @Override
+    public String toString() {
+        return "GeneroVO{" + "idGenero=" + idGenero + ", tipoSexo=" + tipoSexo + '}';
+    }
+    
+
 }

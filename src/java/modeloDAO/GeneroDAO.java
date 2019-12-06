@@ -25,6 +25,16 @@ public class GeneroDAO extends ConexionBD implements InterfaceCR {
     private String idGenero = "";
     private String tipoSexo = "";
 
+    public GeneroDAO() {
+        try {
+            conection = this.obtenerConexion();
+            statement = conection.createStatement();
+
+        } catch (Exception e) {
+            System.out.println("Error" + e.toString());
+        }
+    }
+
     public GeneroDAO(GeneroVO generoVO) {
 
         try {
@@ -56,7 +66,7 @@ public class GeneroDAO extends ConexionBD implements InterfaceCR {
 
         ArrayList<GeneroVO> generoArray = new ArrayList<>();
         try {
-            query = "SELECT * FROM genero WHERE tipoSexo = '"+tipoSexo+"'";
+            query = "SELECT * FROM Genero WHERE idGenero = '" + idGenero + "'";
             resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
                 GeneroVO generoTmp = new GeneroVO();
@@ -75,7 +85,7 @@ public class GeneroDAO extends ConexionBD implements InterfaceCR {
 
     @Override
     public ArrayList consultarGeneral() {
-                ArrayList<GeneroVO> generoArray = new ArrayList<>();
+        ArrayList<GeneroVO> generoArray = new ArrayList<>();
         try {
             query = "SELECT * FROM genero";
             resultSet = statement.executeQuery(query);
