@@ -27,15 +27,15 @@
     String redirectURL = "index.jsp";
 
     if (usuarioVOSesion != null) {
-        
+
         for (int i = 0; i < arrayGeneros.size(); i++) {
-            
-                if (Integer.parseInt(arrayGeneros.get(i).getIdGenero())==Integer.parseInt(usuarioVOSesion.get(0).getFkGenero())) {
-                        idGeneroUsu=arrayGeneros.get(i).getIdGenero();
-                        generoUsu = arrayGeneros.get(i).getTipoSexo();
-                        
-                    }
+
+            if (Integer.parseInt(arrayGeneros.get(i).getIdGenero()) == Integer.parseInt(usuarioVOSesion.get(0).getFkGenero())) {
+                idGeneroUsu = arrayGeneros.get(i).getIdGenero();
+                generoUsu = arrayGeneros.get(i).getTipoSexo();
+
             }
+        }
         if (Integer.parseInt(usuarioVOSesion.get(0).getFkRol()) != 2) {
             response.sendRedirect(redirectURL);
         }
@@ -51,7 +51,7 @@
     </head>
     <body>
         <h1>Actualiza tus datos</h1><br><br><br>
-        <form action="Usuario" method="post">
+        <form action="Usuario" method="get">
             <table border="1">
                 <tr>
                     <th>
@@ -62,9 +62,9 @@
                         Celular<br>
                         <input type="text" name="textCelular" value="<%=usuarioVOSesion.get(0).getCelular()%>"><br><br>
                         Telefono Fijo<br>
-                        <input type="text" name="textCorreoUsuario" value="<%=usuarioVOSesion.get(0).getTelefonoFijo()%>"><br><br>
+                        <input type="text" name="textTelefonoFijo" value="<%=usuarioVOSesion.get(0).getTelefonoFijo()%>"><br><br>
                         Correo Electronico<br>
-                        <input type="text" name="textContrasena" value="<%=usuarioVOSesion.get(0).getCorreoUsuario()%>"><br><br>
+                        <input type="text" name="textCorreoUsuario" value="<%=usuarioVOSesion.get(0).getCorreoUsuario()%>"><br><br>
                         Genero<br>
                         <select  id="tipoDocumento" name="textFkTipoDocu" required>
                             <option value="<%=idGeneroUsu%>"> <%=generoUsu%></option>
@@ -75,11 +75,18 @@
                             <%}%>        
                         </select><br><br>
 
-
+                        <input type="hidden" name="textIdUsuario" value="<%=usuarioVOSesion.get(0).getIdUsuario()%>">
                     </th>
                 </tr>
             </table>
+            <button>
+                ACTUALIZAR
+            </button><br><br>
 
+            <input type="hidden" name="opcion" value="2">
         </form>
+        <% if (request.getAttribute("mensajeError") != null) {  %> 
+        ${mensajeError}
+        <% }%>
     </body>
 </html>
