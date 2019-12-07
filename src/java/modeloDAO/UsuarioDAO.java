@@ -88,7 +88,7 @@ public class UsuarioDAO extends ConexionBD implements InterfaceCrud {
                 usuarioTmp.setFkTipoDocu(resultSet.getString(11));
                 usuarioTmp.setFkRol(resultSet.getString(12));
                 usuarioTmp.setFkGenero(resultSet.getString(13));
-                
+
                 usuArray.add(usuarioTmp);
 
             }
@@ -131,7 +131,6 @@ public class UsuarioDAO extends ConexionBD implements InterfaceCrud {
     @Override
     public boolean actualizarRegistro() {
         try {
-            fkGenero="1";
             query = "UPDATE `Usuario` SET `contraseñaUsuario` = '" + contraseñaUsuario + "', `direcciòn` = '" + direccion + "', `celular` = '" + celular + "', `telefonoFijo` = '" + telefonoFijo + "', `correoUsuario` = '" + correoUsuario + "', `fkGenero` = '" + fkGenero + "' WHERE `Usuario`.`idUsuario` = " + idUsuario + "";
             statement.executeUpdate(query);
             operacion = true;
@@ -163,7 +162,6 @@ public class UsuarioDAO extends ConexionBD implements InterfaceCrud {
                 operacion = true;
 
             }
-            
 
         } catch (Exception e) {
             System.out.println("Error" + e.toString());
@@ -171,7 +169,7 @@ public class UsuarioDAO extends ConexionBD implements InterfaceCrud {
 
         return operacion;
     }
-    
+
 //    public static void main(String[] args) {
 //        UsuarioVO usuarioVO = new UsuarioVO();
 ////        //ArrayList<UsuarioVO> usuArray = new ArrayList<>();
@@ -193,6 +191,4 @@ public class UsuarioDAO extends ConexionBD implements InterfaceCrud {
 //        UsuarioDAO usuarioDAO = new UsuarioDAO(usuarioVO);
 //        usuarioDAO.eliminarRegistro();
 //    }
-     
-
 }
