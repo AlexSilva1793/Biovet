@@ -66,7 +66,7 @@
                         Correo Electronico<br>
                         <input type="text" name="textCorreoUsuario" value="<%=usuarioVOSesion.get(0).getCorreoUsuario()%>"><br><br>
                         Genero<br>
-                        <select  id="tipoDocumento" name="textFkTipoDocu" required>
+                        <select  id="genero" name="textFkGenero" required>
                             <option value="<%=idGeneroUsu%>"> <%=generoUsu%></option>
                             <%for (int i = 0; i < arrayGeneros.size(); i++) {
                                     generosVO = arrayGeneros.get(i);%>

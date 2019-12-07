@@ -69,7 +69,7 @@ public class UsuarioControlador extends HttpServlet {
                 }
                 break;
             case 2://Actualizar Usuario
-                System.out.println("-------"+contraseñaUsuario + "  " + " " + direccion+" "+celular+" "+telefonoFijo+" "+correoUsuario);
+                System.out.println("Genero-------"+fkGenero + "  ");
                 System.out.println("Uusario veo --- "+usuarioVO);
                 if (usuarioDAO.actualizarRegistro()) {
                     
