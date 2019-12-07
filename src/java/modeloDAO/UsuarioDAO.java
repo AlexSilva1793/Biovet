@@ -88,7 +88,7 @@ public class UsuarioDAO extends ConexionBD implements InterfaceCrud {
                 usuarioTmp.setFkTipoDocu(resultSet.getString(11));
                 usuarioTmp.setFkRol(resultSet.getString(12));
                 usuarioTmp.setFkGenero(resultSet.getString(13));
-                System.out.println("Prueba DAo + "+usuarioTmp);
+                
                 usuArray.add(usuarioTmp);
 
             }
@@ -131,6 +131,7 @@ public class UsuarioDAO extends ConexionBD implements InterfaceCrud {
     @Override
     public boolean actualizarRegistro() {
         try {
+            fkGenero="1";
             query = "UPDATE `Usuario` SET `contraseñaUsuario` = '" + contraseñaUsuario + "', `direcciòn` = '" + direccion + "', `celular` = '" + celular + "', `telefonoFijo` = '" + telefonoFijo + "', `correoUsuario` = '" + correoUsuario + "', `fkGenero` = '" + fkGenero + "' WHERE `Usuario`.`idUsuario` = " + idUsuario + "";
             statement.executeUpdate(query);
             operacion = true;
