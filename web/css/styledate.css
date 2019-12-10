@@ -1,0 +1,32 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    width: 960px;
+    margin: 0 auto;
+}
+
+#search {
+    position: fixed;
+    bottom: 0;
+    z-index: 3;
+    width: 100%;
+    color: #f0f0f0;
+    background-color: #333;
+    opacity: 0.9;
+    -webkit-opacity: 0.9;
+    -moz-opacity: 0.9;
+}
+
+#search form {
+    width: 960px;
+    margin: 0 auto;
+    padding: 0.5em;
+}
+
+#search form > div,
+#filters form > div {
+    display: inline;
+}

@@ -4,12 +4,22 @@
     Author     : master
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="modeloDAO.TipoDocumentoDAO"%>
+<%@page import="modeloVO.TipoDocumentoVO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Biovet</title>
+        <%
+            TipoDocumentoVO documentoVO = new TipoDocumentoVO();
+            TipoDocumentoDAO documentoDAO = new TipoDocumentoDAO();
+
+            ArrayList<TipoDocumentoVO> arrayTipoDoc = documentoDAO.consultarGeneral();
+
+        %>
     </head>
     <body>
         <a href="login.jsp">Ingresar </a><br>
@@ -20,22 +30,28 @@
 
                 <tr>
                     <th>
-                        Cedula:<br>
+                        Tipo de Documento<br><br>
+
+                        <select  id="tipoDocumento" name="textFkTipoDocu" required>
+                            <%for (int i = 0; i < arrayTipoDoc.size(); i++) {
+                                    documentoVO = arrayTipoDoc.get(i);%>
+                            <option value="<%=documentoVO.getIdTipoDocu()%>"> <%=documentoVO.getTipoDocu()%></option>
+
+                            <%}%>        
+                        </select><br><br>
+                        Numero<br>
                         <input type="text" name="textCedula"><br><br>
                         Nombre:<br>
                         <input type="text" name="textNombreUsuario"><br><br>
                         Apellido:<br>
                         <input type="text" name="textApellidoUsuario"><br><br>
                         Contraseña:<br>
-                        <input type="password" name="pass"><br><br>
+                        <input type="password" name="textContrasena"><br><br>
+                        Confirme su Contraseña:<br>
+                        <input type="password" name="textContrasena"><br><br>
                         Correo:<br>
                         <input type="email" name="textCorreoUsuario"><br><br>
-                        <select  id="tipoDocumento" name="textFkTipoDocu" required>
-                            <option value="0"> Tipo de Documento </option>
-                            <option value="1"> C.C</option>
-                            <option value="2"> C.E</option>
-                            <option value="3"> NIT</option>
-                        </select>
+
                         <br><br>
 
                     </th>
@@ -49,7 +65,8 @@
 
         </form>
 
-        <% if (request.getAttribute("mensajeError") != null) {  %> 
+        <% if (request.getAttribute(
+                    "mensajeError") != null) {  %> 
         ${mensajeError}
         <% } else { %>
         ${mensajeExito}

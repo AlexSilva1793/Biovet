@@ -72,7 +72,7 @@ public class UsuarioDAO extends ConexionBD implements InterfaceCrud {
         try {
             query = "SELECT * FROM Usuario WHERE Cedula = '" + cedula + "'";
             resultSet = statement.executeQuery(query);
-            while (resultSet.next()) {
+            if (resultSet.first()) {
                 UsuarioVO usuarioTmp = new UsuarioVO();
 
                 usuarioTmp.setIdUsuario(resultSet.getString(1));
@@ -80,15 +80,19 @@ public class UsuarioDAO extends ConexionBD implements InterfaceCrud {
                 usuarioTmp.setNombreUsuario(resultSet.getString(3));
                 usuarioTmp.setApellidoUsuario(resultSet.getString(4));
                 usuarioTmp.setContraseñaUsuario(resultSet.getString(5));
+                usuarioTmp.setDireccion(resultSet.getString(6));
+                usuarioTmp.setCelular(resultSet.getString(7));
+                usuarioTmp.setTelefonoFijo(resultSet.getString(8));
                 usuarioTmp.setCorreoUsuario(resultSet.getString(9));
                 usuarioTmp.setEstadoUsuario(resultSet.getString(10));
                 usuarioTmp.setFkTipoDocu(resultSet.getString(11));
                 usuarioTmp.setFkRol(resultSet.getString(12));
                 usuarioTmp.setFkGenero(resultSet.getString(13));
-                System.out.println(usuarioTmp);
+
                 usuArray.add(usuarioTmp);
 
             }
+            this.cerrarConexion();
         } catch (Exception e) {
             System.out.println("Error al consultar Usuario " + e.toString());
         }
@@ -158,7 +162,6 @@ public class UsuarioDAO extends ConexionBD implements InterfaceCrud {
                 operacion = true;
 
             }
-            this.cerrarConexion();
 
         } catch (Exception e) {
             System.out.println("Error" + e.toString());
@@ -166,7 +169,7 @@ public class UsuarioDAO extends ConexionBD implements InterfaceCrud {
 
         return operacion;
     }
-    
+
 //    public static void main(String[] args) {
 //        UsuarioVO usuarioVO = new UsuarioVO();
 ////        //ArrayList<UsuarioVO> usuArray = new ArrayList<>();
@@ -188,6 +191,4 @@ public class UsuarioDAO extends ConexionBD implements InterfaceCrud {
 //        UsuarioDAO usuarioDAO = new UsuarioDAO(usuarioVO);
 //        usuarioDAO.eliminarRegistro();
 //    }
-     
-
 }
