@@ -56,6 +56,7 @@ public class AgendaControlador extends HttpServlet {
                 } else {
 
                     request.setAttribute("mensajeError", "¡ No se pudo realizar la agenda correctamente !");
+                    System.out.println(fechaAgenda);
 
                 }
                 request.getRequestDispatcher("registrarAgenda.jsp").forward(request, response);
