@@ -28,6 +28,17 @@ public class TipoDocumentoDAO extends ConexionBD implements InterfaceCR {
 
     private String idTipoDocu = "", tipoDocu = "";
 
+    public TipoDocumentoDAO() {
+        super();
+        try {
+            conection = this.obtenerConexion();
+            statement = conection.createStatement();
+
+        } catch (Exception e) {
+            System.out.println("Error" + e.toString());
+        }
+    }
+
     public TipoDocumentoDAO(TipoDocumentoVO tipoDocVO) {
         super();
         try {
