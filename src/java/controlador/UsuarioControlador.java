@@ -57,6 +57,7 @@ public class UsuarioControlador extends HttpServlet {
 
         UsuarioVO usuarioVO = new UsuarioVO(idUsuario, cedula, nombreUsuario, apellidoUsuario, contraseñaUsuario, direccion, celular, telefonoFijo, correoUsuario, estadoUsuario, fkTipoDocu, fkRol, fkGenero);
         UsuarioDAO usuarioDAO = new UsuarioDAO(usuarioVO);
+        HttpSession session = request.getSession();
 
         switch (opcion) {
             case 1: //Registrar Usuario
@@ -69,10 +70,11 @@ public class UsuarioControlador extends HttpServlet {
                 }
                 break;
             case 2://Actualizar Usuario
-                System.out.println("Genero-------"+fkGenero + "  ");
-                System.out.println("Uusario veo --- "+usuarioVO);
+                
+                
                 if (usuarioDAO.actualizarRegistro()) {
-                    
+                    usuariosArray = usuarioDAO.consultarRegistro();
+                    session.setAttribute("usuariosArray", usuariosArray);
                     request.getRequestDispatcher("homeUsuario.jsp").forward(request, response);
                     
                 } else {
@@ -82,7 +84,7 @@ public class UsuarioControlador extends HttpServlet {
 
                 break;
             case 5://Iniciar sesión
-                HttpSession session = request.getSession();
+                
                 if (usuarioDAO.iniciarSesion()) {
                     usuariosArray = usuarioDAO.consultarRegistro();
                     
