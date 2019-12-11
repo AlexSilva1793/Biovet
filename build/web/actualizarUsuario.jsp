@@ -30,10 +30,16 @@
 
         for (int i = 0; i < arrayGeneros.size(); i++) {
 
-            if (Integer.parseInt(arrayGeneros.get(i).getIdGenero()) == Integer.parseInt(usuarioVOSesion.get(0).getFkGenero())) {
-                idGeneroUsu = arrayGeneros.get(i).getIdGenero();
-                generoUsu = arrayGeneros.get(i).getTipoSexo();
+            if (usuarioVOSesion.get(0).getFkGenero() != null) {
 
+                if (Integer.parseInt(arrayGeneros.get(i).getIdGenero()) == Integer.parseInt(usuarioVOSesion.get(0).getFkGenero())) {
+                    idGeneroUsu = arrayGeneros.get(i).getIdGenero();
+                    generoUsu = arrayGeneros.get(i).getTipoSexo();
+
+                }
+            } else {
+                idGeneroUsu = "1";
+                generoUsu = "Selecciona tu Genero";
             }
         }
         if (Integer.parseInt(usuarioVOSesion.get(0).getFkRol()) != 2) {
