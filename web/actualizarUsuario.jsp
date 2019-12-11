@@ -42,9 +42,7 @@
                 generoUsu = "Selecciona tu Genero";
             }
         }
-        if (Integer.parseInt(usuarioVOSesion.get(0).getFkRol()) != 2) {
-            response.sendRedirect(redirectURL);
-        }
+
     } else {
         response.sendRedirect(redirectURL);
     }
