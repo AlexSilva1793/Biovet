@@ -37,8 +37,8 @@
         <h1>Bienvenido Administrador!</h1>
         <h2 ><%=nombreUsuario%> ></h2>
         <a href="actualizarUsuario.jsp">Actualizar Datos</a><br>
-        <a href="registrarMascota.jsp">Registrar Mascota</a><br>
-        <a href="registrarAgenda.jsp">Agendar Servicio </a><br>
+        
+        <a href="usuarios.jsp">Listado Usuarios </a><br>
 
         <form action="Usuario" method="post">
 
