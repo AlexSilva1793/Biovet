@@ -89,6 +89,9 @@ public class UsuarioControlador extends HttpServlet {
                 }
 
                 break;
+            case 4: //Mostrar Usuarios
+                
+                break;
             case 5://Iniciar sesión
 
                 if (usuarioDAO.iniciarSesion()) {
