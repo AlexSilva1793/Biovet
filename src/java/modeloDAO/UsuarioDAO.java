@@ -28,6 +28,16 @@ public class UsuarioDAO extends ConexionBD implements InterfaceCrud {
 
     private String idUsuario = "", cedula = "", nombreUsuario = "", apellidoUsuario = "", contraseñaUsuario = "", direccion = "", celular = "", telefonoFijo = "", correoUsuario = "", estadoUsuario = "", fkTipoDocu = "", fkRol = "", fkGenero = "";
 
+    public UsuarioDAO() {
+        super();
+        try {
+            conection = this.obtenerConexion();
+            statement = conection.createStatement();
+        } catch (Exception e) {
+            System.out.println("Error" + e.toString());
+        }
+    }
+
     public UsuarioDAO(UsuarioVO usuVO) {
         super();
         try {
@@ -70,12 +80,12 @@ public class UsuarioDAO extends ConexionBD implements InterfaceCrud {
 
         ArrayList<UsuarioVO> usuArray = new ArrayList<>();
         try {
-            if (cedula!=null) {
+            if (cedula != null) {
                 query = "SELECT * FROM Usuario WHERE Cedula = '" + cedula + "'";
-            }else{
-            query = "SELECT * FROM Usuario WHERE correoUsuario = '" + correoUsuario + "'";
+            } else {
+                query = "SELECT * FROM Usuario WHERE correoUsuario = '" + correoUsuario + "'";
             }
-            
+
             resultSet = statement.executeQuery(query);
             if (resultSet.first()) {
                 UsuarioVO usuarioTmp = new UsuarioVO();
