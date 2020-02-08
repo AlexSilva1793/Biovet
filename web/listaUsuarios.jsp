@@ -60,6 +60,7 @@
                             <th>Celular</th>
                             <th>Telefono Fijo</th>
                             <th>Correo</th>
+                            <th>Accion</th>
                         </tr>
                     </thead>
                     <%
@@ -74,6 +75,7 @@
                             <td><%=usuarioVO.getCelular()%></td>
                             <td><%=usuarioVO.getTelefonoFijo()%></td>
                             <td><%=usuarioVO.getCorreoUsuario()%></td>
+                            <td><a href="Usuario?opcion=7&textIdUsuario=<%=usuarioVO.getIdUsuario()%>" class="btn btn-danger">Borrar</a></td>
                         </tr>
                         <%}%>
                     </tbody>

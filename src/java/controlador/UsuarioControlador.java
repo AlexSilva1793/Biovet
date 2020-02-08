@@ -73,8 +73,7 @@ public class UsuarioControlador extends HttpServlet {
 
                 if (usuarioDAO.actualizarRegistro()) {
                     usuariosArray = usuarioDAO.consultarRegistro();
-                    
-                    
+
                     if (Integer.parseInt(usuariosArray.get(0).getFkRol()) == 1) {
                         session.setAttribute("usuariosArray", usuariosArray);
                         request.getRequestDispatcher("homeAdministrador.jsp").forward(request, response);
@@ -90,7 +89,7 @@ public class UsuarioControlador extends HttpServlet {
 
                 break;
             case 4: //Mostrar Usuarios
-                
+
                 break;
             case 5://Iniciar sesión
 
@@ -117,6 +116,14 @@ public class UsuarioControlador extends HttpServlet {
                 session.removeAttribute("usuariosArray");
                 session.invalidate();
                 request.getRequestDispatcher("login.jsp").forward(request, response);
+                break;
+            case 7:
+                if (usuarioDAO.eliminarRegistro()) {
+                    request.getRequestDispatcher("listaUsuarios.jsp").forward(request, response);
+                } else {
+                    request.getRequestDispatcher("listaUsuarios.jsp").forward(request, response);
+                }
+
                 break;
         }
 
