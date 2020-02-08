@@ -188,25 +188,25 @@ public class UsuarioDAO extends ConexionBD implements InterfaceCrud {
         return operacion;
     }
 
-//    public static void main(String[] args) {
-////        UsuarioVO usuarioVO = new UsuarioVO();
-////        //ArrayList<UsuarioVO> usuArray = new ArrayList<>();
-//
-////        usuarioVO.setCedula("1032412490");
-//////        usuarioVO.setNombreUsuario("Alex");
-//////        usuarioVO.setApellidoUsuario("Silva");
-//////        usuarioVO.setCorreoUsuario("aaa@gmail.com");
-////        usuarioVO.setIdUsuario("3");
-////        usuarioVO.setContraseñaUsuario("1234");
-////        usuarioVO.setDireccion("calle");
-////        usuarioVO.setCelular("305");
-////        usuarioVO.setTelefonoFijo("5395914");
-////        usuarioVO.setCorreoUsuario("update@gmail.com");
-////        usuarioVO.setFkGenero("1");
-////        usuarioVO.setFkTipoDocu("1");
-////        usuarioVO.setFkRol("1");
-//        UsuarioDAO usuarioDAO = new UsuarioDAO();
-//        usuarioDAO.consultarGeneral();
-////        usuarioDAO.eliminarRegistro();
-//    }
+    public static void main(String[] args) {
+//        UsuarioVO usuarioVO = new UsuarioVO();
+//        //ArrayList<UsuarioVO> usuArray = new ArrayList<>();
+
+//        usuarioVO.setCedula("1032412490");
+////        usuarioVO.setNombreUsuario("Alex");
+////        usuarioVO.setApellidoUsuario("Silva");
+////        usuarioVO.setCorreoUsuario("aaa@gmail.com");
+//        usuarioVO.setIdUsuario("3");
+//        usuarioVO.setContraseñaUsuario("1234");
+//        usuarioVO.setDireccion("calle");
+//        usuarioVO.setCelular("305");
+//        usuarioVO.setTelefonoFijo("5395914");
+//        usuarioVO.setCorreoUsuario("update@gmail.com");
+//        usuarioVO.setFkGenero("1");
+//        usuarioVO.setFkTipoDocu("1");
+//        usuarioVO.setFkRol("1");
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        System.out.println(usuarioDAO.consultarGeneral());
+//        usuarioDAO.eliminarRegistro();
+    }
 }

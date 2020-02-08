@@ -65,7 +65,9 @@
                     </thead>
                     <%
                         for (int i = 0; i < usuariosArray.size(); i++) {
+                            if(Integer.parseInt(usuariosArray.get(i).getEstadoUsuario())==1){
                             usuarioVO = usuariosArray.get(i);
+                            
                     %>
                     <tbody>
                         <tr>
@@ -77,7 +79,7 @@
                             <td><%=usuarioVO.getCorreoUsuario()%></td>
                             <td><a href="Usuario?opcion=7&textIdUsuario=<%=usuarioVO.getIdUsuario()%>" class="btn btn-danger">Borrar</a></td>
                         </tr>
-                        <%}%>
+                        <%}}%>
                     </tbody>
                 </table>
             </div>
