@@ -70,7 +70,12 @@ public class UsuarioDAO extends ConexionBD implements InterfaceCrud {
 
         ArrayList<UsuarioVO> usuArray = new ArrayList<>();
         try {
-            query = "SELECT * FROM Usuario WHERE Cedula = '" + cedula + "'";
+            if (cedula!=null) {
+                query = "SELECT * FROM Usuario WHERE Cedula = '" + cedula + "'";
+            }else{
+            query = "SELECT * FROM Usuario WHERE correoUsuario = '" + correoUsuario + "'";
+            }
+            
             resultSet = statement.executeQuery(query);
             if (resultSet.first()) {
                 UsuarioVO usuarioTmp = new UsuarioVO();
