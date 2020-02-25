@@ -66,8 +66,7 @@
                     <%
                         for (int i = 0; i < usuariosArray.size(); i++) {
                             if(Integer.parseInt(usuariosArray.get(i).getEstadoUsuario())==1){
-                            usuarioVO = usuariosArray.get(i);
-                            
+                            usuarioVO = usuariosArray.get(i);                            
                     %>
                     <tbody>
                         <tr>

@@ -66,7 +66,7 @@ public class UsuarioDAO extends ConexionBD implements InterfaceCrud {
     @Override
     public boolean agregarRegistro() {
         try {
-            query = "INSERT INTO `Usuario` (`idUsuario`, `cedula`, `nombreUsuario`, `apellidoUsuario`, `contraseñaUsuario`, `correoUsuario`, `estadoUsuario`, `fkTipoDocu`, `fkRol`) VALUES (NULL, '" + cedula + "', '" + nombreUsuario + "', '" + apellidoUsuario + "', '" + contraseñaUsuario + "', '" + correoUsuario + "', '1', '" + fkTipoDocu + "', '2')";
+            query = "INSERT INTO `Usuario` (`idUsuario`, `cedula`, `nombreUsuario`, `apellidoUsuario`, `contraseñaUsuario`, `correoUsuario`, `estadoUsuario`, `fkTipoDocu`, `fkRol`,`direcciòn`,`celular`,`telefonoFijo`) VALUES (NULL, '" + cedula + "', '" + nombreUsuario + "', '" + apellidoUsuario + "', '" + contraseñaUsuario + "', '" + correoUsuario + "', '1', '" + fkTipoDocu + "', '2','Direcciòn','Celular','Telefono')";
             statement.executeUpdate(query);
             operacion = true;
         } catch (Exception e) {
@@ -205,8 +205,8 @@ public class UsuarioDAO extends ConexionBD implements InterfaceCrud {
 //        usuarioVO.setFkGenero("1");
 //        usuarioVO.setFkTipoDocu("1");
 //        usuarioVO.setFkRol("1");
-        UsuarioDAO usuarioDAO = new UsuarioDAO();
-        System.out.println(usuarioDAO.consultarGeneral());
+//        UsuarioDAO usuarioDAO = new UsuarioDAO();
+//        System.out.println(usuarioDAO.consultarGeneral());
 //        usuarioDAO.eliminarRegistro();
     }
 }
