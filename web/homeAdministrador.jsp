@@ -38,7 +38,7 @@
         <h2 ><%=nombreUsuario%> ></h2>
         <a href="actualizarUsuario.jsp">Actualizar Datos</a><br>
         
-        <a href="usuarios.jsp">Listado Usuarios </a><br>
+        <a href="listaUsuarios.jsp">Listado Usuarios </a><br>
 
         <form action="Usuario" method="post">
 

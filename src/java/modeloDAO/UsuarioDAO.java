@@ -28,6 +28,16 @@ public class UsuarioDAO extends ConexionBD implements InterfaceCrud {
 
     private String idUsuario = "", cedula = "", nombreUsuario = "", apellidoUsuario = "", contraseñaUsuario = "", direccion = "", celular = "", telefonoFijo = "", correoUsuario = "", estadoUsuario = "", fkTipoDocu = "", fkRol = "", fkGenero = "";
 
+    public UsuarioDAO() {
+        super();
+        try {
+            conection = this.obtenerConexion();
+            statement = conection.createStatement();
+        } catch (Exception e) {
+            System.out.println("Error" + e.toString());
+        }
+    }
+
     public UsuarioDAO(UsuarioVO usuVO) {
         super();
         try {
@@ -56,7 +66,7 @@ public class UsuarioDAO extends ConexionBD implements InterfaceCrud {
     @Override
     public boolean agregarRegistro() {
         try {
-            query = "INSERT INTO `Usuario` (`idUsuario`, `cedula`, `nombreUsuario`, `apellidoUsuario`, `contraseñaUsuario`, `correoUsuario`, `estadoUsuario`, `fkTipoDocu`, `fkRol`) VALUES (NULL, '" + cedula + "', '" + nombreUsuario + "', '" + apellidoUsuario + "', '" + contraseñaUsuario + "', '" + correoUsuario + "', '1', '" + fkTipoDocu + "', '2')";
+            query = "INSERT INTO `Usuario` (`idUsuario`, `cedula`, `nombreUsuario`, `apellidoUsuario`, `contraseñaUsuario`, `correoUsuario`, `estadoUsuario`, `fkTipoDocu`, `fkRol`,`direcciòn`,`celular`,`telefonoFijo`) VALUES (NULL, '" + cedula + "', '" + nombreUsuario + "', '" + apellidoUsuario + "', '" + contraseñaUsuario + "', '" + correoUsuario + "', '1', '" + fkTipoDocu + "', '2','Direcciòn','Celular','Telefono')";
             statement.executeUpdate(query);
             operacion = true;
         } catch (Exception e) {
@@ -70,12 +80,12 @@ public class UsuarioDAO extends ConexionBD implements InterfaceCrud {
 
         ArrayList<UsuarioVO> usuArray = new ArrayList<>();
         try {
-            if (cedula!=null) {
+            if (cedula != null) {
                 query = "SELECT * FROM Usuario WHERE Cedula = '" + cedula + "'";
-            }else{
-            query = "SELECT * FROM Usuario WHERE correoUsuario = '" + correoUsuario + "'";
+            } else {
+                query = "SELECT * FROM Usuario WHERE correoUsuario = '" + correoUsuario + "'";
             }
-            
+
             resultSet = statement.executeQuery(query);
             if (resultSet.first()) {
                 UsuarioVO usuarioTmp = new UsuarioVO();
@@ -118,12 +128,15 @@ public class UsuarioDAO extends ConexionBD implements InterfaceCrud {
                 usuarioTmp.setNombreUsuario(resultSet.getString(3));
                 usuarioTmp.setApellidoUsuario(resultSet.getString(4));
                 usuarioTmp.setContraseñaUsuario(resultSet.getString(5));
+                usuarioTmp.setDireccion(resultSet.getString(6));
+                usuarioTmp.setCelular(resultSet.getString(7));
+                usuarioTmp.setTelefonoFijo(resultSet.getString(8));
                 usuarioTmp.setCorreoUsuario(resultSet.getString(9));
                 usuarioTmp.setEstadoUsuario(resultSet.getString(10));
                 usuarioTmp.setFkTipoDocu(resultSet.getString(11));
                 usuarioTmp.setFkRol(resultSet.getString(12));
                 usuarioTmp.setFkGenero(resultSet.getString(13));
-                System.out.println(usuarioTmp);
+
                 usuArray.add(usuarioTmp);
 
             }
@@ -175,10 +188,10 @@ public class UsuarioDAO extends ConexionBD implements InterfaceCrud {
         return operacion;
     }
 
-//    public static void main(String[] args) {
+    public static void main(String[] args) {
 //        UsuarioVO usuarioVO = new UsuarioVO();
-////        //ArrayList<UsuarioVO> usuArray = new ArrayList<>();
-//
+//        //ArrayList<UsuarioVO> usuArray = new ArrayList<>();
+
 //        usuarioVO.setCedula("1032412490");
 ////        usuarioVO.setNombreUsuario("Alex");
 ////        usuarioVO.setApellidoUsuario("Silva");
@@ -190,10 +203,10 @@ public class UsuarioDAO extends ConexionBD implements InterfaceCrud {
 //        usuarioVO.setTelefonoFijo("5395914");
 //        usuarioVO.setCorreoUsuario("update@gmail.com");
 //        usuarioVO.setFkGenero("1");
-//
-////        usuarioVO.setFkTipoDocu("1");
-////        usuarioVO.setFkRol("1");
-//        UsuarioDAO usuarioDAO = new UsuarioDAO(usuarioVO);
+//        usuarioVO.setFkTipoDocu("1");
+//        usuarioVO.setFkRol("1");
+//        UsuarioDAO usuarioDAO = new UsuarioDAO();
+//        System.out.println(usuarioDAO.consultarGeneral());
 //        usuarioDAO.eliminarRegistro();
-//    }
+    }
 }
