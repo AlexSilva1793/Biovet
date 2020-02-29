@@ -36,8 +36,9 @@
     <body>
         <h1>Bienvenido Administrador!</h1>
         <h2 ><%=nombreUsuario%> ></h2>
-        <a href="registrarMascota.jsp">Registrar Mascota</a><br>
-        <a href="registrarAgenda.jsp">Agendar Servicio </a><br>
+        <a href="actualizarUsuario.jsp">Actualizar Datos</a><br>
+        
+        <a href="listaUsuarios.jsp">Listado Usuarios </a><br>
 
         <form action="Usuario" method="post">
 

@@ -94,7 +94,7 @@ public class GeneroDAO extends ConexionBD implements InterfaceCR {
 
                 generoTmp.setIdGenero(resultSet.getString(1));
                 generoTmp.setTipoSexo(resultSet.getString(2));
-                System.out.println(generoTmp);
+                
                 generoArray.add(generoTmp);
 
             }
