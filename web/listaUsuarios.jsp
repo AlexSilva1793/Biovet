@@ -48,7 +48,7 @@
         <h1>Lista Usuarios Biovet</h1>
         <div class="row">
             <div class="container p-4">
-
+                <!--Busqueda de usuarios por cedula-->
             </div>
             <div class="container p-8">
                 <table  class="table table-striped">

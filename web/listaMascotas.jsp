@@ -4,6 +4,8 @@
     Author     : master
 --%>
 
+<%@page import="modeloDAO.MascotaDAO"%>
+<%@page import="modeloVO.MascotaVO"%>
 <%@page import="modeloVO.UsuarioVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -31,9 +33,10 @@
 
                 response.sendRedirect(redirectURL);
             }
-            
-            
-                                
+            MascotaVO mascotaVO = new MascotaVO();
+            MascotaDAO mascotaDAO = new MascotaDAO(mascotaVO);
+            ArrayList<MascotaVO> mascotasArray = mascotaDAO.consultarGeneral();              
+                                         
         %>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
@@ -43,5 +46,39 @@
     </head>
     <body>
         <h1>Hola <%=nombreUsuario%></h1>
+        <div class="row">
+            <div class="container">
+                <table  class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Id Mascota</th>
+                            <th>Nombre</th>
+                            <th>Fecha de Nacimiento</th>
+                            <th>Dueño</th>
+                            <th>Raza</th>
+                            <th>Genero</th>
+                            <th>Color</th>
+                        </tr>
+                    </thead>
+                    <%
+                        for (int i = 0; i < mascotasArray.size(); i++) {
+                            if(Integer.parseInt(mascotasArray.get(i).getEstadoMascota())==1){
+                            mascotaVO = mascotasArray.get(i);                            
+                    %>
+                    <tbody>
+                        <tr>
+                            <td><%=mascotaVO.getIdMascota()%></td>
+                            <td><%=mascotaVO.getNombreMascota()%></td>
+                            <td><%=mascotaVO.getFechaNacimiento()%></td>
+                            <td><%=mascotaVO.getFkUsuario()%></td>
+                            <td><%=mascotaVO.getFkRaza()%></td>
+                            <td><%=mascotaVO.getFkGenero()%></td>
+                            <td><%=mascotaVO.getColorMascota()%></td>                            
+                        </tr>
+                        <%}}%>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </body>
 </html>
