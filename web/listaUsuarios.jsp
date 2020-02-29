@@ -18,7 +18,7 @@
             response.setHeader("Pragma", "no-cache");
             response.setHeader("Expires", "0");
 
-            String nombreUsuario = "";
+            String nombreUsuario = "";//Verificar si se usa esta variable.
             ArrayList<UsuarioVO> usuarioVOSesion = (ArrayList<UsuarioVO>) session.getAttribute("usuariosArray");
 
             String redirectURL = "index.jsp";

@@ -1,6 +1,6 @@
 <%-- 
-    Document   : homeAdministrador
-    Created on : 26-nov-2019, 19:08:56
+    Document   : listaMascotas
+    Created on : 29/02/2020, 12:58:37 PM
     Author     : master
 --%>
 
@@ -11,13 +11,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Home Administrador</title>
+        <title>Listado de las mascotas</title>
         <%
             response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
             response.setHeader("Pragma", "no-cache");
             response.setHeader("Expires", "0");
 
-            String nombreUsuario = "";
+            String nombreUsuario = "";//Verificar si se usa esta variable.
             ArrayList<UsuarioVO> usuarioVOSesion = (ArrayList<UsuarioVO>) session.getAttribute("usuariosArray");
 
             String redirectURL = "index.jsp";
@@ -31,21 +31,17 @@
 
                 response.sendRedirect(redirectURL);
             }
+            
+            
+                                
         %>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <link href="css/jquery.datetimepicker.css" rel="stylesheet" type="text/css"/>
+        <link href="css/styledate.css" rel="stylesheet" type="text/css"/>
+
     </head>
     <body>
-        <h1>Bienvenido Administrador!</h1>
-        <h2 ><%=nombreUsuario%> ></h2>
-        <a href="actualizarUsuario.jsp">Actualizar Datos</a><br>
-        
-        <a href="listaUsuarios.jsp">Listado Usuarios </a><br>
-        <a href="listaMascotas.jsp">Listado de las Mascotas </a><br>
-
-        <form action="Usuario" method="post">
-
-            <button  name="cerrarSesion" >Cerrar Sesion</button>
-            <input type="hidden" name="opcion" value="6">
-
-        </form>
+        <h1>Hola <%=nombreUsuario%></h1>
     </body>
 </html>
