@@ -126,7 +126,7 @@ public class MascotaDAO extends ConexionBD implements InterfaceCrud {
     public ArrayList consultarGeneral() {
         ArrayList<MascotaVO> mascotArray = new ArrayList<>();
         try {
-            query = "select * from Mascota;";
+            query = "select * from listarMascota;";
             resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
 
@@ -152,7 +152,7 @@ public class MascotaDAO extends ConexionBD implements InterfaceCrud {
 //    public static void main(String[] args) {
 //        MascotaVO mascotaVO = new MascotaVO("1", "Max", "2020-02-11", "1", "1", "1", "Negro", null);
 //        MascotaDAO mascotaDAO = new MascotaDAO(mascotaVO);
-//        System.out.println(mascotaDAO.eliminarRegistro());
+//        System.out.println(mascotaDAO.consultarGeneral());
 //    }
 
 }
