@@ -36,7 +36,7 @@
         <h1>Bienvenido Usuario!</h1>
         <h2 ><%=nombreUsuario%> ></h2>
         <a href="actualizarUsuario.jsp">Actualizar Datos</a><br>
-        <a href="registrarMascota.jsp">Registrar Mascota</a><br>
+        <!-- El formulario para agregar mascota y las mascotas se van a mostrar aca en el home del usuario-->
         <a href="registrarAgenda.jsp">Agendar Servicio </a><br>
 
         <form action="Usuario" method="post">

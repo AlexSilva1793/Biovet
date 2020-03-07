@@ -39,6 +39,7 @@
         <a href="actualizarUsuario.jsp">Actualizar Datos</a><br>
         
         <a href="listaUsuarios.jsp">Listado Usuarios </a><br>
+        <a href="listaMascotas.jsp">Listado de las Mascotas </a><br>
 
         <form action="Usuario" method="post">
 
