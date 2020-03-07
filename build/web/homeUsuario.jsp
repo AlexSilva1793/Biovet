@@ -4,6 +4,8 @@
     Author     : master
 --%>
 
+<%@page import="modeloDAO.MascotaDAO"%>
+<%@page import="modeloVO.MascotaVO"%>
 <%@page import="modeloDAO.RazaDAO"%>
 <%@page import="modeloVO.RazaVO"%>
 <%@page import="modeloDAO.GeneroDAO"%>
@@ -26,7 +28,7 @@
         nombreUsuario = usuarioVOSesion.get(0).getNombreUsuario();
         fkUsuario = usuarioVOSesion.get(0).getIdUsuario();
         if (Integer.parseInt(usuarioVOSesion.get(0).getFkRol()) != 2) {
-            
+
             response.sendRedirect(redirectURL);
         }
     } else {
@@ -36,9 +38,14 @@
     GeneroDAO generosDAO = new GeneroDAO();
     RazaVO razaVO = new RazaVO();
     RazaDAO razaDAO = new RazaDAO();
-    
+
+    MascotaVO mascotaVO = new MascotaVO();
+    mascotaVO.setFkUsuario(fkUsuario);
+    MascotaDAO mascotaDAO = new MascotaDAO(mascotaVO);
+
     ArrayList<GeneroVO> arrayGeneros = generosDAO.consultarGeneral();
     ArrayList<RazaVO> arrayRazas = razaDAO.consultarGeneral();
+    ArrayList<MascotaVO> arrayMascotas = mascotaDAO.consultarRegistro();
 %>
 </head>
 <html>
@@ -95,13 +102,52 @@
             <input type="hidden" name="textFkUsuario" value="<%=fkUsuario%>">
 
             <button name="opcion" value="1" type="submit">Registrar Mascota</button>
-           
+
         </form>
         <% if (request.getAttribute("mensajeError") != null) {  %> 
         ${mensajeError}
         <% } else { %>
         ${mensajeExito}
         <% }%>
+
+        <!--Listado Mascotas Usuario-->
+        <div class="row">
+            <div class="container">
+                <table  class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Id Mascota</th>
+                            <th>Nombre</th>
+                            <th>Fecha de Nacimiento</th>
+                            
+                            <th>Raza</th>
+                            <th>Genero</th>
+                            <th>Color</th>
+                        </tr>
+                    </thead>
+                    <%
+                        for (int i = 0; i < arrayMascotas.size(); i++) {
+                            if (Integer.parseInt(arrayMascotas.get(i).getEstadoMascota()) == 1) {
+                                mascotaVO = arrayMascotas.get(i);
+                    %>
+                    <tbody>
+                        <tr>
+                            <td><%=mascotaVO.getIdMascota()%></td>
+                            <td><%=mascotaVO.getNombreMascota()%></td>
+                            <td><%=mascotaVO.getFechaNacimiento()%></td>
+                            
+                            <td><%=mascotaVO.getFkRaza()%></td>
+                            <td><%=mascotaVO.getFkGenero()%></td>
+                            <td><%=mascotaVO.getColorMascota()%></td>                            
+                        </tr>
+                        <%}
+                            }%>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--Fin listado Mascotas Usuario-->
+
         <form action="Usuario" method="post">
 
             <button  name="cerrarSesion" >Cerrar Sesion</button>
