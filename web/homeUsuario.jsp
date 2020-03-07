@@ -13,9 +13,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
-    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-    response.setHeader("Pragma", "no-cache");
-    response.setHeader("Expires", "0");
+    //response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    //response.setHeader("Pragma", "no-cache");
+    //response.setHeader("Expires", "0");
 
     String nombreUsuario = "";
     String fkUsuario = "";
@@ -24,8 +24,9 @@
 
     if (usuarioVOSesion != null) {
         nombreUsuario = usuarioVOSesion.get(0).getNombreUsuario();
+        fkUsuario = usuarioVOSesion.get(0).getIdUsuario();
         if (Integer.parseInt(usuarioVOSesion.get(0).getFkRol()) != 2) {
-            fkUsuario = usuarioVOSesion.get(0).getIdUsuario();
+            
             response.sendRedirect(redirectURL);
         }
     } else {
@@ -35,7 +36,7 @@
     GeneroDAO generosDAO = new GeneroDAO();
     RazaVO razaVO = new RazaVO();
     RazaDAO razaDAO = new RazaDAO();
-
+    
     ArrayList<GeneroVO> arrayGeneros = generosDAO.consultarGeneral();
     ArrayList<RazaVO> arrayRazas = razaDAO.consultarGeneral();
 %>
@@ -94,8 +95,13 @@
             <input type="hidden" name="textFkUsuario" value="<%=fkUsuario%>">
 
             <button name="opcion" value="1" type="submit">Registrar Mascota</button>
+           
         </form>
-
+        <% if (request.getAttribute("mensajeError") != null) {  %> 
+        ${mensajeError}
+        <% } else { %>
+        ${mensajeExito}
+        <% }%>
         <form action="Usuario" method="post">
 
             <button  name="cerrarSesion" >Cerrar Sesion</button>

@@ -11,9 +11,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
-    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-    response.setHeader("Pragma", "no-cache");
-    response.setHeader("Expires", "0");
+    //response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    //response.setHeader("Pragma", "no-cache");
+    //response.setHeader("Expires", "0");
 
     GeneroVO generosVO = new GeneroVO();
     GeneroDAO generosDAO = new GeneroDAO();

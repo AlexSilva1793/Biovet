@@ -48,7 +48,7 @@ public class MascotaControlador extends HttpServlet {
 
         MascotaVO mascotaVO = new MascotaVO(idMascota, nombreMascota, fechaNacimiento, fkUsuario, fkRaza, fkGenero, colorMascota, estadoMascota);
         MascotaDAO mascotaDAO = new MascotaDAO(mascotaVO);
-
+        
         switch (opcion) {
             case 1://Agregar Registro
                 if (mascotaDAO.agregarRegistro()) {
@@ -56,7 +56,7 @@ public class MascotaControlador extends HttpServlet {
                 } else {
                     request.setAttribute("MensajeError", "La mascota no pudo ser agregada!");
                 }
-                request.getRequestDispatcher("registrarMascota.jsp").forward(request, response);
+                request.getRequestDispatcher("homeUsuario.jsp").forward(request, response);
                 break;
 
             case 2:// Eliminar Registro

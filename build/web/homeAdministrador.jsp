@@ -13,9 +13,9 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Home Administrador</title>
         <%
-            response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-            response.setHeader("Pragma", "no-cache");
-            response.setHeader("Expires", "0");
+            //response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+            //response.setHeader("Pragma", "no-cache");
+            //response.setHeader("Expires", "0");
 
             String nombreUsuario = "";
             ArrayList<UsuarioVO> usuarioVOSesion = (ArrayList<UsuarioVO>) session.getAttribute("usuariosArray");
