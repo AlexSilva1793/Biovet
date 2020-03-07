@@ -18,7 +18,7 @@
             response.setHeader("Pragma", "no-cache");
             response.setHeader("Expires", "0");
 
-            String nombreUsuario = "";
+            String nombreUsuario = "";//Verificar si se usa esta variable.
             ArrayList<UsuarioVO> usuarioVOSesion = (ArrayList<UsuarioVO>) session.getAttribute("usuariosArray");
 
             String redirectURL = "index.jsp";
@@ -48,7 +48,7 @@
         <h1>Lista Usuarios Biovet</h1>
         <div class="row">
             <div class="container p-4">
-
+                <!--Busqueda de usuarios por cedula-->
             </div>
             <div class="container p-8">
                 <table  class="table table-striped">
