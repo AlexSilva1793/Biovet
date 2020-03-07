@@ -116,7 +116,7 @@
                 <table  class="table table-striped">
                     <thead>
                         <tr>
-                            <th>Id Mascota</th>
+                            <th>Mascota</th>
                             <th>Nombre</th>
                             <th>Fecha de Nacimiento</th>
                             
@@ -132,7 +132,7 @@
                     %>
                     <tbody>
                         <tr>
-                            <td><%=mascotaVO.getIdMascota()%></td>
+                            <td><%=i+1%></td>
                             <td><%=mascotaVO.getNombreMascota()%></td>
                             <td><%=mascotaVO.getFechaNacimiento()%></td>
                             
