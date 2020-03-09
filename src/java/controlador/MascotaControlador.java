@@ -72,11 +72,13 @@ public class MascotaControlador extends HttpServlet {
             case 3://Buscar Mascota por Usuario
                 arrayMascotas = mascotaDAO.consultarRegistro();
                 
-                if (arrayMascotas.size()!=0) {
+                if (!arrayMascotas.isEmpty()) {
                     System.out.println("No es nulo");
+                    request.setAttribute("mascotas", arrayMascotas);
                     request.getRequestDispatcher("listaMascotas.jsp").forward(request, response);
                 } else {
                     System.out.println("es nulo");
+                    request.setAttribute("MascotasError", "Id de usuario erroneo o no existe!");
                     request.getRequestDispatcher("listaMascotas.jsp").forward(request, response);
                 }
                 System.out.println(arrayMascotas);

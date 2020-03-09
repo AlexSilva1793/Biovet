@@ -4,6 +4,7 @@
     Author     : master
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="modeloDAO.MascotaDAO"%>
 <%@page import="modeloVO.MascotaVO"%>
 <%@page import="modeloVO.UsuarioVO"%>
@@ -55,12 +56,43 @@
                 </div>
             </form>
         </div>
+        <!-- Inicio Resultados de la busqueda-->
+        <div class="row">
+            <div class="container">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Id Mascota</th>
+                            <th>Nombre</th>
+                            <th>Fecha de Nacimiento</th>
+                            <th>Color</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <c:forEach var="mascota" items="${mascotas}">
+                            <tr> 
+                                <td><c:out value="${mascota.getIdMascota()}"/></td>
+                                <td><c:out value="${mascota.getNombreMascota()}"/></td>
+                                <td><c:out value="${mascota.getFechaNacimiento()}"/></td>
+                                <td><c:out value="${mascota.getColorMascota()}"/></td>
+                            </tr>
+                        </c:forEach>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <% if (request.getAttribute("MascotasError") != null) {  %> 
+        ${MascotasError}
+        <% }%>
+        <!-- Fin Resultados de la busqueda-->
         <div class="row">
             <div class="container">
                 <table  class="table table-striped">
                     <thead>
                         <tr>
-                            <th>Id Mascota</th>
+                            <th>#</th>
                             <th>Nombre</th>
                             <th>Fecha de Nacimiento</th>
                             <th>Dueño</th>
