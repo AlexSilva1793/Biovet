@@ -48,7 +48,7 @@ public class MascotaControlador extends HttpServlet {
 
         MascotaVO mascotaVO = new MascotaVO(idMascota, nombreMascota, fechaNacimiento, fkUsuario, fkRaza, fkGenero, colorMascota, estadoMascota);
         MascotaDAO mascotaDAO = new MascotaDAO(mascotaVO);
-        
+
         switch (opcion) {
             case 1://Agregar Registro
                 if (mascotaDAO.agregarRegistro()) {
@@ -66,6 +66,10 @@ public class MascotaControlador extends HttpServlet {
                     request.setAttribute("MensajeError", "El perfil de mascota no pudo ser eliminado!");
                 }
                 request.getRequestDispatcher("eliminarMascota.jsp").forward(request, response);
+                break;
+            case 3://Buscar Mascota por Usuario
+                System.out.println(mascotaVO);
+                request.getRequestDispatcher("listaMascotas.jsp").forward(request, response);
                 break;
         }
 

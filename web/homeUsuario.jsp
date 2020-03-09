@@ -56,6 +56,7 @@
     <body>
         <h1>Bienvenido Usuario!</h1>
         <h2 ><%=nombreUsuario%> ></h2>
+        <h2>Tu codigo es : <%=fkUsuario%></h2>
         <a href="actualizarUsuario.jsp">Actualizar Datos</a><br>
         <!-- El formulario para agregar mascota y las mascotas se van a mostrar aca en el home del usuario-->
         <a href="registrarAgenda.jsp">Agendar Servicio </a><br>

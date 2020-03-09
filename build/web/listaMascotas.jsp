@@ -35,8 +35,8 @@
             }
             MascotaVO mascotaVO = new MascotaVO();
             MascotaDAO mascotaDAO = new MascotaDAO(mascotaVO);
-            ArrayList<MascotaVO> mascotasArray = mascotaDAO.consultarGeneral();              
-                                         
+            ArrayList<MascotaVO> mascotasArray = mascotaDAO.consultarGeneral();
+
         %>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
@@ -45,7 +45,16 @@
 
     </head>
     <body>
-        <h1>Hola <%=nombreUsuario%></h1>
+        <h1>Hola Administrador <%=nombreUsuario%></h1>
+        <div>
+            <h2>Buscar Mascota</h2>
+            <form action="Mascota" method="POST">
+                Escribe codigo de Usuario: <input type="search" name="textFkUsuario">
+                <div class="form-group text-center">
+                    <button class="btn btn-primary account-btn" name="opcion" value="3" type="submit">Buscar</button>
+                </div>
+            </form>
+        </div>
         <div class="row">
             <div class="container">
                 <table  class="table table-striped">
@@ -62,8 +71,8 @@
                     </thead>
                     <%
                         for (int i = 0; i < mascotasArray.size(); i++) {
-                            if(Integer.parseInt(mascotasArray.get(i).getEstadoMascota())==1){
-                            mascotaVO = mascotasArray.get(i);                            
+                            if (Integer.parseInt(mascotasArray.get(i).getEstadoMascota()) == 1) {
+                                mascotaVO = mascotasArray.get(i);
                     %>
                     <tbody>
                         <tr>
@@ -75,7 +84,8 @@
                             <td><%=mascotaVO.getFkGenero()%></td>
                             <td><%=mascotaVO.getColorMascota()%></td>                            
                         </tr>
-                        <%}}%>
+                        <%}
+                            }%>
                     </tbody>
                 </table>
             </div>
