@@ -7,6 +7,7 @@ package controlador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -48,6 +49,7 @@ public class MascotaControlador extends HttpServlet {
 
         MascotaVO mascotaVO = new MascotaVO(idMascota, nombreMascota, fechaNacimiento, fkUsuario, fkRaza, fkGenero, colorMascota, estadoMascota);
         MascotaDAO mascotaDAO = new MascotaDAO(mascotaVO);
+        ArrayList<MascotaVO> arrayMascotas ;
 
         switch (opcion) {
             case 1://Agregar Registro
@@ -68,8 +70,16 @@ public class MascotaControlador extends HttpServlet {
                 request.getRequestDispatcher("eliminarMascota.jsp").forward(request, response);
                 break;
             case 3://Buscar Mascota por Usuario
-                System.out.println(mascotaVO);
-                request.getRequestDispatcher("listaMascotas.jsp").forward(request, response);
+                arrayMascotas = mascotaDAO.consultarRegistro();
+                
+                if (arrayMascotas.size()!=0) {
+                    System.out.println("No es nulo");
+                    request.getRequestDispatcher("listaMascotas.jsp").forward(request, response);
+                } else {
+                    System.out.println("es nulo");
+                    request.getRequestDispatcher("listaMascotas.jsp").forward(request, response);
+                }
+                System.out.println(arrayMascotas);
                 break;
         }
 
