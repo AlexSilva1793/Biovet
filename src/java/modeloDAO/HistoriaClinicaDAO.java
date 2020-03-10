@@ -46,7 +46,7 @@ public class HistoriaClinicaDAO extends ConexionBD implements InterfaceCR {
     @Override
     public boolean agregarRegistro() {
         try {
-            query = "INSERT INTO historiaclinica (fechaApertura, fkMascota) VALUES ('" + fechaApertura + "', '" + fkMascota + "');";
+            query = "INSERT INTO historiaclinica (fkMascota) VALUES ('" + fkMascota + "');";
             statement.executeUpdate(query);
             operacion = true;
         } catch (Exception e) {
