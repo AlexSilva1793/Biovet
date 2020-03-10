@@ -20,7 +20,7 @@
             //response.setHeader("Pragma", "no-cache");
             //response.setHeader("Expires", "0");
 
-            String nombreUsuario = "";//Verificar si se usa esta variable.
+            String nombreUsuario = "";
             ArrayList<UsuarioVO> usuarioVOSesion = (ArrayList<UsuarioVO>) session.getAttribute("usuariosArray");
 
             String redirectURL = "index.jsp";
@@ -47,6 +47,7 @@
     </head>
     <body>
         <h1>Hola Administrador <%=nombreUsuario%></h1>
+        <!--Inicio barra de busqueda usuario-->
         <div>
             <h2>Buscar Mascota</h2>
             <form action="Mascota" method="POST">
@@ -56,6 +57,7 @@
                 </div>
             </form>
         </div>
+        <!--Fin barra de busqueda usuario-->
         <!-- Inicio Resultados de la busqueda-->
         <div class="row">
             <div class="container">
@@ -87,6 +89,7 @@
         ${MascotasError}
         <% }%>
         <!-- Fin Resultados de la busqueda-->
+        <!--Inicio listado de todas las mascotas-->
         <div class="row">
             <div class="container">
                 <table  class="table table-striped">
@@ -122,5 +125,6 @@
                 </table>
             </div>
         </div>
+        <!--Fin listado de todas las mascotas-->
     </body>
 </html>
