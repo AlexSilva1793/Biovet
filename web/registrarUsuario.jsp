@@ -111,8 +111,7 @@
                                 Ya tienes una cuenta? <a href="login.jsp">Ingresar</a>
                             </div>
                         </form>
-                        <% if (request.getAttribute(
-                                                    "mensajeError") != null) {  %> 
+                        <% if (request.getAttribute("mensajeError") != null) {  %> 
                         ${mensajeError}
                         <% } else { %>
                         ${mensajeExito}
