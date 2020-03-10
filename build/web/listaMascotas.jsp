@@ -68,6 +68,7 @@
                             <th>Nombre</th>
                             <th>Fecha de Nacimiento</th>
                             <th>Color</th>
+                            <th>Historial Medico</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -78,6 +79,7 @@
                                 <td><c:out value="${mascota.getNombreMascota()}"/></td>
                                 <td><c:out value="${mascota.getFechaNacimiento()}"/></td>
                                 <td><c:out value="${mascota.getColorMascota()}"/></td>
+                                <td><a href="historiaClinica?opcion=1&textFkMascota=${mascota.getIdMascota()}" class="btn btn-success">Ver Historial Medico</a></td>                            
                             </tr>
                         </c:forEach>
 
@@ -102,6 +104,7 @@
                             <th>Raza</th>
                             <th>Genero</th>
                             <th>Color</th>
+                            <th>Historial Medico</th>
                         </tr>
                     </thead>
                     <%
@@ -117,7 +120,8 @@
                             <td><%=mascotaVO.getFkUsuario()%></td>
                             <td><%=mascotaVO.getFkRaza()%></td>
                             <td><%=mascotaVO.getFkGenero()%></td>
-                            <td><%=mascotaVO.getColorMascota()%></td>                            
+                            <td><%=mascotaVO.getColorMascota()%></td>
+                            <td><a href="historiaClinica?opcion=1&textFkMascota=<%=mascotaVO.getIdMascota()%>" class="btn btn-success">Ver Historial Medico</a></td>                            
                         </tr>
                         <%}
                             }%>

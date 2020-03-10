@@ -48,8 +48,14 @@ public class historiaClinicaControlador extends HttpServlet {
         ArrayList<HistoriaClinicaVO> arrayHistorias;
         //
         switch (opcion) {
-            case 1://Validar si la histria clinica existe si no crearla
-                
+            case 1://Validar si la historia clinica existe si no crearla
+                //System.out.println("Entro Case 1 " + "Fk mascota es: " + fkMascota);
+                arrayHistorias = historiaClinicaDAO.consultarRegistro();
+                if (!arrayHistorias.isEmpty()) {
+                    System.out.println("Si hay historial medico");
+                } else {
+                    System.out.println("No hay historial medico");
+                }
                 break;
         }
     }
