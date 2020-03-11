@@ -69,7 +69,7 @@ public class historiaClinicaControlador extends HttpServlet {
                 arrayHistorias = historiaClinicaDAO.consultarRegistro();
                 if (!arrayHistorias.isEmpty()) {
                     //Si hay historial medico
-
+                    request.setAttribute("fkMascota", fkMascota);
                     request.setAttribute("historialMedico", arrayHistorias);
                     request.getRequestDispatcher("historiaClinica.jsp").forward(request, response);
                 } else {
@@ -92,6 +92,16 @@ public class historiaClinicaControlador extends HttpServlet {
                 break;
             case 3://Crear Consulta Medica
 
+//                if (consultaMedicaDAO.agregarRegistro()) {
+//                    System.out.println("Se agrego consulta medica");
+//                } else {
+//                    System.out.println("No se pudo agregar la consulta medica");
+//                }
+                arrayHistorias = historiaClinicaDAO.consultarRegistro();
+
+                request.setAttribute("fkMascota", fkMascota);
+                request.setAttribute("historialMedico", arrayHistorias);
+                request.getRequestDispatcher("historiaClinica.jsp").forward(request, response);
                 break;
         }
     }

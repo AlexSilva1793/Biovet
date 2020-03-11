@@ -47,6 +47,7 @@
         <a href="historiaClinica?opcion=2&textFkMascota=<%=request.getAttribute("fkMascota")%>">Abrir historial Medico</a>
         <% } else {%><!--TODO CODIGO PARA REGISTRAR CONSULTAS DEBE IR DENTRO DE ESTE ELSE-->
         <h2>Fecha y hora de apertura <%=arrayHistoriaClinica.get(0).getFechaApertura()%></h2>
+        <a href="historiaClinica?opcion=3&textFkMascota=<%=request.getAttribute("fkMascota")%>">Agregar Consulta Medica</a>
         <%}%><!--FIN DEL ELSE-->
     </body>
 </html>

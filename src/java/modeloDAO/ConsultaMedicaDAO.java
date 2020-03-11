@@ -50,7 +50,7 @@ public class ConsultaMedicaDAO extends ConexionBD implements InterfaceCrud {
     @Override
     public boolean agregarRegistro() {
         try {
-            query = "INSERT INTO `ConsultaMedica` (`idConsulta`, `motivoConsulta`, `fechaConsulta`, `descripcionConsulta`, `peso`, `estado`, `fkHistoriaClinica`) VALUES (NULL, '" + motivoConsulta + "', '" + fechaConsulta + "', '" + descripcionConsulta + "', '" + peso + "', '1', '" + fkHistoriaClinica + "')";
+            query = "INSERT INTO `ConsultaMedica` (`idConsulta`, `motivoConsulta`, `descripcionConsulta`, `peso`, `estado`, `fkHistoriaClinica`) VALUES (NULL, '" + motivoConsulta + "', '" + descripcionConsulta + "', '" + peso + "', '1', '" + fkHistoriaClinica + "')";
             statement.executeUpdate(query);
             operacion = true;
         } catch (Exception e) {
