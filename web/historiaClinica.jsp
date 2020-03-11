@@ -45,8 +45,8 @@
         <% if (arrayHistoriaClinica.isEmpty()) {  %> 
         <h2>Esta mascota no tiene apertura del historial medico.</h2>
         <a href="historiaClinica?opcion=2&textFkMascota=<%=request.getAttribute("fkMascota")%>">Abrir historial Medico</a>
-        <% } else {%>
+        <% } else {%><!--TODO CODIGO PARA REGISTRAR CONSULTAS DEBE IR DENTRO DE ESTE ELSE-->
         <h2>Fecha y hora de apertura <%=arrayHistoriaClinica.get(0).getFechaApertura()%></h2>
-        <%}%>
+        <%}%><!--FIN DEL ELSE-->
     </body>
 </html>
