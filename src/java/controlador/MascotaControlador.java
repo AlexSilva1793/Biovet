@@ -67,7 +67,7 @@ public class MascotaControlador extends HttpServlet {
                 } else {
                     request.setAttribute("MensajeError", "El perfil de mascota no pudo ser eliminado!");
                 }
-                request.getRequestDispatcher("eliminarMascota.jsp").forward(request, response);
+                //request.getRequestDispatcher("eliminarMascota.jsp").forward(request, response);
                 break;
             case 3://Buscar Mascota por Usuario
                 arrayMascotas = mascotaDAO.consultarRegistro();

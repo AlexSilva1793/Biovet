@@ -53,8 +53,12 @@ public class historiaClinicaControlador extends HttpServlet {
                 arrayHistorias = historiaClinicaDAO.consultarRegistro();
                 if (!arrayHistorias.isEmpty()) {
                     System.out.println("Si hay historial medico");
+                    request.setAttribute("historialMedico", arrayHistorias);
+                    request.getRequestDispatcher("historiaClinica.jsp").forward(request, response);
                 } else {
                     System.out.println("No hay historial medico");
+                    request.setAttribute("historialMedico", arrayHistorias);
+                    request.getRequestDispatcher("historiaClinica.jsp").forward(request, response);
                 }
                 break;
         }
