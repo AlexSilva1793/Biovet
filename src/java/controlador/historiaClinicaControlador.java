@@ -49,17 +49,23 @@ public class historiaClinicaControlador extends HttpServlet {
         //
         switch (opcion) {
             case 1://Validar si la historia clinica existe si no crearla
-                //System.out.println("Entro Case 1 " + "Fk mascota es: " + fkMascota);
+
                 arrayHistorias = historiaClinicaDAO.consultarRegistro();
                 if (!arrayHistorias.isEmpty()) {
-                    System.out.println("Si hay historial medico");
+                    //Si hay historial medico
+                    
                     request.setAttribute("historialMedico", arrayHistorias);
                     request.getRequestDispatcher("historiaClinica.jsp").forward(request, response);
                 } else {
-                    System.out.println("No hay historial medico");
+                    //No hay historial medico
+                    
+                    request.setAttribute("fkMascota", fkMascota);
                     request.setAttribute("historialMedico", arrayHistorias);
                     request.getRequestDispatcher("historiaClinica.jsp").forward(request, response);
                 }
+                break;
+            case 2://Realiza Apertura Historial Medico
+                
                 break;
         }
     }

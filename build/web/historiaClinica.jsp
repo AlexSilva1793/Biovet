@@ -33,14 +33,18 @@
 
                 response.sendRedirect(redirectURL);
             }
-
+            
         %>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <link href="css/jquery.datetimepicker.css" rel="stylesheet" type="text/css"/>
+        <link href="css/styledate.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <h1>Hello World!</h1>
         <% if (arrayHistoriaClinica.isEmpty()) {  %> 
         <h2>Esta mascota no tiene apertura del historial medico.</h2>
-        <button>Abrir historial Medico</button>
+        <a href="historiaClinica?opcion=2&textFkMascota=<%=request.getAttribute("fkMascota")%>">Abrir historial Medico</a>
         <% } else {%>
         <h2>Fecha y hora de apertura <%=arrayHistoriaClinica.get(0).getFechaApertura()%></h2>
         <%}%>
