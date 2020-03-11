@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 10-03-2020 a las 01:37:08
+-- Tiempo de generación: 10-03-2020 a las 01:53:57
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.3
 
@@ -153,7 +153,7 @@ INSERT INTO `Genero` (`idGenero`, `tipoSexo`) VALUES
 
 CREATE TABLE `HistoriaClinica` (
   `idHistoriaClinica` int(11) NOT NULL,
-  `fechaApertura` date NOT NULL,
+  `fechaApertura` timestamp NULL DEFAULT current_timestamp(),
   `fkMascota` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -518,6 +518,12 @@ ALTER TABLE `Especie`
 --
 ALTER TABLE `Genero`
   MODIFY `idGenero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `HistoriaClinica`
+--
+ALTER TABLE `HistoriaClinica`
+  MODIFY `idHistoriaClinica` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `Mascota`

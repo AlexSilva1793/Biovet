@@ -13,15 +13,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modeloDAO.MascotaDAO;
-import modeloVO.MascotaVO;
+import modeloDAO.HistoriaClinicaDAO;
+import modeloVO.HistoriaClinicaVO;
 
 /**
  *
- * @author Usuario
+ * @author master
  */
-@WebServlet(name = "MascotaControlador", urlPatterns = {"/Mascota"})
-public class MascotaControlador extends HttpServlet {
+@WebServlet(name = "historiaClinicaControlador", urlPatterns = {"/historiaClinica"})
+public class historiaClinicaControlador extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,54 +37,47 @@ public class MascotaControlador extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
+        //Historia Clinica
         int opcion = Integer.parseInt(request.getParameter("opcion"));
-        String idMascota = request.getParameter("textIdMascota");
-        String nombreMascota = request.getParameter("textNombreMascota");
-        String fechaNacimiento = request.getParameter("textFechaNacimiento");
-        String fkUsuario = request.getParameter("textFkUsuario");
-        String fkRaza = request.getParameter("textFkRaza");
-        String fkGenero = request.getParameter("textFkGenero");
-        String colorMascota = request.getParameter("textcolorMascota");
-        String estadoMascota = request.getParameter("textEstadoMascota");
+        String idHistoriaClinica = request.getParameter("txtIdHistoriaClinica");
+        String fechaApertura = request.getParameter("textFechaApertura");
+        String fkMascota = request.getParameter("textFkMascota");
 
-        MascotaVO mascotaVO = new MascotaVO(idMascota, nombreMascota, fechaNacimiento, fkUsuario, fkRaza, fkGenero, colorMascota, estadoMascota);
-        MascotaDAO mascotaDAO = new MascotaDAO(mascotaVO);
-        ArrayList<MascotaVO> arrayMascotas;
-
+        HistoriaClinicaVO historiaClinicaVO = new HistoriaClinicaVO(idHistoriaClinica, fechaApertura, fkMascota);
+        HistoriaClinicaDAO historiaClinicaDAO = new HistoriaClinicaDAO(historiaClinicaVO);
+        ArrayList<HistoriaClinicaVO> arrayHistorias;
+        //
         switch (opcion) {
-            case 1://Agregar Registro
-                if (mascotaDAO.agregarRegistro()) {
-                    request.setAttribute("MensajeExito", "La mascota fue agregada correctamente!");
-                } else {
-                    request.setAttribute("MensajeError", "La mascota no pudo ser agregada!");
-                }
-                request.getRequestDispatcher("homeUsuario.jsp").forward(request, response);
-                break;
+            case 1://Validar si la historia clinica existe si no crearla
 
-            case 2:// Eliminar Registro
-                if (mascotaDAO.eliminarRegistro()) {
-                    request.setAttribute("MensajeExito", "Mascota Eliminada correctamente!");
-                } else {
-                    request.setAttribute("MensajeError", "El perfil de mascota no pudo ser eliminado!");
-                }
-                //request.getRequestDispatcher("eliminarMascota.jsp").forward(request, response);
-                break;
-            case 3://Buscar Mascota por Usuario
-                arrayMascotas = mascotaDAO.consultarRegistro();
+                arrayHistorias = historiaClinicaDAO.consultarRegistro();
+                if (!arrayHistorias.isEmpty()) {
+                    //Si hay historial medico
 
-                if (!arrayMascotas.isEmpty()) {
-                    request.setAttribute("mascotas", arrayMascotas);
-                    request.getRequestDispatcher("listaMascotas.jsp").forward(request, response);
+                    request.setAttribute("historialMedico", arrayHistorias);
+                    request.getRequestDispatcher("historiaClinica.jsp").forward(request, response);
                 } else {
-                    request.setAttribute("MascotasError", "Id de usuario erroneo o no existe!");
-                    request.getRequestDispatcher("listaMascotas.jsp").forward(request, response);
+                    //No hay historial medico
+
+                    request.setAttribute("fkMascota", fkMascota);
+                    request.setAttribute("historialMedico", arrayHistorias);
+                    request.getRequestDispatcher("historiaClinica.jsp").forward(request, response);
+                }
+                break;
+            case 2://Realiza Apertura Historial Medico
+                if (historiaClinicaDAO.agregarRegistro()) {
+                    arrayHistorias = historiaClinicaDAO.consultarRegistro();
+                    request.setAttribute("historialMedico", arrayHistorias);
+                    request.getRequestDispatcher("historiaClinica.jsp").forward(request, response);
+                    System.out.println("Registro agregado");
+                } else {
+                    System.out.println("No se pudo agregar registro");
                 }
                 break;
         }
-
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
