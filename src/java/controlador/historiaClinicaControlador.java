@@ -53,19 +53,26 @@ public class historiaClinicaControlador extends HttpServlet {
                 arrayHistorias = historiaClinicaDAO.consultarRegistro();
                 if (!arrayHistorias.isEmpty()) {
                     //Si hay historial medico
-                    
+
                     request.setAttribute("historialMedico", arrayHistorias);
                     request.getRequestDispatcher("historiaClinica.jsp").forward(request, response);
                 } else {
                     //No hay historial medico
-                    
+
                     request.setAttribute("fkMascota", fkMascota);
                     request.setAttribute("historialMedico", arrayHistorias);
                     request.getRequestDispatcher("historiaClinica.jsp").forward(request, response);
                 }
                 break;
             case 2://Realiza Apertura Historial Medico
-                
+                if (historiaClinicaDAO.agregarRegistro()) {
+                    arrayHistorias = historiaClinicaDAO.consultarRegistro();
+                    request.setAttribute("historialMedico", arrayHistorias);
+                    request.getRequestDispatcher("historiaClinica.jsp").forward(request, response);
+                    System.out.println("Registro agregado");
+                } else {
+                    System.out.println("No se pudo agregar registro");
+                }
                 break;
         }
     }
