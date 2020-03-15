@@ -6564,7 +6564,7 @@ h6 {
 .account-page {
     display: table-row;
     height: 100%;
-    padding: 40px 0;
+    padding: 40px;
 }
 .account-title {
     font-size: 32px;
@@ -6585,8 +6585,8 @@ h6 {
 }
 .account-box {
     background-color: #fff;
-    border: 1px solid #eaeaea;
-    margin: 0 auto;
+    border: 1px solid #8FFEED;
+    margin: 60px auto;
     padding: 20px;
     width: 400px;
 }
@@ -6629,5 +6629,50 @@ h6 {
     min-width: 150px;
     padding: 8px 30px;
     text-transform: uppercase;
+}
+.header {
+    background-color:  #b4f9c4;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 1039;
+    height: 50px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+.header .header-left {
+    float: left;
+    height: 50px;
+    padding: 0 20px;
+    position: relative;
+    text-align: center;
+    width: 230px;
+    z-index: 1;
+}
+.logo {
+    align-items: center;
+    display: flex;
+    height: 50px;
+    justify-content: center;
+}
+.logo span {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    margin-left: 10px;
+}
+.header .navbar-nav .badge {
+    position: absolute;
+    right: 7px;
+    top: 4px;
+}
+.header .dropdown-menu > li > a {
+    position: relative;
+}
+.header .dropdown-toggle:after {
+    display: none;
+}
+.header .has-arrow .dropdown-toggle:after {
+    display: inline-block;
 }
 /*# sourceMappingURL=style.css.map */
