@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 11-03-2020 a las 21:53:08
+-- Tiempo de generación: 15-03-2020 a las 19:11:23
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.3
 
@@ -47,10 +47,18 @@ CREATE TABLE `ConsultaMedica` (
   `motivoConsulta` varchar(45) NOT NULL,
   `fechaConsulta` timestamp NULL DEFAULT current_timestamp(),
   `descripcionConsulta` varchar(200) NOT NULL,
-  `peso` float NOT NULL,
+  `peso` varchar(4) NOT NULL,
   `estado` tinyint(1) DEFAULT NULL,
   `fkHistoriaClinica` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='	';
+
+--
+-- Volcado de datos para la tabla `ConsultaMedica`
+--
+
+INSERT INTO `ConsultaMedica` (`idConsulta`, `motivoConsulta`, `fechaConsulta`, `descripcionConsulta`, `peso`, `estado`, `fkHistoriaClinica`) VALUES
+(1, 'prueba', '2020-03-15 03:05:00', 'prueba', '1', 1, 2),
+(2, 'otra prueba', '2020-03-15 03:06:05', 'prueba', '2', 1, 10);
 
 -- --------------------------------------------------------
 
@@ -163,7 +171,8 @@ CREATE TABLE `HistoriaClinica` (
 
 INSERT INTO `HistoriaClinica` (`idHistoriaClinica`, `fechaApertura`, `fkMascota`) VALUES
 (2, '2020-03-10 23:43:30', 1),
-(3, '2020-03-10 23:43:30', 4);
+(3, '2020-03-10 23:43:30', 4),
+(10, '2020-03-15 03:05:47', 2);
 
 -- --------------------------------------------------------
 
@@ -513,7 +522,7 @@ ALTER TABLE `Agenda`
 -- AUTO_INCREMENT de la tabla `ConsultaMedica`
 --
 ALTER TABLE `ConsultaMedica`
-  MODIFY `idConsulta` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idConsulta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `Especie`
@@ -531,7 +540,7 @@ ALTER TABLE `Genero`
 -- AUTO_INCREMENT de la tabla `HistoriaClinica`
 --
 ALTER TABLE `HistoriaClinica`
-  MODIFY `idHistoriaClinica` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `idHistoriaClinica` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `Mascota`

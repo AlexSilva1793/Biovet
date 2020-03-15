@@ -61,7 +61,7 @@ public class ConsultaMedicaDAO extends ConexionBD implements InterfaceCrud {
 
     @Override
     public ArrayList consultarRegistro() {
-
+        
         ArrayList<ConsultaMedicaVO> consultaArray = new ArrayList<>();
         try {
             query = "SELECT * FROM ConsultaMedica WHERE fkHistoriaClinica = " + fkHistoriaClinica;

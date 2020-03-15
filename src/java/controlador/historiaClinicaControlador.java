@@ -59,7 +59,7 @@ public class historiaClinicaControlador extends HttpServlet {
         String fkHistoriaClinica = request.getParameter("txtFkHistoriaClinica");
 
         ConsultaMedicaVO consultaMedicaVO = new ConsultaMedicaVO(idConsulta, motivoConsulta, fechaConsulta, descripcionConsulta, peso, estado, fkHistoriaClinica);
-        ConsultaMedicaDAO consultaMedicaDAO = new ConsultaMedicaDAO(consultaMedicaVO);
+
         ArrayList<ConsultaMedicaVO> arrayConsultasMedicas;
 
         //
@@ -69,6 +69,12 @@ public class historiaClinicaControlador extends HttpServlet {
                 arrayHistorias = historiaClinicaDAO.consultarRegistro();
                 if (!arrayHistorias.isEmpty()) {
                     //Si hay historial medico
+
+                    consultaMedicaVO.setFkHistoriaClinica(arrayHistorias.get(0).getIdHistoriaClinica());
+                    System.out.println(consultaMedicaVO);
+                    ConsultaMedicaDAO consultaMedicaDAO = new ConsultaMedicaDAO(consultaMedicaVO);
+                    System.out.println("Consultando regstros medicos " + consultaMedicaDAO.consultarRegistro());
+
                     request.setAttribute("fkMascota", fkMascota);
                     request.setAttribute("historialMedico", arrayHistorias);
                     request.getRequestDispatcher("historiaClinica.jsp").forward(request, response);
@@ -92,9 +98,9 @@ public class historiaClinicaControlador extends HttpServlet {
                 }
                 break;
             case 3://Crear Consulta Medica
+                ConsultaMedicaDAO consultaMedicaDAO = new ConsultaMedicaDAO(consultaMedicaVO);
+                consultaMedicaDAO.agregarRegistro();
 
-                consultaMedicaDAO.agregarRegistro();               
-                
                 arrayHistorias = historiaClinicaDAO.consultarRegistro();
                 request.setAttribute("fkMascota", fkMascota);
                 request.setAttribute("historialMedico", arrayHistorias);
