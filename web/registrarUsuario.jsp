@@ -82,53 +82,56 @@
                 <div class="account-center">
                     <div class="account-box">
                         <form  method="post" action="Usuario" class="form-signin">
-                            <div class="form-group">
-                                <label>Tipo de Documento</label>
-                                <select  id="tipoDocumento" name="textFkTipoDocu" class="form-control" required>
-                                    <%for (int i = 0; i < arrayTipoDoc.size(); i++) {
-                                            documentoVO = arrayTipoDoc.get(i);%>
-                                    <option value="<%=documentoVO.getIdTipoDocu()%>"> <%=documentoVO.getTipoDocu()%></option>
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <label>Tipo de Documento</label>
+                                    <select  id="tipoDocumento" name="textFkTipoDocu" class="form-control" required>
+                                        <%for (int i = 0; i < arrayTipoDoc.size(); i++) {
+                                                documentoVO = arrayTipoDoc.get(i);%>
+                                        <option value="<%=documentoVO.getIdTipoDocu()%>"> <%=documentoVO.getTipoDocu()%></option>
 
-                                    <%}%>        
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Número de Documento</label>
-                                <input type="text" name="textCedula" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label>Nombres Completos</label>
-                                <input type="text" name="textNombreUsuario" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label>Apellidos Completos</label>
-                                <input type="text" name="textApellidoUsuario" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label>Contraseña</label>
-                                <input type="password" name="textContrasena" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label>Confirme su Contraseña</label>
-                                <input type="password" name="textContrasena" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label>Correo</label>
-                                <input type="email" name="textCorreoUsuario" class="form-control">
-                            </div>
-                            <div class="form-group text-center">
-                                <button class="btn btn-primary account-btn" name="opcion" value="1" type="submit">Registrarse</button>
-                            </div>
-                            <div class="text-center login-link">
-                                Ya tienes una cuenta? <a href="login.jsp">Ingresar</a>
+                                        <%}%>        
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Número de Documento</label>
+                                    <input type="text" name="textCedula" class="form-control">
+                                </div>
+                                <div class="col-md-12">
+                                    <label>Nombres Completos</label>
+                                    <input type="text" name="textNombreUsuario" class="form-control">
+                                </div>
+                                <div class="col-md-12">
+                                    <label>Apellidos Completos</label>
+                                    <input type="text" name="textApellidoUsuario" class="form-control">
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Contraseña</label>
+                                    <input type="password" name="textContrasena" class="form-control">
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Confirme su Contraseña</label>
+                                    <input type="password" name="textContrasena" class="form-control">
+                                </div>
+                                <div class="col-md-12">
+                                    <label>Correo</label>
+                                    <input type="email" name="textCorreoUsuario" class="form-control">
+                                </div>
+                                <div class="form-group text-center">
+                                    <button class="btn btn-primary account-btn" name="opcion" value="1" type="submit">Registrarse</button>
+                                </div>
+                                <div class="text-center login-link">
+                                    Ya tienes una cuenta? <a href="login.jsp">Ingresar</a>
+                                </div>
                             </div>
                         </form>
                         <% if (request.getAttribute(
-                                                    "mensajeError") != null) {  %> 
+                                    "mensajeError") != null) {  %> 
                         ${mensajeError}
                         <% } else { %>
                         ${mensajeExito}
                         <% }%>
+
                     </div>
                 </div>
             </div>

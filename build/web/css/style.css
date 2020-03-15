@@ -34,15 +34,17 @@
 /* Large Mobile :480px. */
 /* 1. Theme default css */
 /* line 4, ../../Arafath/CL/january 2020/240. Animal/HTML/scss/_reset.scss */
+
 body {
     font-family: "Open Sans", sans-serif;
     font-weight: normal;
     font-style: normal;
+    background: url(img/background.png)
 }
 
 /* line 11, ../../Arafath/CL/january 2020/240. Animal/HTML/scss/_reset.scss */
 .img {
-    max-width: 100%;
+    max-width: 100%;    
     -webkit-transition: 0.3s;
     -moz-transition: 0.3s;
     -o-transition: 0.3s;
@@ -6564,7 +6566,7 @@ h6 {
 .account-page {
     display: table-row;
     height: 100%;
-    padding: 40px;
+    padding: 40px
 }
 .account-title {
     font-size: 32px;
@@ -6588,7 +6590,7 @@ h6 {
     border: 1px solid #8FFEED;
     margin: 60px auto;
     padding: 20px;
-    width: 400px;
+    width: 600px;
 }
 .account-logo {
     margin-bottom: 20px;
@@ -6674,5 +6676,9 @@ h6 {
 }
 .header .has-arrow .dropdown-toggle:after {
     display: inline-block;
+}
+.background-log-reg{    
+    background-image: url(img/background.png);
+
 }
 /*# sourceMappingURL=style.css.map */
