@@ -83,6 +83,7 @@ public class historiaClinicaControlador extends HttpServlet {
             case 2://Realiza Apertura Historial Medico
                 if (historiaClinicaDAO.agregarRegistro()) {
                     arrayHistorias = historiaClinicaDAO.consultarRegistro();
+                    request.setAttribute("fkMascota", fkMascota);
                     request.setAttribute("historialMedico", arrayHistorias);
                     request.getRequestDispatcher("historiaClinica.jsp").forward(request, response);
                     System.out.println("Registro agregado");
@@ -92,13 +93,9 @@ public class historiaClinicaControlador extends HttpServlet {
                 break;
             case 3://Crear Consulta Medica
 
-//                if (consultaMedicaDAO.agregarRegistro()) {
-//                    System.out.println("Se agrego consulta medica");
-//                } else {
-//                    System.out.println("No se pudo agregar la consulta medica");
-//                }
+                consultaMedicaDAO.agregarRegistro();               
+                
                 arrayHistorias = historiaClinicaDAO.consultarRegistro();
-
                 request.setAttribute("fkMascota", fkMascota);
                 request.setAttribute("historialMedico", arrayHistorias);
                 request.getRequestDispatcher("historiaClinica.jsp").forward(request, response);

@@ -33,7 +33,7 @@
 
                 response.sendRedirect(redirectURL);
             }
-            
+
         %>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
@@ -42,12 +42,34 @@
     </head>
     <body>
         <h1>Hello World!</h1>
-        <% if (arrayHistoriaClinica.isEmpty()) {  %> 
+        <% if (arrayHistoriaClinica.isEmpty()) {%> 
         <h2>Esta mascota no tiene apertura del historial medico.</h2>
         <a href="historiaClinica?opcion=2&textFkMascota=<%=request.getAttribute("fkMascota")%>">Abrir historial Medico</a>
         <% } else {%><!--TODO CODIGO PARA REGISTRAR CONSULTAS DEBE IR DENTRO DE ESTE ELSE-->
         <h2>Fecha y hora de apertura <%=arrayHistoriaClinica.get(0).getFechaApertura()%></h2>
-        <a href="historiaClinica?opcion=3&textFkMascota=<%=request.getAttribute("fkMascota")%>">Agregar Consulta Medica</a>
+        <div>
+            <form action="historiaClinica" method="POST" class="form-signin">
+                <div>
+                    <label>Motivo Consulta</label>
+                    <input type="text" name="txtMotivoConsulta" class="form-control">
+                </div>
+
+                <div>
+                    <label>Peso</label>
+                    <input type="text" name="txtPeso" class="form-control">
+                </div>
+
+                <div>
+                    <label>Descripcion consulta</label>
+                    <input type="textarea" name="txtDescripcionConsulta" class="form-control">
+                </div>
+                <!--ACA VA EL INPUT PARA SUBIR LOS ARCHIVOS-->
+                <input type="hidden" name="txtFkHistoriaClinica" value="<%=arrayHistoriaClinica.get(0).getIdHistoriaClinica()%>">
+                <input type="hidden" name="textFkMascota" value="<%=request.getAttribute("fkMascota")%>">
+                <button name="opcion" value="3" type="submit">Nueva Consulta Medica</button>
+            </form>
+        </div>
+
         <%}%><!--FIN DEL ELSE-->
     </body>
 </html>
