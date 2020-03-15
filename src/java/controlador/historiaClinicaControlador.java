@@ -71,10 +71,10 @@ public class historiaClinicaControlador extends HttpServlet {
                     //Si hay historial medico
 
                     consultaMedicaVO.setFkHistoriaClinica(arrayHistorias.get(0).getIdHistoriaClinica());
-                    System.out.println(consultaMedicaVO);
                     ConsultaMedicaDAO consultaMedicaDAO = new ConsultaMedicaDAO(consultaMedicaVO);
-                    System.out.println("Consultando regstros medicos " + consultaMedicaDAO.consultarRegistro());
+                    arrayConsultasMedicas = consultaMedicaDAO.consultarRegistro();
 
+                    request.setAttribute("arrayConsultasMedicas", arrayConsultasMedicas);
                     request.setAttribute("fkMascota", fkMascota);
                     request.setAttribute("historialMedico", arrayHistorias);
                     request.getRequestDispatcher("historiaClinica.jsp").forward(request, response);
@@ -102,6 +102,9 @@ public class historiaClinicaControlador extends HttpServlet {
                 consultaMedicaDAO.agregarRegistro();
 
                 arrayHistorias = historiaClinicaDAO.consultarRegistro();
+                arrayConsultasMedicas = consultaMedicaDAO.consultarRegistro();
+
+                request.setAttribute("arrayConsultasMedicas", arrayConsultasMedicas);
                 request.setAttribute("fkMascota", fkMascota);
                 request.setAttribute("historialMedico", arrayHistorias);
                 request.getRequestDispatcher("historiaClinica.jsp").forward(request, response);
