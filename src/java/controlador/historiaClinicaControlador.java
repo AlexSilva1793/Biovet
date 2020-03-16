@@ -13,7 +13,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modeloDAO.ConsultaMedicaDAO;
 import modeloDAO.HistoriaClinicaDAO;
+import modeloVO.ConsultaMedicaVO;
 import modeloVO.HistoriaClinicaVO;
 
 /**
@@ -47,6 +49,20 @@ public class historiaClinicaControlador extends HttpServlet {
         HistoriaClinicaDAO historiaClinicaDAO = new HistoriaClinicaDAO(historiaClinicaVO);
         ArrayList<HistoriaClinicaVO> arrayHistorias;
         //
+        //Consulta Medica
+        String idConsulta = request.getParameter("txtIdConsulta");
+        String motivoConsulta = request.getParameter("txtMotivoConsulta");
+        String fechaConsulta = request.getParameter("txtFechaConsulta");
+        String descripcionConsulta = request.getParameter("txtDescripcionConsulta");
+        String peso = request.getParameter("txtPeso");
+        String estado = request.getParameter("txtEstado");
+        String fkHistoriaClinica = request.getParameter("txtFkHistoriaClinica");
+
+        ConsultaMedicaVO consultaMedicaVO = new ConsultaMedicaVO(idConsulta, motivoConsulta, fechaConsulta, descripcionConsulta, peso, estado, fkHistoriaClinica);
+
+        ArrayList<ConsultaMedicaVO> arrayConsultasMedicas;
+
+        //
         switch (opcion) {
             case 1://Validar si la historia clinica existe si no crearla
 
@@ -54,6 +70,12 @@ public class historiaClinicaControlador extends HttpServlet {
                 if (!arrayHistorias.isEmpty()) {
                     //Si hay historial medico
 
+                    consultaMedicaVO.setFkHistoriaClinica(arrayHistorias.get(0).getIdHistoriaClinica());
+                    ConsultaMedicaDAO consultaMedicaDAO = new ConsultaMedicaDAO(consultaMedicaVO);
+                    arrayConsultasMedicas = consultaMedicaDAO.consultarRegistro();
+
+                    request.setAttribute("arrayConsultasMedicas", arrayConsultasMedicas);
+                    request.setAttribute("fkMascota", fkMascota);
                     request.setAttribute("historialMedico", arrayHistorias);
                     request.getRequestDispatcher("historiaClinica.jsp").forward(request, response);
                 } else {
@@ -67,12 +89,25 @@ public class historiaClinicaControlador extends HttpServlet {
             case 2://Realiza Apertura Historial Medico
                 if (historiaClinicaDAO.agregarRegistro()) {
                     arrayHistorias = historiaClinicaDAO.consultarRegistro();
+                    request.setAttribute("fkMascota", fkMascota);
                     request.setAttribute("historialMedico", arrayHistorias);
                     request.getRequestDispatcher("historiaClinica.jsp").forward(request, response);
                     System.out.println("Registro agregado");
                 } else {
                     System.out.println("No se pudo agregar registro");
                 }
+                break;
+            case 3://Crear Consulta Medica
+                ConsultaMedicaDAO consultaMedicaDAO = new ConsultaMedicaDAO(consultaMedicaVO);
+                consultaMedicaDAO.agregarRegistro();
+
+                arrayHistorias = historiaClinicaDAO.consultarRegistro();
+                arrayConsultasMedicas = consultaMedicaDAO.consultarRegistro();
+
+                request.setAttribute("arrayConsultasMedicas", arrayConsultasMedicas);
+                request.setAttribute("fkMascota", fkMascota);
+                request.setAttribute("historialMedico", arrayHistorias);
+                request.getRequestDispatcher("historiaClinica.jsp").forward(request, response);
                 break;
         }
     }
