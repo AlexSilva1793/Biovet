@@ -14,12 +14,24 @@
 
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <link rel="shortcut icon" type="image/x-icon" href="img/icono.png">
         <title>Biovet</title>
-        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-        <link href="css/style.css" rel="stylesheet" type="text/css"/>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- CSS here -->
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/owl.carousel.min.css">
+        <link rel="stylesheet" href="css/magnific-popup.css">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/themify-icons.css">
+        <link rel="stylesheet" href="css/nice-select.css">
+        <link rel="stylesheet" href="css/flaticon.css">
+        <link rel="stylesheet" href="css/gijgo.css">
+        <link rel="stylesheet" href="css/animate.css">
+        <link rel="stylesheet" href="css/slicknav.css">
+        <link rel="stylesheet" href="css/style.css">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <%
             TipoDocumentoVO documentoVO = new TipoDocumentoVO();
             TipoDocumentoDAO documentoDAO = new TipoDocumentoDAO();
@@ -70,45 +82,47 @@
                 <div class="account-center">
                     <div class="account-box">
                         <form  method="post" action="Usuario" class="form-signin">
-                            <div class="form-group">
-                                <label>Tipo de Documento</label>
-                                <select  id="tipoDocumento" name="textFkTipoDocu" class="form-control" required>
-                                    <%for (int i = 0; i < arrayTipoDoc.size(); i++) {
-                                            documentoVO = arrayTipoDoc.get(i);%>
-                                    <option value="<%=documentoVO.getIdTipoDocu()%>"> <%=documentoVO.getTipoDocu()%></option>
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <label>Tipo de Documento</label>
+                                    <select  id="tipoDocumento" name="textFkTipoDocu" class="form-control" required>
+                                        <%for (int i = 0; i < arrayTipoDoc.size(); i++) {
+                                                documentoVO = arrayTipoDoc.get(i);%>
+                                        <option value="<%=documentoVO.getIdTipoDocu()%>"> <%=documentoVO.getTipoDocu()%></option>
 
-                                    <%}%>        
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Número de Documento</label>
-                                <input type="text" name="textCedula" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label>Nombres Completos</label>
-                                <input type="text" name="textNombreUsuario" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label>Apellidos Completos</label>
-                                <input type="text" name="textApellidoUsuario" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label>Contraseña</label>
-                                <input type="password" name="textContrasena" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label>Confirme su Contraseña</label>
-                                <input type="password" name="textContrasena" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label>Correo</label>
-                                <input type="email" name="textCorreoUsuario" class="form-control">
-                            </div>
-                            <div class="form-group text-center">
-                                <button class="btn btn-primary account-btn" name="opcion" value="1" type="submit">Registrarse</button>
-                            </div>
-                            <div class="text-center login-link">
-                                Ya tienes una cuenta? <a href="login.jsp">Ingresar</a>
+                                        <%}%>        
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Número de Documento</label>
+                                    <input type="text" name="textCedula" class="form-control">
+                                </div>
+                                <div class="col-md-12">
+                                    <label>Nombres Completos</label>
+                                    <input type="text" name="textNombreUsuario" class="form-control">
+                                </div>
+                                <div class="col-md-12">
+                                    <label>Apellidos Completos</label>
+                                    <input type="text" name="textApellidoUsuario" class="form-control">
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Contraseña</label>
+                                    <input type="password" name="textContrasena" class="form-control">
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Confirme su Contraseña</label>
+                                    <input type="password" name="textContrasena" class="form-control">
+                                </div>
+                                <div class="col-md-12">
+                                    <label>Correo</label>
+                                    <input type="email" name="textCorreoUsuario" class="form-control">
+                                </div>
+                                <div class="form-group text-center">
+                                    <button class="btn btn-primary account-btn" name="opcion" value="1" type="submit">Registrarse</button>
+                                </div>
+                                <div class="text-center login-link">
+                                    Ya tienes una cuenta? <a href="login.jsp">Ingresar</a>
+                                </div>
                             </div>
                         </form>
                         <% if (request.getAttribute("mensajeError") != null) {  %> 
@@ -116,6 +130,7 @@
                         <% } else { %>
                         ${mensajeExito}
                         <% }%>
+
                     </div>
                 </div>
             </div>
