@@ -72,7 +72,7 @@ public class MascotaDAO extends ConexionBD implements InterfaceCrud {
     public ArrayList<MascotaVO> consultarRegistro() {
         ArrayList<MascotaVO> mascotArray = new ArrayList<>();
         try {
-            query = "select * from Mascota where fkUsuario='" + fkUsuario + "';";
+            query = "select * from mascotaUsuario where fkUsuario='" + fkUsuario + "';";
             resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
 

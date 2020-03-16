@@ -4,6 +4,7 @@
     Author     : master
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="modeloDAO.MascotaDAO"%>
 <%@page import="modeloVO.MascotaVO"%>
 <%@page import="modeloVO.UsuarioVO"%>
@@ -32,11 +33,11 @@
         <link rel="stylesheet" href="css/style.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <%
-            response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-            response.setHeader("Pragma", "no-cache");
-            response.setHeader("Expires", "0");
+            //response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+            //response.setHeader("Pragma", "no-cache");
+            //response.setHeader("Expires", "0");
 
-            String nombreUsuario = "";//Verificar si se usa esta variable.
+            String nombreUsuario = "";
             ArrayList<UsuarioVO> usuarioVOSesion = (ArrayList<UsuarioVO>) session.getAttribute("usuariosArray");
 
             String redirectURL = "index.jsp";
@@ -57,19 +58,65 @@
         %>
     </head>
     <body>
-        <h1>Hola <%=nombreUsuario%></h1>
+        <h1>Hola Administrador <%=nombreUsuario%></h1>
+        <!--Inicio barra de busqueda usuario-->
+        <div>
+            <h2>Buscar Mascota</h2>
+            <form action="Mascota" method="POST">
+                Escribe codigo de Usuario: <input type="search" name="textFkUsuario">
+                <div class="form-group text-center">
+                    <button class="btn btn-primary account-btn" name="opcion" value="3" type="submit">Buscar</button>
+                </div>
+            </form>
+        </div>
+        <!--Fin barra de busqueda usuario-->
+        <!-- Inicio Resultados de la busqueda-->
+        <div class="row">
+            <div class="container">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Id Mascota</th>
+                            <th>Nombre</th>
+                            <th>Fecha de Nacimiento</th>
+                            <th>Color</th>
+                            <th>Historial Medico</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <c:forEach var="mascota" items="${mascotas}">
+                            <tr> 
+                                <td><c:out value="${mascota.getIdMascota()}"/></td>
+                                <td><c:out value="${mascota.getNombreMascota()}"/></td>
+                                <td><c:out value="${mascota.getFechaNacimiento()}"/></td>
+                                <td><c:out value="${mascota.getColorMascota()}"/></td>
+                                <td><a href="historiaClinica?opcion=1&textFkMascota=${mascota.getIdMascota()}" class="btn btn-success">Ver Historial Medico</a></td>                            
+                            </tr>
+                        </c:forEach>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <% if (request.getAttribute("MascotasError") != null) {  %> 
+        ${MascotasError}
+        <% }%>
+        <!-- Fin Resultados de la busqueda-->
+        <!--Inicio listado de todas las mascotas-->
         <div class="row">
             <div class="container">
                 <table  class="table table-striped">
                     <thead>
                         <tr>
-                            <th>Id Mascota</th>
+                            <th>#</th>
                             <th>Nombre</th>
                             <th>Fecha de Nacimiento</th>
                             <th>Dueño</th>
                             <th>Raza</th>
                             <th>Genero</th>
                             <th>Color</th>
+                            <th>Historial Medico</th>
                         </tr>
                     </thead>
                     <%
@@ -85,7 +132,8 @@
                             <td><%=mascotaVO.getFkUsuario()%></td>
                             <td><%=mascotaVO.getFkRaza()%></td>
                             <td><%=mascotaVO.getFkGenero()%></td>
-                            <td><%=mascotaVO.getColorMascota()%></td>                            
+                            <td><%=mascotaVO.getColorMascota()%></td>
+                            <td><a href="historiaClinica?opcion=1&textFkMascota=<%=mascotaVO.getIdMascota()%>" class="btn btn-success">Ver Historial Medico</a></td>                            
                         </tr>
                         <%}
                             }%>
@@ -93,5 +141,6 @@
                 </table>
             </div>
         </div>
+        <!--Fin listado de todas las mascotas-->
     </body>
 </html>

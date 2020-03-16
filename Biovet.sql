@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 29-02-2020 a las 21:52:35
+-- Tiempo de generación: 15-03-2020 a las 19:11:23
 -- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.2.27
+-- Versión de PHP: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -45,12 +45,20 @@ CREATE TABLE `Agenda` (
 CREATE TABLE `ConsultaMedica` (
   `idConsulta` int(11) NOT NULL,
   `motivoConsulta` varchar(45) NOT NULL,
-  `fechaConsulta` date NOT NULL,
+  `fechaConsulta` timestamp NULL DEFAULT current_timestamp(),
   `descripcionConsulta` varchar(200) NOT NULL,
-  `peso` float NOT NULL,
+  `peso` varchar(4) NOT NULL,
   `estado` tinyint(1) DEFAULT NULL,
   `fkHistoriaClinica` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='	';
+
+--
+-- Volcado de datos para la tabla `ConsultaMedica`
+--
+
+INSERT INTO `ConsultaMedica` (`idConsulta`, `motivoConsulta`, `fechaConsulta`, `descripcionConsulta`, `peso`, `estado`, `fkHistoriaClinica`) VALUES
+(1, 'prueba', '2020-03-15 03:05:00', 'prueba', '1', 1, 2),
+(2, 'otra prueba', '2020-03-15 03:06:05', 'prueba', '2', 1, 10);
 
 -- --------------------------------------------------------
 
@@ -153,9 +161,18 @@ INSERT INTO `Genero` (`idGenero`, `tipoSexo`) VALUES
 
 CREATE TABLE `HistoriaClinica` (
   `idHistoriaClinica` int(11) NOT NULL,
-  `fechaApertura` date NOT NULL,
+  `fechaApertura` timestamp NULL DEFAULT current_timestamp(),
   `fkMascota` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `HistoriaClinica`
+--
+
+INSERT INTO `HistoriaClinica` (`idHistoriaClinica`, `fechaApertura`, `fkMascota`) VALUES
+(2, '2020-03-10 23:43:30', 1),
+(3, '2020-03-10 23:43:30', 4),
+(10, '2020-03-15 03:05:47', 2);
 
 -- --------------------------------------------------------
 
@@ -197,7 +214,26 @@ CREATE TABLE `Mascota` (
 
 INSERT INTO `Mascota` (`idMascota`, `nombreMascota`, `fechaNacimiento`, `fkUsuario`, `fkRaza`, `fkGenero`, `ColorMascota`, `estadoMascota`) VALUES
 (1, 'Max', '2020-02-11', 1, 1, 1, 'Negro', 1),
-(2, 'Kira', '2020-02-03', 2, 2, 2, 'Cafe', 1);
+(2, 'Kira', '2020-02-03', 2, 2, 2, 'Cafe', 1),
+(3, 'Rita', '2020-02-11', 1, 1, 2, 'Blanca', 1),
+(4, 'mascotaprueba', '2020-02-11', 5, 1, 1, 'rojo', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `mascotaUsuario`
+-- (Véase abajo para la vista actual)
+--
+CREATE TABLE `mascotaUsuario` (
+`idMascota` int(11)
+,`nombreMascota` varchar(100)
+,`fechaNacimiento` date
+,`fkUsuario` int(11)
+,`tipoRaza` varchar(45)
+,`tipoSexo` varchar(45)
+,`ColorMascota` varchar(60)
+,`estadoMascota` tinyint(1)
+);
 
 -- --------------------------------------------------------
 
@@ -310,8 +346,8 @@ CREATE TABLE `Usuario` (
 INSERT INTO `Usuario` (`idUsuario`, `cedula`, `nombreUsuario`, `apellidoUsuario`, `contraseñaUsuario`, `direcciòn`, `celular`, `telefonoFijo`, `correoUsuario`, `estadoUsuario`, `fkTipoDocu`, `fkRol`, `fkGenero`) VALUES
 (1, '1014246133', 'Alex', 'Silva', '1234', NULL, NULL, NULL, 'aaa@gmail.com', 1, 1, 1, NULL),
 (2, '1032412490', 'Fabiàn', 'Jimènez', '123', NULL, NULL, NULL, 'fj@mail.com', 1, 1, 1, 1),
-(3, 'prueba', 'prueba', 'prueba', '123456789', 'calle', '305', '5395914', 'update@gmail.com', 1, 1, 2, 1),
-(4, 'sadas', 'sdada', 'asdasd', 'sadasd', 'Direcciòn', 'Celular', 'Telefono', 'sadas@gmail.com', 1, 1, 2, 4);
+(4, 'sadas', 'sdada', 'asdasd', 'sadasd', 'Direcciòn', 'Celular', 'Telefono', 'sadas@gmail.com', 1, 1, 2, 4),
+(5, 'prueba', 'prueba', 'prueba', 'prueba', 'Direcciòn', 'Celular', 'Telefono', 'prueba@gmail.com', 1, 1, 2, NULL);
 
 -- --------------------------------------------------------
 
@@ -332,6 +368,15 @@ CREATE TABLE `Vacuna` (
 DROP TABLE IF EXISTS `listarMascota`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `listarMascota`  AS  select `M`.`idMascota` AS `idMascota`,`M`.`nombreMascota` AS `nombreMascota`,`M`.`fechaNacimiento` AS `fechaNacimiento`,`U`.`nombreUsuario` AS `nombreUsuario`,`R`.`tipoRaza` AS `tipoRaza`,`G`.`tipoSexo` AS `tipoSexo`,`M`.`ColorMascota` AS `ColorMascota`,`M`.`estadoMascota` AS `estadoMascota` from (((`Mascota` `M` join `Usuario` `U` on(`M`.`fkUsuario` = `U`.`idUsuario`)) join `Raza` `R` on(`M`.`fkRaza` = `R`.`idRaza`)) join `Genero` `G` on(`M`.`fkGenero` = `G`.`idGenero`)) ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `mascotaUsuario`
+--
+DROP TABLE IF EXISTS `mascotaUsuario`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `mascotaUsuario`  AS  select `Mascota`.`idMascota` AS `idMascota`,`Mascota`.`nombreMascota` AS `nombreMascota`,`Mascota`.`fechaNacimiento` AS `fechaNacimiento`,`Mascota`.`fkUsuario` AS `fkUsuario`,`Raza`.`tipoRaza` AS `tipoRaza`,`Genero`.`tipoSexo` AS `tipoSexo`,`Mascota`.`ColorMascota` AS `ColorMascota`,`Mascota`.`estadoMascota` AS `estadoMascota` from ((`Mascota` join `Raza` on(`Mascota`.`fkRaza` = `Raza`.`idRaza`)) join `Genero` on(`Mascota`.`fkGenero` = `Genero`.`idGenero`)) ;
 
 --
 -- Índices para tablas volcadas
@@ -477,7 +522,7 @@ ALTER TABLE `Agenda`
 -- AUTO_INCREMENT de la tabla `ConsultaMedica`
 --
 ALTER TABLE `ConsultaMedica`
-  MODIFY `idConsulta` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idConsulta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `Especie`
@@ -492,10 +537,16 @@ ALTER TABLE `Genero`
   MODIFY `idGenero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT de la tabla `HistoriaClinica`
+--
+ALTER TABLE `HistoriaClinica`
+  MODIFY `idHistoriaClinica` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
 -- AUTO_INCREMENT de la tabla `Mascota`
 --
 ALTER TABLE `Mascota`
-  MODIFY `idMascota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idMascota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `Raza`
@@ -507,7 +558,7 @@ ALTER TABLE `Raza`
 -- AUTO_INCREMENT de la tabla `Usuario`
 --
 ALTER TABLE `Usuario`
-  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

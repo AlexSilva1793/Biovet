@@ -125,8 +125,7 @@
                                 </div>
                             </div>
                         </form>
-                        <% if (request.getAttribute(
-                                    "mensajeError") != null) {  %> 
+                        <% if (request.getAttribute("mensajeError") != null) {  %> 
                         ${mensajeError}
                         <% } else { %>
                         ${mensajeExito}

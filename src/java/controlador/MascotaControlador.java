@@ -7,6 +7,7 @@ package controlador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -48,6 +49,7 @@ public class MascotaControlador extends HttpServlet {
 
         MascotaVO mascotaVO = new MascotaVO(idMascota, nombreMascota, fechaNacimiento, fkUsuario, fkRaza, fkGenero, colorMascota, estadoMascota);
         MascotaDAO mascotaDAO = new MascotaDAO(mascotaVO);
+        ArrayList<MascotaVO> arrayMascotas;
 
         switch (opcion) {
             case 1://Agregar Registro
@@ -56,7 +58,7 @@ public class MascotaControlador extends HttpServlet {
                 } else {
                     request.setAttribute("MensajeError", "La mascota no pudo ser agregada!");
                 }
-                request.getRequestDispatcher("registrarMascota.jsp").forward(request, response);
+                request.getRequestDispatcher("homeUsuario.jsp").forward(request, response);
                 break;
 
             case 2:// Eliminar Registro
@@ -65,7 +67,18 @@ public class MascotaControlador extends HttpServlet {
                 } else {
                     request.setAttribute("MensajeError", "El perfil de mascota no pudo ser eliminado!");
                 }
-                request.getRequestDispatcher("eliminarMascota.jsp").forward(request, response);
+                //request.getRequestDispatcher("eliminarMascota.jsp").forward(request, response);
+                break;
+            case 3://Buscar Mascota por Usuario
+                arrayMascotas = mascotaDAO.consultarRegistro();
+
+                if (!arrayMascotas.isEmpty()) {
+                    request.setAttribute("mascotas", arrayMascotas);
+                    request.getRequestDispatcher("listaMascotas.jsp").forward(request, response);
+                } else {
+                    request.setAttribute("MascotasError", "Id de usuario erroneo o no existe!");
+                    request.getRequestDispatcher("listaMascotas.jsp").forward(request, response);
+                }
                 break;
         }
 
