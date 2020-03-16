@@ -45,18 +45,20 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="col-xl-9 col-lg-9">
+                            <div class="col-xl-7 col-lg-7">
                                 <div class="main-menu  d-none d-lg-block">
                                     <nav>
                                         <ul id="navigation">
                                             <li><a  href="index.jsp">Inicio</a></li>
                                             <li><a href="#nosotros">Nosotros</a></li>
                                             <li><a href="#servicios">Servicios</a></li>
-                                            <li><a href="contact.html">Contáctenos</a></li>
-                                            <li><a href="login.jsp">Ingresar</a></li>
+                                            <li><a href="#contact">Contáctenos</a></li>
                                         </ul>
                                     </nav>
                                 </div>  
+                            </div>
+                            <div class="col-xl-2 col-lg-2">
+                                <a href="login.jsp" class="boxed-btn3">Ingresar</a>
                             </div>
                             <div class="col-12">
                                 <div class="mobile_menu d-block d-lg-none"></div>
@@ -67,419 +69,266 @@
             </div>
         </header>
         <!-- Fin Area Cabecera -->
-<!-- Inicio Area Slider -->
-    <div class="slider_area">
-        <div class="single_slider slider_bg_1 d-flex align-items-center">
+        <!-- Inicio Area Slider -->
+        <div class="slider_area">
+            <div class="single_slider slider_bg_1 d-flex align-items-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-5 col-md-6">
+                            <div class="slider_text">
+                                <h3>Conéctate fácil y rápido con <br> <span>BIOVET</span></h3>
+                                <p>Biovet te conecta a tu veterinaria de confianza y te ayuda a <br> 
+                                    gestionar tus citas y servicios.</p>
+                                <a href="#contact" class="boxed-btn4">Contáctenos</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="dog_thumb d-none d-lg-block">
+                    <img src="img/banner/dog.png" alt="">
+                </div>
+            </div>
+        </div>
+        <!-- Fin Area Slider -->
+        <!-- Inicio Area Servicios -->  
+        <div id="servicios" class="service_area">
             <div class="container">
-                <div class="row">
+                <div class="row justify-content-center ">
+                    <div class="col-lg-7 col-md-10">
+                        <div class="section_title text-center mb-95">
+                            <h3>Servicios para tu comodidad</h3>
+                            <p>Pensando en el bienestar de tu mascota, ofrecemos diferentes servicios para cumplir 
+                                con todas sus necesidades.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single_service active">
+                            <div class="service_thumb service_icon_bg_1 d-flex align-items-center justify-content-center">
+                                <div class="service_icon">
+                                    <img src="img/service/service_icon_1.png" alt="">
+                                </div>
+                            </div>
+                            <div class="service_content text-center">
+                                <h3>Agendamiento de Servicios Veterinarios</h3>
+                                <p>Realizar el agendamiento de todos los servicios para tus mascotas desde un buen baño, 
+                                    hasta una consulta médica.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single_service">
+                            <div class="service_thumb service_icon_bg_1 d-flex align-items-center justify-content-center">
+                                <div class="service_icon">
+                                    <img src="img/service/service_icon_2.png" alt="">
+                                </div>
+                            </div>
+                            <div class="service_content text-center">
+                                <h3>Reporte de Historias Clínicas</h3>
+                                <p>Llevar un control del estado de salud de tus mascotas y sus controles, 
+                                    y estar más atento a ellas.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Fin Area Servicios -->
+
+        <!-- Inicio Area Nosotros  -->
+        <div id="nosotros" class="pet_care_area">
+            <div class="container">
+                <div class="row align-items-center">
                     <div class="col-lg-5 col-md-6">
-                        <div class="slider_text">
-                            <h3>Nosotros Cuidamos <br> <span>Tus Mascotas</span></h3>
-                            <p>Biovet te conecta a tu veterinaria de confianza, <br> gestiona tus citas y servicios.</p>
-                            <a href="contact.html" class="boxed-btn4">Contáctenos</a>
+                        <div class="pet_thumb">
+                            <img src="img/about/pet_care.png" alt="">
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="dog_thumb d-none d-lg-block">
-                <img src="img/banner/dog.png" alt="">
-            </div>
-        </div>
-    </div>
-<!-- Fin Area Slider -->
-<!-- Inicio Area Servicios -->
-    <div id="servicios" class="service_area">
-        <div class="container">
-            <div class="row justify-content-center ">
-                <div class="col-lg-7 col-md-10">
-                    <div class="section_title text-center mb-95">
-                        <h3>Servicios para tu mascota</h3>
-                        <p>Pensando en el bienestar de tu mascota, ofrecemos diferentes servicios para cumplir con todas sus necesidades.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                 <div class="col-lg-4 col-md-6">
-                    <div class="single_service active">
-                         <div class="service_thumb service_icon_bg_1 d-flex align-items-center justify-content-center">
-                             <div class="service_icon">
-                                 <img src="img/service/service_icon_1.png" alt="">
-                             </div>
-                         </div>
-                         <div class="service_content text-center">
-                            <h3>Agendamiento de Servicios Veterinarios</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut</p>
-                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_service">
-                         <div class="service_thumb service_icon_bg_1 d-flex align-items-center justify-content-center">
-                             <div class="service_icon">
-                                 <img src="img/service/service_icon_2.png" alt="">
-                             </div>
-                         </div>
-                         <div class="service_content text-center">
-                            <h3>Reporte de Historias Clinicas</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut</p>
-                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-<!-- Fin Area Servicios -->
-
-    <!-- pet_care_area_start  -->
-    <div id="nosotros" class="pet_care_area">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-5 col-md-6">
-                    <div class="pet_thumb">
-                        <img src="img/about/pet_care.png" alt="">
-                    </div>
-                </div>
-                <div class="col-lg-6 offset-lg-1 col-md-6">
-                    <div class="pet_info">
-                        <div class="section_title">
-                            <h3><span>We care your pet </span> <br>
-                                As you care</h3>
-                            <p>Lorem ipsum dolor sit , consectetur adipiscing elit, sed do <br> iusmod tempor incididunt ut labore et dolore magna aliqua. <br> Quis ipsum suspendisse ultrices gravida. Risus commodo <br>
-                                viverra maecenas accumsan.</p>
-                            <a href="about.html" class="boxed-btn3">About Us</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- pet_care_area_end  -->
-
-    <!-- adapt_area_start  -->
-    <div class="adapt_area">
-        <div class="container">
-            <div class="row justify-content-between align-items-center">
-                <div class="col-lg-5">
-                    <div class="adapt_help">
-                        <div class="section_title">
-                            <h3><span>We need your</span>
-                                help Adopt Us</h3>
-                            <p>Lorem ipsum dolor sit , consectetur adipiscing elit, sed do iusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices.</p>
-                            <a href="contact.html" class="boxed-btn3">Contact Us</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="adapt_about">
-                        <div class="row align-items-center">
-                            <div class="col-lg-6 col-md-6">
-                                <div class="single_adapt text-center">
-                                    <img src="img/adapt_icon/1.png" alt="">
-                                    <div class="adapt_content">
-                                        <h3 class="counter">452</h3>
-                                        <p>Pets Available</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6">
-                                <div class="single_adapt text-center">
-                                    <img src="img/adapt_icon/3.png" alt="">
-                                    <div class="adapt_content">
-                                        <h3><span class="counter">52</span>+</h3>
-                                        <p>Pets Available</p>
-                                    </div>
-                                </div>
-                                <div class="single_adapt text-center">
-                                    <img src="img/adapt_icon/2.png" alt="">
-                                    <div class="adapt_content">
-                                        <h3><span class="counter">52</span>+</h3>
-                                        <p>Pets Available</p>
-                                    </div>
-                                </div>
+                    <div class="col-lg-6 offset-lg-1 col-md-6">
+                        <div class="pet_info">
+                            <div class="section_title">
+                                <h3><span>Nos preocupamos por tú mascota </span> <br>
+                                    Como tú lo harias</h3>
+                                <p>Un contacto vía Web entre tu veterinario de confianza y tú, para agilizar los trámites que estén relacionados con tus mascotas; 
+                                    agenda citas médicas, servicios de baño, peluquería y de guardería, sin moverte de la comodidad de tu casa 
+                                    y dándole la importancia a tu mascota que merece como un miembro más de la familia que es.</p>
+                                <a href="#contact" class="boxed-btn2">Contáctenos</a>                                
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- adapt_area_end  -->
+        <!-- Fin Area Nosotros  -->
 
-    <!-- testmonial_area_start  -->
-    <div class="testmonial_area">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="textmonial_active owl-carousel">
-                        <div class="testmonial_wrap">
-                            <div class="single_testmonial d-flex align-items-center">
-                                <div class="test_thumb">
-                                    <img src="img/testmonial/1.png" alt="">
-                                </div>
-                                <div class="test_content">
-                                    <h4>Jhon Walker</h4>
-                                    <span>Head of web design</span>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exerci.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="testmonial_wrap">
-                            <div class="single_testmonial d-flex align-items-center">
-                                <div class="test_thumb">
-                                    <img src="img/testmonial/1.png" alt="">
-                                </div>
-                                <div class="test_content">
-                                    <h4>Jhon Walker</h4>
-                                    <span>Head of web design</span>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exerci.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="testmonial_wrap">
-                            <div class="single_testmonial d-flex align-items-center">
-                                <div class="test_thumb">
-                                    <img src="img/testmonial/1.png" alt="">
-                                </div>
-                                <div class="test_content">
-                                    <h4>Jhon Walker</h4>
-                                    <span>Head of web design</span>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exerci.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-    <!-- testmonial_area_end  -->
-
-    <!-- team_area_start  -->
-    <div class="team_area">
-        <div class="container">
-            <div class="row justify-content-center ">
-                <div class="col-lg-6 col-md-10">
-                    <div class="section_title text-center mb-95">
-                        <h3>Our Team</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_team">
-                        <div class="thumb">
-                            <img src="img/team/1.png" alt="">
-                        </div>
-                        <div class="member_name text-center">
-                            <div class="mamber_inner">
-                                <h4>Rala Emaia</h4>
-                                <p>Senior Director</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_team">
-                        <div class="thumb">
-                            <img src="img/team/2.png" alt="">
-                        </div>
-                        <div class="member_name text-center">
-                            <div class="mamber_inner">
-                                <h4>jhon Smith</h4>
-                                <p>Senior Director</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_team">
-                        <div class="thumb">
-                            <img src="img/team/3.png" alt="">
-                        </div>
-                        <div class="member_name text-center">
-                            <div class="mamber_inner">
-                                <h4>Rala Emaia</h4>
-                                <p>Senior Director</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- team_area_start  -->
-
-    <div class="contact_anipat anipat_bg_1">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="contact_text text-center">
-                        <div class="section_title text-center">
-                            <h3>Why go with Anipat?</h3>
-                            <p>Because we know that even the best technology is only as good as the people behind it. 24/7 tech support.</p>
-                        </div>
-                        <div class="contact_btn d-flex align-items-center justify-content-center">
-                            <a href="contact.html" class="boxed-btn4">Contact Us</a>
-                            <p>Or  <a href="#"> +880 4664 216</a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- footer_start  -->
-    <footer class="footer">
-        <div class="footer_top">
+        <!-- Inicio Area Equipo  -->
+        <div class="team_area">
             <div class="container">
-                <div class="row">
-                    <div class="col-xl-3 col-md-6 col-lg-3">
-                        <div class="footer_widget">
-                            <h3 class="footer_title">
-                                Contact Us
-                            </h3>
-                            <ul class="address_line">
-                                <li>+555 0000 565</li>
-                                <li><a href="#">Demomail@gmail.Com</a></li>
-                                <li>700, Green Lane, New York, USA</li>
-                            </ul>
+                <div class="row justify-content-center ">
+                    <div class="col-lg-6 col-md-10">
+                        <div class="section_title text-center mb-95">
+                            <h3>Nuestro Equipo</h3>
+                            <p>Biovet tiene un equipo de trabajo que no solo piensa 
+                                en tú comodidad, sino que tiene como principio el bienestar de tú mascota y como ayudarte a agilizar 
+                                el adquirir todos los servicios para satisfacer sus necesidades</p>
                         </div>
                     </div>
-                    <div class="col-xl-3  col-md-6 col-lg-3">
-                        <div class="footer_widget">
-                            <h3 class="footer_title">
-                                Our Servces
-                            </h3>
-                            <ul class="links">
-                                <li><a href="#">Pet Insurance</a></li>
-                                <li><a href="#">Pet surgeries </a></li>
-                                <li><a href="#">Pet Adoption</a></li>
-                                <li><a href="#">Dog Insurance</a></li>
-                                <li><a href="#">Dog Insurance</a></li>
-                            </ul>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single_team">
+                            <div class="thumb">
+                                <img src="img/team/1.png" alt="">
+                            </div>
+                            <div class="member_name text-center">
+                                <div class="mamber_inner">
+                                    <h4>David Bejarano</h4>
+                                    <p>Director de Diseño</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-xl-3  col-md-6 col-lg-3">
-                        <div class="footer_widget">
-                            <h3 class="footer_title">
-                                Quick Link
-                            </h3>
-                            <ul class="links">
-                                <li><a href="#">About Us</a></li>
-                                <li><a href="#">Privacy Policy</a></li>
-                                <li><a href="#">Terms of Service</a></li>
-                                <li><a href="#">Login info</a></li>
-                                <li><a href="#">Knowledge Base</a></li>
-                            </ul>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single_team">
+                            <div class="thumb">
+                                <img src="img/team/2.png" alt="">
+                            </div>
+                            <div class="member_name text-center">
+                                <div class="mamber_inner">
+                                    <h4>Alex Silva</h4>
+                                    <p>Director de Desarrollo</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-xl-3 col-md-6 col-lg-3 ">
-                        <div class="footer_widget">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single_team">
+                            <div class="thumb">
+                                <img src="img/team/3.png" alt="">
+                            </div>
+                            <div class="member_name text-center">
+                                <div class="mamber_inner">
+                                    <h4>Andrea Jimenez</h4>
+                                    <p>Directora Comercial</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Fin Area Equipo  -->
+
+        <!-- Inicio Area Contactenos -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <div class="section_title">
+                    <h2 class="contact-title">Contáctenos</h2>
+                </div>
+            </div>
+            <div class ="row justify-content-center">
+                <div class="col-lg-6 col-md-6">
+                    <form class="form-contact contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <textarea class="form-control w-100" name="message" id="message" cols="30" rows="9" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Mensaje'" placeholder="Mensaje"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input class="form-control valid" name="name" id="name" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Ingrese su nombre'" placeholder="Ingrese su nombre">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input class="form-control valid" name="phone" id="phone" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Telefono'" placeholder="Telefono">
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-12">
+                                <div class="form-group">
+                                    <input class="form-control valid" name="email" id="email" type="email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Correo Electrónico'" placeholder="Correo">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <button type="submit" class="button button-contactForm boxed-btn2">Enviar</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="media contact-info">
+                        <span class="contact-info__icon"><i class="ti-home"></i></span>
+                        <div class="media-body">
+                            <h3>Mosquera, Cundinamarca.</h3>
+                        </div>
+                    </div>
+                    <div class="media contact-info">
+                        <span class="contact-info__icon"><i class="ti-email"></i></span>
+                        <div class="media-body">
+                            <h3>biovetweb@gmail.com</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Inicio Footer  -->
+        <footer class="footer">
+            <div class="footer_top">
+                <div class="container">
+                    <div class="bordered_1px"></div>
+                    <div class="row">
+                        <div class="col-md-3 col-lg-9">
+                            <p class="copy_right text-center">
+                            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                            </p>
+                        </div>
+                        <div class="col-md-9 col-lg-3">
                             <div class="footer_logo">
-                                <a href="#">
+                                <a href="index.jsp">
                                     <img src="img/logo.png" alt="">
                                 </a>
                             </div>
-                            <p class="address_text">239 E 5th St, New York 
-                                NY 10003, USA
-                            </p>
-                            <div class="socail_links">
-                                <ul>
-                                    <li>
-                                        <a href="#">
-                                            <i class="ti-facebook"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="ti-pinterest"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-google-plus"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-linkedin"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="copy-right_text">
-            <div class="container">
-                <div class="bordered_1px"></div>
-                <div class="row">
-                    <div class="col-xl-12">
-                        <p class="copy_right text-center">
-                            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="ti-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- footer_end  -->
+        </footer>
+        <!-- footer_end  -->
 
 
-    <!-- JS here -->
-    <script src="js/vendor/modernizr-3.5.0.min.js"></script>
-    <script src="js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/isotope.pkgd.min.js"></script>
-    <script src="js/ajax-form.js"></script>
-    <script src="js/waypoints.min.js"></script>
-    <script src="js/jquery.counterup.min.js"></script>
-    <script src="js/imagesloaded.pkgd.min.js"></script>
-    <script src="js/scrollIt.js"></script>
-    <script src="js/jquery.scrollUp.min.js"></script>
-    <script src="js/wow.min.js"></script>
-    <script src="js/nice-select.min.js"></script>
-    <script src="js/jquery.slicknav.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/plugins.js"></script>
-    <script src="js/gijgo.min.js"></script>
+        <!-- JS here -->
+        <script src="js/vendor/modernizr-3.5.0.min.js"></script>
+        <script src="js/vendor/jquery-1.12.4.min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/owl.carousel.min.js"></script>
+        <script src="js/isotope.pkgd.min.js"></script>
+        <script src="js/ajax-form.js"></script>
+        <script src="js/waypoints.min.js"></script>
+        <script src="js/jquery.counterup.min.js"></script>
+        <script src="js/imagesloaded.pkgd.min.js"></script>
+        <script src="js/scrollIt.js"></script>
+        <script src="js/jquery.scrollUp.min.js"></script>
+        <script src="js/wow.min.js"></script>
+        <script src="js/nice-select.min.js"></script>
+        <script src="js/jquery.slicknav.min.js"></script>
+        <script src="js/jquery.magnific-popup.min.js"></script>
+        <script src="js/plugins.js"></script>
+        <script src="js/gijgo.min.js"></script>
 
-    <!--contact js-->
-    <script src="js/contact.js"></script>
-    <script src="js/jquery.ajaxchimp.min.js"></script>
-    <script src="js/jquery.form.js"></script>
-    <script src="js/jquery.validate.min.js"></script>
-    <script src="js/mail-script.js"></script>
+        <!--contact js-->
+        <script src="js/contact.js"></script>
+        <script src="js/jquery.ajaxchimp.min.js"></script>
+        <script src="js/jquery.form.js"></script>
+        <script src="js/jquery.validate.min.js"></script>
+        <script src="js/mail-script.js"></script>
 
-    <script src="js/main.js"></script>
-    <script>
-        $('#datepicker').datepicker({
-            iconsLibrary: 'fontawesome',
-            disableDaysOfWeek: [0, 0],
-        //     icons: {
-        //      rightIcon: '<span class="fa fa-caret-down"></span>'
-        //  }
-        });
-        $('#datepicker2').datepicker({
-            iconsLibrary: 'fontawesome',
-            icons: {
-             rightIcon: '<span class="fa fa-caret-down"></span>'
-         }
-
-        });
-        var timepicker = $('#timepicker').timepicker({
-         format: 'HH.MM'
-     });
-    </script>
-
+        <script src="js/main.js"></script>
     </body>
 </html>

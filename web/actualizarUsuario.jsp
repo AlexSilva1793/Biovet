@@ -15,43 +15,64 @@
     //response.setHeader("Pragma", "no-cache");
     //response.setHeader("Expires", "0");
 
-    GeneroVO generosVO = new GeneroVO();
-    GeneroDAO generosDAO = new GeneroDAO();
-
-    ArrayList<GeneroVO> arrayGeneros = generosDAO.consultarGeneral();
-
-    String idGeneroUsu = "";
-    String generoUsu = "";
-
-    ArrayList<UsuarioVO> usuarioVOSesion = (ArrayList<UsuarioVO>) session.getAttribute("usuariosArray");
-    String redirectURL = "index.jsp";
-
-    if (usuarioVOSesion != null) {
-
-        for (int i = 0; i < arrayGeneros.size(); i++) {
-
-            if (usuarioVOSesion.get(0).getFkGenero() != null) {
-
-                if (Integer.parseInt(arrayGeneros.get(i).getIdGenero()) == Integer.parseInt(usuarioVOSesion.get(0).getFkGenero())) {
-                    idGeneroUsu = arrayGeneros.get(i).getIdGenero();
-                    generoUsu = arrayGeneros.get(i).getTipoSexo();
-
-                }
-            } else {
-                idGeneroUsu = "1";
-                generoUsu = "Selecciona tu Genero";
-            }
-        }
-
-    } else {
-        response.sendRedirect(redirectURL);
-    }
-%>
-</head>
 <html>
     <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <link rel="shortcut icon" type="image/x-icon" href="img/icono.png">
+        <title>Biovet</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- CSS here -->
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/owl.carousel.min.css">
+        <link rel="stylesheet" href="css/magnific-popup.css">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/themify-icons.css">
+        <link rel="stylesheet" href="css/nice-select.css">
+        <link rel="stylesheet" href="css/flaticon.css">
+        <link rel="stylesheet" href="css/gijgo.css">
+        <link rel="stylesheet" href="css/animate.css">
+        <link rel="stylesheet" href="css/slicknav.css">
+        <link rel="stylesheet" href="css/style.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Actualizar Usuario</title>
+        <%
+            response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+            response.setHeader("Pragma", "no-cache");
+            response.setHeader("Expires", "0");
+
+            GeneroVO generosVO = new GeneroVO();
+            GeneroDAO generosDAO = new GeneroDAO();
+
+            ArrayList<GeneroVO> arrayGeneros = generosDAO.consultarGeneral();
+
+            String idGeneroUsu = "";
+            String generoUsu = "";
+
+            ArrayList<UsuarioVO> usuarioVOSesion = (ArrayList<UsuarioVO>) session.getAttribute("usuariosArray");
+            String redirectURL = "index.jsp";
+
+            if (usuarioVOSesion != null) {
+
+                for (int i = 0; i < arrayGeneros.size(); i++) {
+
+                    if (usuarioVOSesion.get(0).getFkGenero() != null) {
+
+                        if (Integer.parseInt(arrayGeneros.get(i).getIdGenero()) == Integer.parseInt(usuarioVOSesion.get(0).getFkGenero())) {
+                            idGeneroUsu = arrayGeneros.get(i).getIdGenero();
+                            generoUsu = arrayGeneros.get(i).getTipoSexo();
+
+                        }
+                    } else {
+                        idGeneroUsu = "1";
+                        generoUsu = "Selecciona tu Genero";
+                    }
+                }
+
+            } else {
+                response.sendRedirect(redirectURL);
+            }
+        %>        
     </head>
     <body>
         <h1>Actualiza tus datos</h1><br><br><br>
