@@ -46,7 +46,7 @@ public class HistoriaClinicaDAO extends ConexionBD implements InterfaceCR {
     @Override
     public boolean agregarRegistro() {
         try {
-            query = "INSERT INTO historiaclinica (fechaApertura, fkMascota) VALUES ('" + fechaApertura + "', '" + fkMascota + "');";
+            query = "INSERT INTO HistoriaClinica (fkMascota) VALUES ('" + fkMascota + "');";
             statement.executeUpdate(query);
             operacion = true;
         } catch (Exception e) {
@@ -56,11 +56,11 @@ public class HistoriaClinicaDAO extends ConexionBD implements InterfaceCR {
     }
 
     @Override
-    public ArrayList consultarRegistro() {
-        
+    public ArrayList<HistoriaClinicaVO> consultarRegistro() {
+
         ArrayList<HistoriaClinicaVO> historiaArray = new ArrayList<>();
         try {
-            query = "SELECT * FROM historiaclinica WHERE idHistoriaClinica = '"+idHistoriaClinica+"'";
+            query = "SELECT * FROM HistoriaClinica WHERE fkMascota = '" + fkMascota + "'";
             resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
                 HistoriaClinicaVO historiaTmp = new HistoriaClinicaVO();
@@ -68,7 +68,7 @@ public class HistoriaClinicaDAO extends ConexionBD implements InterfaceCR {
                 historiaTmp.setIdHistoriaClinica(resultSet.getString(1));
                 historiaTmp.setFechaApertura(resultSet.getString(2));
                 historiaTmp.setFkMascota(resultSet.getString(3));
-                System.out.println(historiaTmp);
+                
                 historiaArray.add(historiaTmp);
 
             }
@@ -80,9 +80,9 @@ public class HistoriaClinicaDAO extends ConexionBD implements InterfaceCR {
 
     @Override
     public ArrayList consultarGeneral() {
-                ArrayList<HistoriaClinicaVO> historiaArray = new ArrayList<>();
+        ArrayList<HistoriaClinicaVO> historiaArray = new ArrayList<>();
         try {
-            query = "SELECT * FROM historiaclinica";
+            query = "SELECT * FROM HistoriaClinica";
             resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
                 HistoriaClinicaVO historiaTmp = new HistoriaClinicaVO();

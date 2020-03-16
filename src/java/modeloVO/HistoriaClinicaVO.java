@@ -44,4 +44,9 @@ public class HistoriaClinicaVO {
         this.fkMascota = fkMascota;
     }
 
+    @Override
+    public String toString() {
+        return "HistoriaClinicaVO{" + "idHistoriaClinica=" + idHistoriaClinica + ", fechaApertura=" + fechaApertura + ", fkMascota=" + fkMascota + '}';
+    }
+
 }

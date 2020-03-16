@@ -8,14 +8,10 @@
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Home Administrador</title>
         <%
-            response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-            response.setHeader("Pragma", "no-cache");
-            response.setHeader("Expires", "0");
+            //response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+            //response.setHeader("Pragma", "no-cache");
+            //response.setHeader("Expires", "0");
 
             String nombreUsuario = "";
             ArrayList<UsuarioVO> usuarioVOSesion = (ArrayList<UsuarioVO>) session.getAttribute("usuariosArray");
@@ -32,6 +28,27 @@
                 response.sendRedirect(redirectURL);
             }
         %>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <link rel="shortcut icon" type="image/x-icon" href="img/icono.png">
+        <title>Biovet</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- CSS here -->
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/owl.carousel.min.css">
+        <link rel="stylesheet" href="css/magnific-popup.css">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/themify-icons.css">
+        <link rel="stylesheet" href="css/nice-select.css">
+        <link rel="stylesheet" href="css/flaticon.css">
+        <link rel="stylesheet" href="css/gijgo.css">
+        <link rel="stylesheet" href="css/animate.css">
+        <link rel="stylesheet" href="css/slicknav.css">
+        <link rel="stylesheet" href="css/style.css">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">        
     </head>
     <body>
         <h1>Bienvenido Administrador!</h1>
@@ -39,6 +56,7 @@
         <a href="actualizarUsuario.jsp">Actualizar Datos</a><br>
         
         <a href="listaUsuarios.jsp">Listado Usuarios </a><br>
+        <a href="listaMascotas.jsp">Listado de las Mascotas </a><br>
 
         <form action="Usuario" method="post">
 

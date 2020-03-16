@@ -7,6 +7,7 @@ package controlador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,49 +36,52 @@ public class MascotaControlador extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-            
-        int opcion=Integer.parseInt(request.getParameter("opcion"));
-        String idMascota=request.getParameter("textIdMascota");
-        String nombreMascota=request.getParameter("textNombreMascota");
-        String fechaNacimiento=request.getParameter("textFechaNacimiento");
-        String fkUsuario=request.getParameter("textFkUsuario");
-        String fkRaza=request.getParameter("textFkRaza");
-        String fkGenero=request.getParameter("textFkGenero");
-        String colorMascota=request.getParameter("textcolorMascota");
-        String estadoMascota=request.getParameter("textEstadoMascota");
-        
-        MascotaVO mascotaVO=new MascotaVO(idMascota, nombreMascota, fechaNacimiento, fkUsuario, fkRaza, fkGenero, colorMascota, estadoMascota);
+
+        int opcion = Integer.parseInt(request.getParameter("opcion"));
+        String idMascota = request.getParameter("textIdMascota");
+        String nombreMascota = request.getParameter("textNombreMascota");
+        String fechaNacimiento = request.getParameter("textFechaNacimiento");
+        String fkUsuario = request.getParameter("textFkUsuario");
+        String fkRaza = request.getParameter("textFkRaza");
+        String fkGenero = request.getParameter("textFkGenero");
+        String colorMascota = request.getParameter("textcolorMascota");
+        String estadoMascota = request.getParameter("textEstadoMascota");
+
+        MascotaVO mascotaVO = new MascotaVO(idMascota, nombreMascota, fechaNacimiento, fkUsuario, fkRaza, fkGenero, colorMascota, estadoMascota);
         MascotaDAO mascotaDAO = new MascotaDAO(mascotaVO);
-        
-        switch (opcion){
+        ArrayList<MascotaVO> arrayMascotas;
+
+        switch (opcion) {
             case 1://Agregar Registro
-                if (mascotaDAO.agregarRegistro()){
-                    request.setAttribute("MensajeExito","La mascota fue agregada correctamente!");
-                }else{
-                    request.setAttribute("MensajeError","La mascota no pudo ser agregada!");
+                if (mascotaDAO.agregarRegistro()) {
+                    request.setAttribute("MensajeExito", "La mascota fue agregada correctamente!");
+                } else {
+                    request.setAttribute("MensajeError", "La mascota no pudo ser agregada!");
                 }
-            request.getRequestDispatcher("registrarMascota.jsp").forward(request, response);
-            break;
-            
-            case 2:// Actualizar Registro
-                if (mascotaDAO.actualizarRegistro()){
-                    request.setAttribute("MensajeExito","Datos de tu mascota actualizados correctamente!");
-                }else{
-                    request.setAttribute("MensajeError","Los datos de tu mascota no fueron actualizados!");
+                request.getRequestDispatcher("homeUsuario.jsp").forward(request, response);
+                break;
+
+            case 2:// Eliminar Registro
+                if (mascotaDAO.eliminarRegistro()) {
+                    request.setAttribute("MensajeExito", "Mascota Eliminada correctamente!");
+                } else {
+                    request.setAttribute("MensajeError", "El perfil de mascota no pudo ser eliminado!");
                 }
-            request.getRequestDispatcher("actualizarMascota.jsp").forward(request, response);
-            break;
-            
-            case 4:// Eliminar Registro
-                if (mascotaDAO.eliminarRegistro()){
-                    request.setAttribute("MensajeExito","Mascota Eliminada correctamente!");
-                }else{
-                    request.setAttribute("MensajeError","El perfil de mascota no pudo ser eliminado!");
+                //request.getRequestDispatcher("eliminarMascota.jsp").forward(request, response);
+                break;
+            case 3://Buscar Mascota por Usuario
+                arrayMascotas = mascotaDAO.consultarRegistro();
+
+                if (!arrayMascotas.isEmpty()) {
+                    request.setAttribute("mascotas", arrayMascotas);
+                    request.getRequestDispatcher("listaMascotas.jsp").forward(request, response);
+                } else {
+                    request.setAttribute("MascotasError", "Id de usuario erroneo o no existe!");
+                    request.getRequestDispatcher("listaMascotas.jsp").forward(request, response);
                 }
-            request.getRequestDispatcher("eliminarMascota.jsp").forward(request, response);
-            break;
+                break;
         }
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

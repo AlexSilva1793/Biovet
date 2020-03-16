@@ -72,12 +72,12 @@ public class MascotaDAO extends ConexionBD implements InterfaceCrud {
     public ArrayList<MascotaVO> consultarRegistro() {
         ArrayList<MascotaVO> mascotArray = new ArrayList<>();
         try {
-            query = "select * from mascota where fkUsuario='" + fkUsuario + "';";
-            resultSet=statement.executeQuery(query);
-            while (resultSet.next()){
-                
-                MascotaVO mascotaTemp=new MascotaVO();
-                
+            query = "select * from mascotaUsuario where fkUsuario='" + fkUsuario + "';";
+            resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+
+                MascotaVO mascotaTemp = new MascotaVO();
+
                 mascotaTemp.setIdMascota(resultSet.getString(1));
                 mascotaTemp.setNombreMascota(resultSet.getString(2));
                 mascotaTemp.setFechaNacimiento(resultSet.getString(3));
@@ -86,7 +86,7 @@ public class MascotaDAO extends ConexionBD implements InterfaceCrud {
                 mascotaTemp.setFkGenero(resultSet.getString(6));
                 mascotaTemp.setColorMascota(resultSet.getString(7));
                 mascotaTemp.setEstadoMascota(resultSet.getString(8));
-                System.out.println(mascotaTemp);
+                //System.out.println(mascotaTemp);
                 mascotArray.add(mascotaTemp);
             }
         } catch (Exception e) {
@@ -94,7 +94,7 @@ public class MascotaDAO extends ConexionBD implements InterfaceCrud {
         }
         return mascotArray;
     }
-    
+    //Este Metodo no se usa.
     @Override
     public boolean actualizarRegistro() {
 
@@ -113,7 +113,7 @@ public class MascotaDAO extends ConexionBD implements InterfaceCrud {
     @Override
     public boolean eliminarRegistro() {
         try {
-            query = "delete from mascota where idMascota='" + idMascota + "';";
+            query = "UPDATE `Mascota` SET `estadoMascota` = '0' WHERE `Mascota`.`idMascota` = " + idMascota;
             statement.executeUpdate(query);
             operacion = true;
         } catch (Exception e) {
@@ -126,12 +126,12 @@ public class MascotaDAO extends ConexionBD implements InterfaceCrud {
     public ArrayList consultarGeneral() {
         ArrayList<MascotaVO> mascotArray = new ArrayList<>();
         try {
-            query = "select * from mascota;";
-            resultSet=statement.executeQuery(query);
-            while (resultSet.next()){
-                
-                MascotaVO mascotaTemp=new MascotaVO();
-                
+            query = "select * from listarMascota;";
+            resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+
+                MascotaVO mascotaTemp = new MascotaVO();
+
                 mascotaTemp.setIdMascota(resultSet.getString(1));
                 mascotaTemp.setNombreMascota(resultSet.getString(2));
                 mascotaTemp.setFechaNacimiento(resultSet.getString(3));
@@ -140,7 +140,7 @@ public class MascotaDAO extends ConexionBD implements InterfaceCrud {
                 mascotaTemp.setFkGenero(resultSet.getString(6));
                 mascotaTemp.setColorMascota(resultSet.getString(7));
                 mascotaTemp.setEstadoMascota(resultSet.getString(8));
-                System.out.println(mascotaTemp);
+                //System.out.println(mascotaTemp);
                 mascotArray.add(mascotaTemp);
             }
         } catch (Exception e) {
@@ -148,5 +148,11 @@ public class MascotaDAO extends ConexionBD implements InterfaceCrud {
         }
         return mascotArray;
     }
+
+//    public static void main(String[] args) {
+//        MascotaVO mascotaVO = new MascotaVO("1", "Max", "2020-02-11", "1", "1", "1", "Negro", null);
+//        MascotaDAO mascotaDAO = new MascotaDAO(mascotaVO);
+//        System.out.println(mascotaDAO.consultarGeneral());
+//    }
 
 }

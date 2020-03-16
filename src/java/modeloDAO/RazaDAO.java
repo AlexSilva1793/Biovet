@@ -30,8 +30,18 @@ public class RazaDAO extends ConexionBD implements InterfaceCR {
     private String tipoRaza = "";
     private String fkEspecie = "";
 
+    public RazaDAO() {
+        try {
+            conection = this.obtenerConexion();
+            statement = conection.createStatement();
+
+        } catch (Exception e) {
+            System.out.println("Error" + e.toString());
+        }
+    }
+
     public RazaDAO(RazaVO razaVO) {
-        
+
         super();
 
         try {
@@ -55,57 +65,57 @@ public class RazaDAO extends ConexionBD implements InterfaceCR {
     public boolean agregarRegistro() {
 
         try {
-            
-            query="insert into raza (tipoRaza, fkEspecie) values ('"+tipoRaza+"', '"+fkEspecie+"');";
+
+            query = "insert into raza (tipoRaza, fkEspecie) values ('" + tipoRaza + "', '" + fkEspecie + "');";
             statement.executeUpdate(query);
-            operacion=true;
+            operacion = true;
 
         } catch (Exception e) {
-            System.out.println("Error"+e.toString());
+            System.out.println("Error" + e.toString());
         }
         return operacion;
     }
 
     @Override
     public ArrayList<RazaVO> consultarRegistro() {
-        ArrayList<RazaVO> razaArray=new ArrayList<>();
+        ArrayList<RazaVO> razaArray = new ArrayList<>();
         try {
-            query="select * from raza where idRaza='"+idRaza+"';";
-            resultSet=statement.executeQuery(query);
-            
-            while(resultSet.next()){
-                RazaVO razaTmp=new RazaVO();
-                
+            query = "select * from raza where idRaza='" + idRaza + "';";
+            resultSet = statement.executeQuery(query);
+
+            while (resultSet.next()) {
+                RazaVO razaTmp = new RazaVO();
+
                 razaTmp.setIdRaza(resultSet.getString(1));
                 razaTmp.setTipoRaza(resultSet.getString(2));
-                
+
                 razaArray.add(razaTmp);
             }
-            
+
         } catch (Exception e) {
-            System.out.println("Error"+e.toString());
+            System.out.println("Error" + e.toString());
         }
         return razaArray;
     }
 
     @Override
     public ArrayList consultarGeneral() {
-        ArrayList<RazaVO> razaArray=new ArrayList<>();
+        ArrayList<RazaVO> razaArray = new ArrayList<>();
         try {
-            query="select * from raza;";
-            resultSet=statement.executeQuery(query);
-            
-            while(resultSet.next()){
-                RazaVO razaTmp=new RazaVO();
-                
+            query = "select * from Raza;";
+            resultSet = statement.executeQuery(query);
+
+            while (resultSet.next()) {
+                RazaVO razaTmp = new RazaVO();
+
                 razaTmp.setIdRaza(resultSet.getString(1));
                 razaTmp.setTipoRaza(resultSet.getString(2));
-                
+
                 razaArray.add(razaTmp);
             }
-            
+
         } catch (Exception e) {
-            System.out.println("Error"+e.toString());
+            System.out.println("Error" + e.toString());
         }
         return razaArray;
     }
