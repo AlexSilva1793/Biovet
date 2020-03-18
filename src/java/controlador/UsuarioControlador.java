@@ -117,7 +117,7 @@ public class UsuarioControlador extends HttpServlet {
                 session.invalidate();
                 request.getRequestDispatcher("login.jsp").forward(request, response);
                 break;
-            case 7:
+            case 7://Desactivar Usuario
                 if (usuarioDAO.eliminarRegistro()) {
                     request.getRequestDispatcher("listaUsuarios.jsp").forward(request, response);
                 } else {
