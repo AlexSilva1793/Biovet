@@ -8,26 +8,26 @@
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-        <%
-            //response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-            //response.setHeader("Pragma", "no-cache");
-            //response.setHeader("Expires", "0");
+<%
+    //response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    //response.setHeader("Pragma", "no-cache");
+    //response.setHeader("Expires", "0");
 
-            String nombreUsuario = "";
-            ArrayList<UsuarioVO> usuarioVOSesion = (ArrayList<UsuarioVO>) session.getAttribute("usuariosArray");
+    String nombreUsuario = "";
+    ArrayList<UsuarioVO> usuarioVOSesion = (ArrayList<UsuarioVO>) session.getAttribute("usuariosArray");
 
-            String redirectURL = "index.jsp";
+    String redirectURL = "index.jsp";
 
-            if (usuarioVOSesion != null) {
-                nombreUsuario = usuarioVOSesion.get(0).getNombreUsuario();
-                if (Integer.parseInt(usuarioVOSesion.get(0).getFkRol()) != 1) {
-                    response.sendRedirect(redirectURL);
-                }
-            } else {
+    if (usuarioVOSesion != null) {
+        nombreUsuario = usuarioVOSesion.get(0).getNombreUsuario();
+        if (Integer.parseInt(usuarioVOSesion.get(0).getFkRol()) != 1) {
+            response.sendRedirect(redirectURL);
+        }
+    } else {
 
-                response.sendRedirect(redirectURL);
-            }
-        %>
+        response.sendRedirect(redirectURL);
+    }
+%>
 <html>
     <head>
         <meta charset="utf-8">
@@ -54,9 +54,13 @@
         <h1>Bienvenido Administrador!</h1>
         <h2 ><%=nombreUsuario%> ></h2>
         <a href="actualizarUsuario.jsp">Actualizar Datos</a><br>
-        
+
         <a href="listaUsuarios.jsp">Listado Usuarios </a><br>
         <a href="listaMascotas.jsp">Listado de las Mascotas </a><br>
+        
+        <a href="Reportes?opcion=1">Reporte Cx</a><br>
+        <a href="Reportes?opcion=2">Reporte Examenes</a><br>
+        <a href="Reportes?opcion=3">Reporte Vacunas</a><br>
 
         <form action="Usuario" method="post">
 
