@@ -5,8 +5,11 @@
  */
 package util;
 
+import static java.lang.Class.forName;
+import static java.lang.System.out;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import static java.sql.DriverManager.getConnection;
 import java.sql.SQLException;
 
 /**
@@ -27,12 +30,12 @@ public class ConexionBD {
         url = "jdbc:mysql://localhost:3306/" + bd;
 
         try {
-            Class.forName(driver).newInstance();
-            conexion = DriverManager.getConnection(url, user, pass);
-            System.out.println("Conexión OK!");
+            forName(driver).newInstance();
+            conexion = getConnection(url, user, pass);
+            out.println("Conexión OK!");
 
-        } catch (Exception e) {
-            System.out.println("Error al conectarse" + e);
+        } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | SQLException e) {
+            out.println("Error al conectarse" + e);
         }
 
     }

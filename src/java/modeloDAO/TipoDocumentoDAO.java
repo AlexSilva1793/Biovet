@@ -5,8 +5,10 @@
  */
 package modeloDAO;
 
+import static java.lang.System.out;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import modeloVO.TipoDocumentoVO;
@@ -34,8 +36,8 @@ public class TipoDocumentoDAO extends ConexionBD implements InterfaceCR {
             conection = this.obtenerConexion();
             statement = conection.createStatement();
 
-        } catch (Exception e) {
-            System.out.println("Error" + e.toString());
+        } catch (SQLException e) {
+            out.println("Error" + e.toString());
         }
     }
 
@@ -47,8 +49,8 @@ public class TipoDocumentoDAO extends ConexionBD implements InterfaceCR {
 
             idTipoDocu = tipoDocVO.getIdTipoDocu();
             tipoDocu = tipoDocVO.getTipoDocu();
-        } catch (Exception e) {
-            System.out.println("Error" + e.toString());
+        } catch (SQLException e) {
+            out.println("Error" + e.toString());
         }
     }
 
@@ -58,8 +60,8 @@ public class TipoDocumentoDAO extends ConexionBD implements InterfaceCR {
             query = "INSERT INTO `TipoDocumento` (`idTipoDocu`, `tipoDocu`) VALUES (NULL, '" + tipoDocu + "')";
             statement.executeUpdate(query);
             operacion = true;
-        } catch (Exception e) {
-            System.out.println("Error al agregar el tipo de documento  " + e.toString());
+        } catch (SQLException e) {
+            out.println("Error al agregar el tipo de documento  " + e.toString());
         }
         return operacion;
     }
@@ -80,8 +82,8 @@ public class TipoDocumentoDAO extends ConexionBD implements InterfaceCR {
 
                 tipoDocumentoArray.add(tipoDocumentoTmp);
             }
-        } catch (Exception e) {
-            System.out.println("Error al consultar el tipo de documento  " + e.toString());
+        } catch (SQLException e) {
+            out.println("Error al consultar el tipo de documento  " + e.toString());
         }
         return tipoDocumentoArray;
     }
@@ -102,8 +104,8 @@ public class TipoDocumentoDAO extends ConexionBD implements InterfaceCR {
 
                 tiposDocumentosArray.add(tipoDocumentoTmp);
             }
-        } catch (Exception e) {
-            System.out.println("Error al consultar los tipos de documentos  " + e.toString());
+        } catch (SQLException e) {
+            out.println("Error al consultar los tipos de documentos  " + e.toString());
         }
         return tiposDocumentosArray;
     }

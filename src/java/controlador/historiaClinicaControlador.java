@@ -7,6 +7,8 @@ package controlador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.Integer.parseInt;
+import static java.lang.System.out;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -40,7 +42,7 @@ public class historiaClinicaControlador extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         //Historia Clinica
-        int opcion = Integer.parseInt(request.getParameter("opcion"));
+        int opcion = parseInt(request.getParameter("opcion"));
         String idHistoriaClinica = request.getParameter("txtIdHistoriaClinica");
         String fechaApertura = request.getParameter("textFechaApertura");
         String fkMascota = request.getParameter("textFkMascota");
@@ -92,9 +94,9 @@ public class historiaClinicaControlador extends HttpServlet {
                     request.setAttribute("fkMascota", fkMascota);
                     request.setAttribute("historialMedico", arrayHistorias);
                     request.getRequestDispatcher("historiaClinica.jsp").forward(request, response);
-                    System.out.println("Registro agregado");
+                    out.println("Registro agregado");
                 } else {
-                    System.out.println("No se pudo agregar registro");
+                    out.println("No se pudo agregar registro");
                 }
                 break;
             case 3://Crear Consulta Medica

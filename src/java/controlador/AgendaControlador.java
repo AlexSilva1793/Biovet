@@ -7,6 +7,8 @@ package controlador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.Integer.parseInt;
+import static java.lang.System.out;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -36,7 +38,7 @@ public class AgendaControlador extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
-        int opcion = Integer.parseInt(request.getParameter("opcion"));
+        int opcion = parseInt(request.getParameter("opcion"));
         String idAgenda = request.getParameter("txtIdAgenda");
         String fechaAgenda = request.getParameter("txtFechaAgenda");
         String fkServicio = request.getParameter("txtFkServicio");
@@ -56,7 +58,7 @@ public class AgendaControlador extends HttpServlet {
                 } else {
 
                     request.setAttribute("mensajeError", "¡ No se pudo realizar la agenda correctamente !");
-                    System.out.println(fechaAgenda);
+                    out.println(fechaAgenda);
 
                 }
                 request.getRequestDispatcher("registrarAgenda.jsp").forward(request, response);
