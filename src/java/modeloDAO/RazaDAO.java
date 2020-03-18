@@ -5,8 +5,10 @@
  */
 package modeloDAO;
 
+import static java.lang.System.out;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import modeloVO.RazaVO;
@@ -35,8 +37,8 @@ public class RazaDAO extends ConexionBD implements InterfaceCR {
             conection = this.obtenerConexion();
             statement = conection.createStatement();
 
-        } catch (Exception e) {
-            System.out.println("Error" + e.toString());
+        } catch (SQLException e) {
+            out.println("Error" + e.toString());
         }
     }
 
@@ -53,9 +55,9 @@ public class RazaDAO extends ConexionBD implements InterfaceCR {
             tipoRaza = razaVO.getTipoRaza();
             fkEspecie = razaVO.getFkEspecie();
 
-        } catch (Exception e) {
+        } catch (SQLException e) {
 
-            System.out.println("Error" + e.toString());
+            out.println("Error" + e.toString());
 
         }
 
@@ -70,8 +72,8 @@ public class RazaDAO extends ConexionBD implements InterfaceCR {
             statement.executeUpdate(query);
             operacion = true;
 
-        } catch (Exception e) {
-            System.out.println("Error" + e.toString());
+        } catch (SQLException e) {
+            out.println("Error" + e.toString());
         }
         return operacion;
     }
@@ -92,8 +94,8 @@ public class RazaDAO extends ConexionBD implements InterfaceCR {
                 razaArray.add(razaTmp);
             }
 
-        } catch (Exception e) {
-            System.out.println("Error" + e.toString());
+        } catch (SQLException e) {
+            out.println("Error" + e.toString());
         }
         return razaArray;
     }
@@ -114,8 +116,8 @@ public class RazaDAO extends ConexionBD implements InterfaceCR {
                 razaArray.add(razaTmp);
             }
 
-        } catch (Exception e) {
-            System.out.println("Error" + e.toString());
+        } catch (SQLException e) {
+            out.println("Error" + e.toString());
         }
         return razaArray;
     }

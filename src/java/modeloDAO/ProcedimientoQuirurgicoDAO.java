@@ -5,8 +5,10 @@
  */
 package modeloDAO;
 
+import static java.lang.System.out;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import modeloVO.ProcedimientoQuirurgicoVO;
@@ -40,9 +42,9 @@ public class ProcedimientoQuirurgicoDAO extends ConexionBD implements InterfaceC
             idProcedimientoQuirurgico=procedimientoQuirurgicoVO.getIdProcedimientoQuirurgico();
             tipoProcedimientoQuirurgico=procedimientoQuirurgicoVO.getTipoPorcedimientoQuirurgico();
             
-        } catch (Exception e) {
+        } catch (SQLException e) {
             
-            System.out.println("Error"+e.toString());
+            out.println("Error"+e.toString());
         }
         
     }
@@ -54,8 +56,8 @@ public class ProcedimientoQuirurgicoDAO extends ConexionBD implements InterfaceC
                     +"values '"+tipoProcedimientoQuirurgico+"';";
             statement.executeUpdate(query);
             operacion=true;
-        } catch (Exception e) {
-            System.out.println("Error"+e.toString());
+        } catch (SQLException e) {
+            out.println("Error"+e.toString());
         }
         return operacion;
     }
@@ -75,8 +77,8 @@ public class ProcedimientoQuirurgicoDAO extends ConexionBD implements InterfaceC
             proceArray.add(proceTmp);
             
             
-        } catch (Exception e) {
-            System.out.println("Error"+e.toString());
+        } catch (SQLException e) {
+            out.println("Error"+e.toString());
         }
         return proceArray;
     }
@@ -96,8 +98,8 @@ public class ProcedimientoQuirurgicoDAO extends ConexionBD implements InterfaceC
             proceArray.add(proceTmp);
             
             
-        } catch (Exception e) {
-            System.out.println("Error"+e.toString());
+        } catch (SQLException e) {
+            out.println("Error"+e.toString());
         }
         return proceArray;
     }

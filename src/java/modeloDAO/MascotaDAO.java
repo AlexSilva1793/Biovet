@@ -5,8 +5,10 @@
  */
 package modeloDAO;
 
+import static java.lang.System.out;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import modeloVO.MascotaVO;
@@ -49,8 +51,8 @@ public class MascotaDAO extends ConexionBD implements InterfaceCrud {
             fkGenero = mascotaVO.getFkGenero();
             colorMascota = mascotaVO.getColorMascota();
 
-        } catch (Exception e) {
-            System.out.println("Error" + e.toString());
+        } catch (SQLException e) {
+            out.println("Error" + e.toString());
         }
 
     }
@@ -62,8 +64,8 @@ public class MascotaDAO extends ConexionBD implements InterfaceCrud {
                     + "values('" + nombreMascota + "','" + fechaNacimiento + "','" + fkUsuario + "','" + fkRaza + "','" + fkGenero + "','" + colorMascota + "',1);";
             statement.executeUpdate(query);
             operacion = true;
-        } catch (Exception e) {
-            System.out.println("Error" + e.toString());
+        } catch (SQLException e) {
+            out.println("Error" + e.toString());
         }
         return operacion;
     }
@@ -89,8 +91,8 @@ public class MascotaDAO extends ConexionBD implements InterfaceCrud {
                 //System.out.println(mascotaTemp);
                 mascotArray.add(mascotaTemp);
             }
-        } catch (Exception e) {
-            System.out.println("Error" + e.toString());
+        } catch (SQLException e) {
+            out.println("Error" + e.toString());
         }
         return mascotArray;
     }
@@ -103,8 +105,8 @@ public class MascotaDAO extends ConexionBD implements InterfaceCrud {
                     + "fkUsuario=´" + fkRaza + "',fkGenero='" + fkGenero + "',ColorMascota='" + colorMascota + "';";
             statement.executeUpdate(query);
             operacion = true;
-        } catch (Exception e) {
-            System.out.println("Error" + e.toString());
+        } catch (SQLException e) {
+            out.println("Error" + e.toString());
         }
 
         return operacion;
@@ -116,8 +118,8 @@ public class MascotaDAO extends ConexionBD implements InterfaceCrud {
             query = "UPDATE `Mascota` SET `estadoMascota` = '0' WHERE `Mascota`.`idMascota` = " + idMascota;
             statement.executeUpdate(query);
             operacion = true;
-        } catch (Exception e) {
-            System.out.println("Error" + e.toString());
+        } catch (SQLException e) {
+            out.println("Error" + e.toString());
         }
         return operacion;
     }
@@ -143,8 +145,8 @@ public class MascotaDAO extends ConexionBD implements InterfaceCrud {
                 //System.out.println(mascotaTemp);
                 mascotArray.add(mascotaTemp);
             }
-        } catch (Exception e) {
-            System.out.println("Error" + e.toString());
+        } catch (SQLException e) {
+            out.println("Error" + e.toString());
         }
         return mascotArray;
     }

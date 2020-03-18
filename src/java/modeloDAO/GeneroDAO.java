@@ -5,8 +5,10 @@
  */
 package modeloDAO;
 
+import static java.lang.System.out;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import modeloVO.GeneroVO;
@@ -30,8 +32,8 @@ public class GeneroDAO extends ConexionBD implements InterfaceCR {
             conection = this.obtenerConexion();
             statement = conection.createStatement();
 
-        } catch (Exception e) {
-            System.out.println("Error" + e.toString());
+        } catch (SQLException e) {
+            out.println("Error" + e.toString());
         }
     }
 
@@ -43,8 +45,8 @@ public class GeneroDAO extends ConexionBD implements InterfaceCR {
 
             idGenero = generoVO.getIdGenero();
             tipoSexo = generoVO.getTipoSexo();
-        } catch (Exception e) {
-            System.out.println("Error" + e.toString());
+        } catch (SQLException e) {
+            out.println("Error" + e.toString());
         }
 
     }
@@ -55,8 +57,8 @@ public class GeneroDAO extends ConexionBD implements InterfaceCR {
             query = "INSERT INTO genero (tipoSexo) VALUES ('" + tipoSexo + "');";
             statement.executeUpdate(query);
             operacion = true;
-        } catch (Exception e) {
-            System.out.println("Error");
+        } catch (SQLException e) {
+            out.println("Error");
         }
         return operacion;
     }
@@ -73,12 +75,12 @@ public class GeneroDAO extends ConexionBD implements InterfaceCR {
 
                 generoTmp.setIdGenero(resultSet.getString(1));
                 generoTmp.setTipoSexo(resultSet.getString(2));
-                System.out.println(generoTmp);
+                out.println(generoTmp);
                 generoArray.add(generoTmp);
 
             }
-        } catch (Exception e) {
-            System.out.println("Error al consultar Agenda " + e.toString());
+        } catch (SQLException e) {
+            out.println("Error al consultar Agenda " + e.toString());
         }
         return generoArray;
     }
@@ -98,8 +100,8 @@ public class GeneroDAO extends ConexionBD implements InterfaceCR {
                 generoArray.add(generoTmp);
 
             }
-        } catch (Exception e) {
-            System.out.println("Error al consultar Agenda " + e.toString());
+        } catch (SQLException e) {
+            out.println("Error al consultar Agenda " + e.toString());
         }
         return generoArray;
     }

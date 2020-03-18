@@ -7,6 +7,7 @@ package controlador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.Integer.parseInt;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -37,7 +38,7 @@ public class MascotaControlador extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
-        int opcion = Integer.parseInt(request.getParameter("opcion"));
+        int opcion = parseInt(request.getParameter("opcion"));
         String idMascota = request.getParameter("textIdMascota");
         String nombreMascota = request.getParameter("textNombreMascota");
         String fechaNacimiento = request.getParameter("textFechaNacimiento");

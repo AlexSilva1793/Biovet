@@ -275,7 +275,7 @@
         </section>
 
 
-        <!-- Inicio Footer  -->
+        <!-- Inicio Area Footer  -->
         <footer class="footer">
             <div class="footer_top">
                 <div class="container">
@@ -299,7 +299,7 @@
                 </div>
             </div>
         </footer>
-        <!-- footer_end  -->
+        <!-- Fin Area Footer  -->
 
 
         <!-- JS here -->
