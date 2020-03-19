@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 15-03-2020 a las 19:11:23
+-- Tiempo de generación: 18-03-2020 a las 19:07:44
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.3
 
@@ -58,7 +58,9 @@ CREATE TABLE `ConsultaMedica` (
 
 INSERT INTO `ConsultaMedica` (`idConsulta`, `motivoConsulta`, `fechaConsulta`, `descripcionConsulta`, `peso`, `estado`, `fkHistoriaClinica`) VALUES
 (1, 'prueba', '2020-03-15 03:05:00', 'prueba', '1', 1, 2),
-(2, 'otra prueba', '2020-03-15 03:06:05', 'prueba', '2', 1, 10);
+(2, 'otra prueba', '2020-03-15 03:06:05', 'prueba', '2', 1, 10),
+(3, 'prueba 2 ', '2020-03-15 21:48:05', 'prueba 2 mascota 1', '2', 1, 2),
+(4, 'prueba3', '2020-03-15 23:13:54', 'prueba3', '2', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -71,6 +73,14 @@ CREATE TABLE `ConsultaMedica_has_Examen` (
   `fkExamen` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `ConsultaMedica_has_Examen`
+--
+
+INSERT INTO `ConsultaMedica_has_Examen` (`fkConsulta`, `fkExamen`) VALUES
+(1, 1),
+(1, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -82,6 +92,14 @@ CREATE TABLE `ConsultaMedica_has_ProcedimientoQuirurgico` (
   `fkProcedimientoQuirurgico` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `ConsultaMedica_has_ProcedimientoQuirurgico`
+--
+
+INSERT INTO `ConsultaMedica_has_ProcedimientoQuirurgico` (`fkConsulta`, `fkProcedimientoQuirurgico`) VALUES
+(1, 1),
+(2, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -92,6 +110,14 @@ CREATE TABLE `ConsultaMedica_has_Vacuna` (
   `fkConsulta` int(11) NOT NULL,
   `fkVacuna` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `ConsultaMedica_has_Vacuna`
+--
+
+INSERT INTO `ConsultaMedica_has_Vacuna` (`fkConsulta`, `fkVacuna`) VALUES
+(1, 1),
+(1, 2);
 
 -- --------------------------------------------------------
 
@@ -132,6 +158,15 @@ CREATE TABLE `Examen` (
   `idExamen` int(11) NOT NULL,
   `tipoExamen` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `Examen`
+--
+
+INSERT INTO `Examen` (`idExamen`, `tipoExamen`) VALUES
+(1, 'Hemograma'),
+(2, 'Coprologico'),
+(3, 'Examen de Orina');
 
 -- --------------------------------------------------------
 
@@ -246,6 +281,14 @@ CREATE TABLE `ProcedimientoQuirurgico` (
   `tipoProcedimientoQuirurgico` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `ProcedimientoQuirurgico`
+--
+
+INSERT INTO `ProcedimientoQuirurgico` (`idProcedimientoQuirurgico`, `tipoProcedimientoQuirurgico`) VALUES
+(1, 'Esterilizacion'),
+(2, 'Extracción Tumor');
+
 -- --------------------------------------------------------
 
 --
@@ -265,6 +308,60 @@ CREATE TABLE `Raza` (
 INSERT INTO `Raza` (`idRaza`, `tipoRaza`, `fkEspecie`) VALUES
 (1, 'Labrador', 1),
 (2, 'Pitbull', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `reporteCX`
+-- (Véase abajo para la vista actual)
+--
+CREATE TABLE `reporteCX` (
+`idMascota` int(11)
+,`nombreMascota` varchar(100)
+,`nombreUsuario` varchar(100)
+,`tipoRaza` varchar(45)
+,`tipoSexo` varchar(45)
+,`idHistoriaClinica` int(11)
+,`idConsulta` int(11)
+,`fechaConsulta` timestamp
+,`tipoProcedimientoQuirurgico` varchar(45)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `reporteExamenes`
+-- (Véase abajo para la vista actual)
+--
+CREATE TABLE `reporteExamenes` (
+`idMascota` int(11)
+,`nombreMascota` varchar(100)
+,`nombreUsuario` varchar(100)
+,`tipoRaza` varchar(45)
+,`tipoSexo` varchar(45)
+,`idHistoriaClinica` int(11)
+,`idConsulta` int(11)
+,`fechaConsulta` timestamp
+,`tipoExamen` varchar(45)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `reporteVacunas`
+-- (Véase abajo para la vista actual)
+--
+CREATE TABLE `reporteVacunas` (
+`idMascota` int(11)
+,`nombreMascota` varchar(100)
+,`nombreUsuario` varchar(100)
+,`tipoRaza` varchar(45)
+,`tipoSexo` varchar(45)
+,`idHistoriaClinica` int(11)
+,`idConsulta` int(11)
+,`fechaConsulta` timestamp
+,`tipoVacuna` varchar(45)
+);
 
 -- --------------------------------------------------------
 
@@ -360,6 +457,14 @@ CREATE TABLE `Vacuna` (
   `tipoVacuna` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `Vacuna`
+--
+
+INSERT INTO `Vacuna` (`idVacuna`, `tipoVacuna`) VALUES
+(1, 'Rabia'),
+(2, 'Moquillo');
+
 -- --------------------------------------------------------
 
 --
@@ -377,6 +482,33 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 DROP TABLE IF EXISTS `mascotaUsuario`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `mascotaUsuario`  AS  select `Mascota`.`idMascota` AS `idMascota`,`Mascota`.`nombreMascota` AS `nombreMascota`,`Mascota`.`fechaNacimiento` AS `fechaNacimiento`,`Mascota`.`fkUsuario` AS `fkUsuario`,`Raza`.`tipoRaza` AS `tipoRaza`,`Genero`.`tipoSexo` AS `tipoSexo`,`Mascota`.`ColorMascota` AS `ColorMascota`,`Mascota`.`estadoMascota` AS `estadoMascota` from ((`Mascota` join `Raza` on(`Mascota`.`fkRaza` = `Raza`.`idRaza`)) join `Genero` on(`Mascota`.`fkGenero` = `Genero`.`idGenero`)) ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `reporteCX`
+--
+DROP TABLE IF EXISTS `reporteCX`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `reporteCX`  AS  select `listarMascota`.`idMascota` AS `idMascota`,`listarMascota`.`nombreMascota` AS `nombreMascota`,`listarMascota`.`nombreUsuario` AS `nombreUsuario`,`listarMascota`.`tipoRaza` AS `tipoRaza`,`listarMascota`.`tipoSexo` AS `tipoSexo`,`HistoriaClinica`.`idHistoriaClinica` AS `idHistoriaClinica`,`ConsultaMedica`.`idConsulta` AS `idConsulta`,`ConsultaMedica`.`fechaConsulta` AS `fechaConsulta`,`ProcedimientoQuirurgico`.`tipoProcedimientoQuirurgico` AS `tipoProcedimientoQuirurgico` from ((((`listarMascota` join `HistoriaClinica` on(`listarMascota`.`idMascota` = `HistoriaClinica`.`fkMascota`)) join `ConsultaMedica` on(`HistoriaClinica`.`idHistoriaClinica` = `ConsultaMedica`.`fkHistoriaClinica`)) join `ConsultaMedica_has_ProcedimientoQuirurgico` on(`ConsultaMedica`.`idConsulta` = `ConsultaMedica_has_ProcedimientoQuirurgico`.`fkConsulta`)) join `ProcedimientoQuirurgico` on(`ConsultaMedica_has_ProcedimientoQuirurgico`.`fkProcedimientoQuirurgico` = `ProcedimientoQuirurgico`.`idProcedimientoQuirurgico`)) ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `reporteExamenes`
+--
+DROP TABLE IF EXISTS `reporteExamenes`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `reporteExamenes`  AS  select `listarMascota`.`idMascota` AS `idMascota`,`listarMascota`.`nombreMascota` AS `nombreMascota`,`listarMascota`.`nombreUsuario` AS `nombreUsuario`,`listarMascota`.`tipoRaza` AS `tipoRaza`,`listarMascota`.`tipoSexo` AS `tipoSexo`,`HistoriaClinica`.`idHistoriaClinica` AS `idHistoriaClinica`,`ConsultaMedica`.`idConsulta` AS `idConsulta`,`ConsultaMedica`.`fechaConsulta` AS `fechaConsulta`,`Examen`.`tipoExamen` AS `tipoExamen` from ((((`listarMascota` join `HistoriaClinica` on(`listarMascota`.`idMascota` = `HistoriaClinica`.`fkMascota`)) join `ConsultaMedica` on(`HistoriaClinica`.`idHistoriaClinica` = `ConsultaMedica`.`fkHistoriaClinica`)) join `ConsultaMedica_has_Examen` on(`ConsultaMedica`.`idConsulta` = `ConsultaMedica_has_Examen`.`fkConsulta`)) join `Examen` on(`ConsultaMedica_has_Examen`.`fkExamen` = `Examen`.`idExamen`)) ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `reporteVacunas`
+--
+DROP TABLE IF EXISTS `reporteVacunas`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `reporteVacunas`  AS  select `listarMascota`.`idMascota` AS `idMascota`,`listarMascota`.`nombreMascota` AS `nombreMascota`,`listarMascota`.`nombreUsuario` AS `nombreUsuario`,`listarMascota`.`tipoRaza` AS `tipoRaza`,`listarMascota`.`tipoSexo` AS `tipoSexo`,`HistoriaClinica`.`idHistoriaClinica` AS `idHistoriaClinica`,`ConsultaMedica`.`idConsulta` AS `idConsulta`,`ConsultaMedica`.`fechaConsulta` AS `fechaConsulta`,`Vacuna`.`tipoVacuna` AS `tipoVacuna` from ((((`listarMascota` join `HistoriaClinica` on(`listarMascota`.`idMascota` = `HistoriaClinica`.`fkMascota`)) join `ConsultaMedica` on(`HistoriaClinica`.`idHistoriaClinica` = `ConsultaMedica`.`fkHistoriaClinica`)) join `ConsultaMedica_has_Vacuna` on(`ConsultaMedica`.`idConsulta` = `ConsultaMedica_has_Vacuna`.`fkConsulta`)) join `Vacuna` on(`ConsultaMedica_has_Vacuna`.`fkVacuna` = `Vacuna`.`idVacuna`)) ;
 
 --
 -- Índices para tablas volcadas
@@ -522,13 +654,19 @@ ALTER TABLE `Agenda`
 -- AUTO_INCREMENT de la tabla `ConsultaMedica`
 --
 ALTER TABLE `ConsultaMedica`
-  MODIFY `idConsulta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idConsulta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `Especie`
 --
 ALTER TABLE `Especie`
   MODIFY `idEspecie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `Examen`
+--
+ALTER TABLE `Examen`
+  MODIFY `idExamen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `Genero`
@@ -549,6 +687,12 @@ ALTER TABLE `Mascota`
   MODIFY `idMascota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT de la tabla `ProcedimientoQuirurgico`
+--
+ALTER TABLE `ProcedimientoQuirurgico`
+  MODIFY `idProcedimientoQuirurgico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de la tabla `Raza`
 --
 ALTER TABLE `Raza`
@@ -559,6 +703,12 @@ ALTER TABLE `Raza`
 --
 ALTER TABLE `Usuario`
   MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de la tabla `Vacuna`
+--
+ALTER TABLE `Vacuna`
+  MODIFY `idVacuna` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

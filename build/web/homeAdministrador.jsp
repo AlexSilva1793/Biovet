@@ -76,7 +76,7 @@
                                 <a class="dropdown-item" href="actualizarUsuario.jsp">Actualizar Datos</a>
                                 <a class="dropdown-item" href="listaUsuarios.jsp">Lista de Usuarios</a>
                                 <a class="dropdown-item" href="listaMascotas.jsp">Listado de Mascotas</a>
-                                <a class="dropdown-item" href="index.jsp">Cerrar Sesión</a>
+                                <a class="dropdown-item" href="Usuario?opcion=6">Cerrar Sesión</a>
                             </div>
                         </li>
                     </ul>
@@ -86,7 +86,6 @@
                     <div class="dropdown-menu dropdown-menu-right">
                         <a class="dropdown-item" href="actualizarUsuario.jsp">Actualizar Datos</a>
                         <a class="dropdown-item" href="listaMascotas.jsp">Listado de Mascotas</a>               
-                        <a class="dropdown-item" href="index.jsp">Cerrar Sesión</a>    
                     </div>
                 </div>
                 <!--        <form action="Usuario" method="post">
@@ -110,8 +109,9 @@
                         <li class="submenu">
                             <a href="#"><i class="fa fa-flag-o"></i> <span> Reportes </span> <span class="menu-arrow"></span></a>
                             <ul style="display: none;">
-                                <li><a href="expense-reports.html"> Expense Report </a></li>
-                                <li><a href="invoice-reports.html"> Invoice Report </a></li>
+                                <a class="dropdown-item" href="Reportes?opcion=1">Reporte Cx</a><br>
+                                <a class="dropdown-item" href="Reportes?opcion=2">Reporte Examenes</a><br>
+                                <a class="dropdown-item" href="Reportes?opcion=3">Reporte Vacunas</a><br>
                             </ul>
                         </li>
                         <li>
