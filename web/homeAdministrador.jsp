@@ -128,5 +128,8 @@
         <script src="js/Chart.bundle.js"></script>
         <script src="js/chart.js"></script>
         <script src="js/app.js"></script>
+        <a href="Reportes?opcion=1">Reporte Cx</a><br>
+        <a href="Reportes?opcion=2">Reporte Examenes</a><br>
+        <a href="Reportes?opcion=3">Reporte Vacunas</a><br>
     </body>
 </html>
