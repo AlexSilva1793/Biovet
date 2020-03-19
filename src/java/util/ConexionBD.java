@@ -47,7 +47,7 @@ public class ConexionBD {
         return conexion;
     }
 
-    public static void main(String[] args) {
-        new ConexionBD();
-    }
+//    public static void main(String[] args) {
+//        new ConexionBD();
+//    }
 }
