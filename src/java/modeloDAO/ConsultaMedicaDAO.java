@@ -5,8 +5,10 @@
  */
 package modeloDAO;
 
+import static java.lang.System.out;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import modeloVO.ConsultaMedicaVO;
@@ -41,8 +43,8 @@ public class ConsultaMedicaDAO extends ConexionBD implements InterfaceCrud {
             peso = conMedicaVO.getPeso();
             estado = conMedicaVO.getEstado();
             fkHistoriaClinica = conMedicaVO.getFkHistoriaClinica();
-        } catch (Exception e) {
-            System.out.println("Error" + e.toString());
+        } catch (SQLException e) {
+            out.println("Error" + e.toString());
         }
 
     }
@@ -53,8 +55,8 @@ public class ConsultaMedicaDAO extends ConexionBD implements InterfaceCrud {
             query = "INSERT INTO `ConsultaMedica` (`idConsulta`, `motivoConsulta`, `descripcionConsulta`, `peso`, `estado`, `fkHistoriaClinica`) VALUES (NULL, '" + motivoConsulta + "', '" + descripcionConsulta + "', '" + peso + "', '1', '" + fkHistoriaClinica + "')";
             statement.executeUpdate(query);
             operacion = true;
-        } catch (Exception e) {
-            System.out.println("Error al registrar Consulta Medica " + e.toString());
+        } catch (SQLException e) {
+            out.println("Error al registrar Consulta Medica " + e.toString());
         }
         return operacion;
     }
@@ -80,8 +82,8 @@ public class ConsultaMedicaDAO extends ConexionBD implements InterfaceCrud {
                 consultaArray.add(consultaTmp);
             }
 
-        } catch (Exception e) {
-            System.out.println("Error al consultar Consulta Medica " + e.toString());
+        } catch (SQLException e) {
+            out.println("Error al consultar Consulta Medica " + e.toString());
         }
         return consultaArray;
     }
@@ -106,8 +108,8 @@ public class ConsultaMedicaDAO extends ConexionBD implements InterfaceCrud {
                 consultaArray.add(consultaTmp);
             }
 
-        } catch (Exception e) {
-            System.out.println("Error al consultar Consultas Medicas " + e.toString());
+        } catch (SQLException e) {
+            out.println("Error al consultar Consultas Medicas " + e.toString());
         }
         return consultaArray;
     }
@@ -118,8 +120,8 @@ public class ConsultaMedicaDAO extends ConexionBD implements InterfaceCrud {
             query = "UPDATE `ConsultaMedica` SET `motivoConsulta` = '" + motivoConsulta + "', `fechaConsulta` = '" + fechaConsulta + "', `descripcionConsulta` = '" + descripcionConsulta + "', `peso` = '" + peso + "' WHERE `ConsultaMedica`.`idConsulta` = " + idConsulta + "";
             statement.execute(query);
             operacion = true;
-        } catch (Exception e) {
-            System.out.println("Error al actualizar Consulta Medica " + e.toString());
+        } catch (SQLException e) {
+            out.println("Error al actualizar Consulta Medica " + e.toString());
         }
         return operacion;
     }
@@ -130,8 +132,8 @@ public class ConsultaMedicaDAO extends ConexionBD implements InterfaceCrud {
             query = "UPDATE `ConsultaMedica` SET `estado` = '0' WHERE `ConsultaMedica`.`idConsulta` = " + idConsulta + "";
             statement.executeUpdate(query);
             operacion = true;
-        } catch (Exception e) {
-            System.out.println("Error al eliminar Consulta Medica " + e.toString());
+        } catch (SQLException e) {
+            out.println("Error al eliminar Consulta Medica " + e.toString());
         }
         return operacion;
     }

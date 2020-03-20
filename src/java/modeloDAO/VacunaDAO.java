@@ -5,8 +5,10 @@
  */
 package modeloDAO;
 
+import static java.lang.System.out;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import modeloVO.VacunaVO;
@@ -36,8 +38,8 @@ public class VacunaDAO extends ConexionBD implements InterfaceCR {
 
             idVacuna = vacunaVO.getIdVacuna();
             tipoVacuna = vacunaVO.getTipoVacuna();
-        } catch (Exception e) {
-            System.out.println("Error" + e.toString());
+        } catch (SQLException e) {
+            out.println("Error" + e.toString());
         }
     }
 
@@ -47,8 +49,8 @@ public class VacunaDAO extends ConexionBD implements InterfaceCR {
             query = "INSERT INTO `Vacuna` (`idVacuna`, `tipoVacuna`) VALUES (NULL, '" + tipoVacuna + "')";
             statement.executeQuery(query);
             operacion = true;
-        } catch (Exception e) {
-            System.out.println("Error al agregar una vacuna " + e.toString());
+        } catch (SQLException e) {
+            out.println("Error al agregar una vacuna " + e.toString());
         }
         return operacion;
     }
@@ -69,8 +71,8 @@ public class VacunaDAO extends ConexionBD implements InterfaceCR {
 
                 vacunaArray.add(vacunaTmp);
             }
-        } catch (Exception e) {
-            System.out.println("Error al consultar una vacuna " + e.toString());
+        } catch (SQLException e) {
+            out.println("Error al consultar una vacuna " + e.toString());
         }
         return vacunaArray;
     }
@@ -91,8 +93,8 @@ public class VacunaDAO extends ConexionBD implements InterfaceCR {
 
                 vacunasArray.add(vacunaTmp);
             }
-        } catch (Exception e) {
-            System.out.println("Error al consultar las vacunas " + e.toString());
+        } catch (SQLException e) {
+            out.println("Error al consultar las vacunas " + e.toString());
         }
         return vacunasArray;
     }

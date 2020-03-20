@@ -5,8 +5,10 @@
  */
 package modeloDAO;
 
+import static java.lang.System.out;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import modeloVO.ExamenVO;
@@ -34,8 +36,8 @@ public class ExamenDAO extends ConexionBD implements InterfaceCR {
             idExamen = examenVO.getIdExamen();
             tipoExamen = examenVO.getTipoExamen();
 
-        } catch (Exception e) {
-            System.out.println("Error" + e.toString());
+        } catch (SQLException e) {
+            out.println("Error" + e.toString());
         }
 
     }
@@ -46,8 +48,8 @@ public class ExamenDAO extends ConexionBD implements InterfaceCR {
             query = "INSERT INTO examen (tipoExamen) VALUES ('" + tipoExamen + "');";
             statement.executeUpdate(query);
             operacion = true;
-        } catch (Exception e) {
-            System.out.println("Error al ingresar el nuevo Examen" + e.toString());
+        } catch (SQLException e) {
+            out.println("Error al ingresar el nuevo Examen" + e.toString());
         }
         return operacion;
     }
@@ -64,12 +66,12 @@ public class ExamenDAO extends ConexionBD implements InterfaceCR {
 
                 examenTmp.setIdExamen(resultSet.getString(1));
                 examenTmp.setTipoExamen(resultSet.getString(2));
-                System.out.println(examenTmp);
+                out.println(examenTmp);
                 examenArray.add(examenTmp);
 
             }
-        } catch (Exception e) {
-            System.out.println("Error al consultar Agenda " + e.toString());
+        } catch (SQLException e) {
+            out.println("Error al consultar Agenda " + e.toString());
         }
         return examenArray;
     }
@@ -85,12 +87,12 @@ public class ExamenDAO extends ConexionBD implements InterfaceCR {
 
                 examenTmp.setIdExamen(resultSet.getString(1));
                 examenTmp.setTipoExamen(resultSet.getString(2));
-                System.out.println(examenTmp);
+                out.println(examenTmp);
                 examenArray.add(examenTmp);
 
             }
-        } catch (Exception e) {
-            System.out.println("Error al consultar Agenda " + e.toString());
+        } catch (SQLException e) {
+            out.println("Error al consultar Agenda " + e.toString());
         }
         return examenArray;
     }

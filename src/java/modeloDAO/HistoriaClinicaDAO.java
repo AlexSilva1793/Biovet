@@ -5,8 +5,10 @@
  */
 package modeloDAO;
 
+import static java.lang.System.out;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import modeloVO.HistoriaClinicaVO;
@@ -37,8 +39,8 @@ public class HistoriaClinicaDAO extends ConexionBD implements InterfaceCR {
             fechaApertura = historiaClinicaVO.getFechaApertura();
             fkMascota = historiaClinicaVO.getFkMascota();
 
-        } catch (Exception e) {
-            System.out.println("Error" + e.toString());
+        } catch (SQLException e) {
+            out.println("Error" + e.toString());
         }
 
     }
@@ -49,8 +51,8 @@ public class HistoriaClinicaDAO extends ConexionBD implements InterfaceCR {
             query = "INSERT INTO HistoriaClinica (fkMascota) VALUES ('" + fkMascota + "');";
             statement.executeUpdate(query);
             operacion = true;
-        } catch (Exception e) {
-            System.out.println("Error al registrar la nueva historia clinica");
+        } catch (SQLException e) {
+            out.println("Error al registrar la nueva historia clinica");
         }
         return operacion;
     }
@@ -72,8 +74,8 @@ public class HistoriaClinicaDAO extends ConexionBD implements InterfaceCR {
                 historiaArray.add(historiaTmp);
 
             }
-        } catch (Exception e) {
-            System.out.println("Error al consultar Agenda " + e.toString());
+        } catch (SQLException e) {
+            out.println("Error al consultar Agenda " + e.toString());
         }
         return historiaArray;
     }
@@ -90,12 +92,12 @@ public class HistoriaClinicaDAO extends ConexionBD implements InterfaceCR {
                 historiaTmp.setIdHistoriaClinica(resultSet.getString(1));
                 historiaTmp.setFechaApertura(resultSet.getString(2));
                 historiaTmp.setFkMascota(resultSet.getString(3));
-                System.out.println(historiaTmp);
+                out.println(historiaTmp);
                 historiaArray.add(historiaTmp);
 
             }
-        } catch (Exception e) {
-            System.out.println("Error al consultar Agenda " + e.toString());
+        } catch (SQLException e) {
+            out.println("Error al consultar Agenda " + e.toString());
         }
         return historiaArray;
     }

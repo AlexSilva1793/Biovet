@@ -5,8 +5,10 @@
  */
 package modeloDAO;
 
+import static java.lang.System.out;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import modeloVO.UsuarioVO;
@@ -33,8 +35,8 @@ public class UsuarioDAO extends ConexionBD implements InterfaceCrud {
         try {
             conection = this.obtenerConexion();
             statement = conection.createStatement();
-        } catch (Exception e) {
-            System.out.println("Error" + e.toString());
+        } catch (SQLException e) {
+            out.println("Error" + e.toString());
         }
     }
 
@@ -58,8 +60,8 @@ public class UsuarioDAO extends ConexionBD implements InterfaceCrud {
             fkRol = usuVO.getFkRol();
             fkGenero = usuVO.getFkGenero();
 
-        } catch (Exception e) {
-            System.out.println("Error" + e.toString());
+        } catch (SQLException e) {
+            out.println("Error" + e.toString());
         }
     }
 
@@ -69,8 +71,8 @@ public class UsuarioDAO extends ConexionBD implements InterfaceCrud {
             query = "INSERT INTO `Usuario` (`idUsuario`, `cedula`, `nombreUsuario`, `apellidoUsuario`, `contraseñaUsuario`, `correoUsuario`, `estadoUsuario`, `fkTipoDocu`, `fkRol`,`direcciòn`,`celular`,`telefonoFijo`) VALUES (NULL, '" + cedula + "', '" + nombreUsuario + "', '" + apellidoUsuario + "', '" + contraseñaUsuario + "', '" + correoUsuario + "', '1', '" + fkTipoDocu + "', '2','Direcciòn','Celular','Telefono')";
             statement.executeUpdate(query);
             operacion = true;
-        } catch (Exception e) {
-            System.out.println("Error al registrar Usuario " + e.toString());
+        } catch (SQLException e) {
+            out.println("Error al registrar Usuario " + e.toString());
         }
         return operacion;
     }
@@ -108,8 +110,8 @@ public class UsuarioDAO extends ConexionBD implements InterfaceCrud {
 
             }
             this.cerrarConexion();
-        } catch (Exception e) {
-            System.out.println("Error al consultar Usuario " + e.toString());
+        } catch (SQLException e) {
+            out.println("Error al consultar Usuario " + e.toString());
         }
         return usuArray;
     }
@@ -140,8 +142,8 @@ public class UsuarioDAO extends ConexionBD implements InterfaceCrud {
                 usuArray.add(usuarioTmp);
 
             }
-        } catch (Exception e) {
-            System.out.println("Error al consultar Usuario " + e.toString());
+        } catch (SQLException e) {
+            out.println("Error al consultar Usuario " + e.toString());
         }
         return usuArray;
     }
@@ -152,8 +154,8 @@ public class UsuarioDAO extends ConexionBD implements InterfaceCrud {
             query = "UPDATE `Usuario` SET `contraseñaUsuario` = '" + contraseñaUsuario + "', `direcciòn` = '" + direccion + "', `celular` = '" + celular + "', `telefonoFijo` = '" + telefonoFijo + "', `correoUsuario` = '" + correoUsuario + "', `fkGenero` = '" + fkGenero + "' WHERE `Usuario`.`idUsuario` = " + idUsuario + "";
             statement.executeUpdate(query);
             operacion = true;
-        } catch (Exception e) {
-            System.out.println("Error al actualizar Usuario " + e.toString());
+        } catch (SQLException e) {
+            out.println("Error al actualizar Usuario " + e.toString());
         }
         return operacion;
     }
@@ -164,8 +166,8 @@ public class UsuarioDAO extends ConexionBD implements InterfaceCrud {
             query = "UPDATE `Usuario` SET `estadoUsuario` = '0' WHERE `Usuario`.`idUsuario` = " + idUsuario;
             statement.executeUpdate(query);
             operacion = true;
-        } catch (Exception e) {
-            System.out.println("Error al registrar Usuario " + e.toString());
+        } catch (SQLException e) {
+            out.println("Error al registrar Usuario " + e.toString());
         }
         return operacion;
     }
@@ -181,8 +183,8 @@ public class UsuarioDAO extends ConexionBD implements InterfaceCrud {
 
             }
 
-        } catch (Exception e) {
-            System.out.println("Error" + e.toString());
+        } catch (SQLException e) {
+            out.println("Error" + e.toString());
         }
 
         return operacion;

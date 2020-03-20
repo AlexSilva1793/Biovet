@@ -5,8 +5,10 @@
  */
 package modeloDAO;
 
+import static java.lang.System.out;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import modeloVO.ServicioVO;
@@ -37,8 +39,8 @@ public class ServicioDAO extends ConexionBD implements InterfaceCR {
             idServicio = servicioVO.getIdServicio();
             descripcionServicio = servicioVO.getDescripcionServicio();
 
-        } catch (Exception e) {
-            System.out.println("Error" + e.toString());
+        } catch (SQLException e) {
+            out.println("Error" + e.toString());
         }
     }
 
@@ -48,8 +50,8 @@ public class ServicioDAO extends ConexionBD implements InterfaceCR {
             query = "INSERT INTO `Servicio` (`idServicio`, `descripcionServicio`) VALUES (NULL, '" + descripcionServicio + "')";
             statement.executeUpdate(query);
             operacion = true;
-        } catch (Exception e) {
-            System.out.println("Error al agregar un servicio " + e.toString());
+        } catch (SQLException e) {
+            out.println("Error al agregar un servicio " + e.toString());
         }
         return operacion;
     }
@@ -70,8 +72,8 @@ public class ServicioDAO extends ConexionBD implements InterfaceCR {
 
                 servicioArray.add(servicioTmp);
             }
-        } catch (Exception e) {
-            System.out.println("Error al consultar servicio " + e.toString());
+        } catch (SQLException e) {
+            out.println("Error al consultar servicio " + e.toString());
         }
         return servicioArray;
     }
@@ -92,8 +94,8 @@ public class ServicioDAO extends ConexionBD implements InterfaceCR {
 
                 serviciosArray.add(servicioTmp);
             }
-        } catch (Exception e) {
-            System.out.println("Error al consultar servicios " + e.toString());
+        } catch (SQLException e) {
+            out.println("Error al consultar servicios " + e.toString());
         }
         return serviciosArray;
     }
