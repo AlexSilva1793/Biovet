@@ -46,6 +46,7 @@
     ArrayList<GeneroVO> arrayGeneros = generosDAO.consultarGeneral();
     ArrayList<RazaVO> arrayRazas = razaDAO.consultarGeneral();
     ArrayList<MascotaVO> arrayMascotas = mascotaDAO.consultarRegistro();
+    System.out.println(arrayRazas.size());
 %>
 <html>
     <head>
@@ -97,7 +98,7 @@
                 <label>Raza</label>
                 <select  id="raza" name="textFkRaza">
 
-                    <%for (int i = 0; i < arrayRazas.size() - 1; i++) {
+                    <%for (int i = 0; i <= arrayRazas.size() - 1; i++) {
                             razaVO = arrayRazas.get(i);%>
                     <option value="<%=razaVO.getIdRaza()%>"> <%=razaVO.getTipoRaza()%></option>
 
