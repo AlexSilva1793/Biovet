@@ -4,6 +4,7 @@
     Author     : master
 --%>
 
+<%@page import="modeloVO.MascotaVO"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="modeloVO.HistoriaClinicaVO"%>
 <%@page import="modeloVO.UsuarioVO"%>
@@ -20,8 +21,13 @@
             //response.setHeader("Expires", "0");
 
             String nombreUsuario = "";
+            String nombreMascota = "";
+            String fechaNacimiento = "";
+            String colorMascota = "";
+            String razaMascota = "";
             ArrayList<UsuarioVO> usuarioVOSesion = (ArrayList<UsuarioVO>) session.getAttribute("usuariosArray");
             ArrayList<HistoriaClinicaVO> arrayHistoriaClinica = (ArrayList<HistoriaClinicaVO>) request.getAttribute("historialMedico");
+            ArrayList<MascotaVO> arrayMascota = (ArrayList<MascotaVO>) request.getAttribute("mascota");
 
             String redirectURL = "index.jsp";
 
@@ -34,7 +40,12 @@
 
                 response.sendRedirect(redirectURL);
             }
-
+            if (!arrayMascota.isEmpty()) {
+                nombreMascota = arrayMascota.get(0).getNombreMascota();
+                fechaNacimiento = arrayMascota.get(0).getFechaNacimiento();
+                colorMascota = arrayMascota.get(0).getColorMascota();
+                razaMascota = arrayMascota.get(0).getFkRaza();
+            }
         %>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
@@ -42,12 +53,18 @@
         <link href="css/styledate.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <h1>Hello World!</h1>
+
         <% if (arrayHistoriaClinica.isEmpty()) {%> 
         <h2>Esta mascota no tiene apertura del historial medico.</h2>
         <a href="historiaClinica?opcion=2&textFkMascota=<%=request.getAttribute("fkMascota")%>">Abrir historial Medico</a>
         <% } else {%><!--TODO CODIGO PARA REGISTRAR CONSULTAS DEBE IR DENTRO DE ESTE ELSE-->
         <h2>Fecha y hora de apertura <%=arrayHistoriaClinica.get(0).getFechaApertura()%></h2>
+
+        <h3><%=nombreMascota%></h3>
+        <h3><%=fechaNacimiento%></h3>
+        <h3><%=colorMascota%></h3>
+        <h3><%=razaMascota%></h3>
+
 
         <div class="container">
             <form action="historiaClinica" method="POST" class="form-signin">

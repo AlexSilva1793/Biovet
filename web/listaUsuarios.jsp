@@ -66,6 +66,7 @@
                 <table  class="table table-striped">
                     <thead>
                         <tr>
+                            <th>Codigo</th>
                             <th>Nombre</th>
                             <th>Apellido</th>
                             <th>Direccion</th>
@@ -81,6 +82,7 @@
                     %>
                     <tbody>
                         <tr>
+                            <td><%=usuarioVO.getIdUsuario()%></td>
                             <td><%=usuarioVO.getNombreUsuario()%></td>
                             <td><%=usuarioVO.getApellidoUsuario()%></td>
                             <td><%=usuarioVO.getDireccion()%></td>
