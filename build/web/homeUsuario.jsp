@@ -4,6 +4,8 @@
     Author     : master
 --%>
 
+<%@page import="modeloDAO.EspecieDAO"%>
+<%@page import="modeloVO.EspecieVO"%>
 <%@page import="modeloDAO.MascotaDAO"%>
 <%@page import="modeloVO.MascotaVO"%>
 <%@page import="modeloDAO.RazaDAO"%>
@@ -38,15 +40,18 @@
     GeneroDAO generosDAO = new GeneroDAO();
     RazaVO razaVO = new RazaVO();
     RazaDAO razaDAO = new RazaDAO();
+    EspecieVO especieVO = new EspecieVO();
+    EspecieDAO especieDAO = new EspecieDAO();
 
     MascotaVO mascotaVO = new MascotaVO();
     mascotaVO.setFkUsuario(fkUsuario);
     MascotaDAO mascotaDAO = new MascotaDAO(mascotaVO);
 
     ArrayList<GeneroVO> arrayGeneros = generosDAO.consultarGeneral();
+    ArrayList<EspecieVO> arrayEspecie = especieDAO.consultarGeneral();
     ArrayList<RazaVO> arrayRazas = razaDAO.consultarGeneral();
     ArrayList<MascotaVO> arrayMascotas = mascotaDAO.consultarRegistro();
-    System.out.println(arrayRazas.size());
+    
 %>
 <html>
     <head>
@@ -93,6 +98,17 @@
             <div>
                 <label>Color Mascota</label>
                 <input type="text" name="textcolorMascota" class="form-control">
+            </div>
+            <div>
+                <label>Especie</label>
+                <select  id="especie" name="textFkRaza">
+
+                    <%for (int i = 0; i <= arrayEspecie.size() - 1; i++) {
+                            especieVO = arrayEspecie.get(i);%>
+                    <option value="<%=especieVO.getIdEspecie()%>"> <%=especieVO.getTipoEspecie()%></option>
+
+                    <%}%>        
+                </select>
             </div>
             <div>
                 <label>Raza</label>

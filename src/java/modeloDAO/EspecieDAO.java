@@ -27,6 +27,16 @@ public class EspecieDAO extends ConexionBD implements InterfaceCR {
     private String idEspecie = "";
     private String tipoEspecie = "";
 
+    public EspecieDAO() {
+        try {
+            conection = this.obtenerConexion();
+            statement = conection.createStatement();
+
+        } catch (SQLException e) {
+            out.println("Error" + e.toString());
+        }
+    }
+
     public EspecieDAO(EspecieVO especieVO) {
         super();
         try {
@@ -59,7 +69,7 @@ public class EspecieDAO extends ConexionBD implements InterfaceCR {
 
         ArrayList<EspecieVO> especieArray = new ArrayList<>();
         try {
-            query = "SELECT * FROM especie WHERE tipoEspecie = '"+tipoEspecie+"'";
+            query = "SELECT * FROM especie WHERE tipoEspecie = '" + tipoEspecie + "'";
             resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
                 EspecieVO especieTmp = new EspecieVO();
@@ -78,7 +88,7 @@ public class EspecieDAO extends ConexionBD implements InterfaceCR {
 
     @Override
     public ArrayList consultarGeneral() {
-               ArrayList<EspecieVO> especieArray = new ArrayList<>();
+        ArrayList<EspecieVO> especieArray = new ArrayList<>();
         try {
             query = "SELECT * FROM especie";
             resultSet = statement.executeQuery(query);
