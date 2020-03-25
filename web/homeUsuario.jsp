@@ -135,7 +135,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Fecha de Nacimiento</label>
-                                            <input type="text" name="textFechaNacimiento" class="form-control">
+                                            <input type="text" name="textFechaNacimiento" class="form-control datetimepicker">
                                         </div>
                                         <div class="form-group">
                                             <label>Color Mascota</label>
