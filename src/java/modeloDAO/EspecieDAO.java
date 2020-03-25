@@ -5,8 +5,10 @@
  */
 package modeloDAO;
 
+import static java.lang.System.out;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import modeloVO.EspecieVO;
@@ -34,8 +36,8 @@ public class EspecieDAO extends ConexionBD implements InterfaceCR {
             idEspecie = especieVO.getIdEspecie();
             tipoEspecie = especieVO.getTipoEspecie();
 
-        } catch (Exception e) {
-            System.out.println("Error" + e.toString());
+        } catch (SQLException e) {
+            out.println("Error" + e.toString());
         }
 
     }
@@ -46,8 +48,8 @@ public class EspecieDAO extends ConexionBD implements InterfaceCR {
             query = "INSERT INTO especie (tipoEspecie) VALUES ('" + tipoEspecie + "');";
             statement.executeUpdate(query);
             operacion = true;
-        } catch (Exception e) {
-            System.out.println("Error al ingresar la Especie" + e.toString());
+        } catch (SQLException e) {
+            out.println("Error al ingresar la Especie" + e.toString());
         }
         return operacion;
     }
@@ -64,12 +66,12 @@ public class EspecieDAO extends ConexionBD implements InterfaceCR {
 
                 especieTmp.setIdEspecie(resultSet.getString(1));
                 especieTmp.setTipoEspecie(resultSet.getString(2));
-                System.out.println(especieTmp);
+                out.println(especieTmp);
                 especieArray.add(especieTmp);
 
             }
-        } catch (Exception e) {
-            System.out.println("Error al consultar Agenda " + e.toString());
+        } catch (SQLException e) {
+            out.println("Error al consultar Agenda " + e.toString());
         }
         return especieArray;
     }
@@ -85,12 +87,12 @@ public class EspecieDAO extends ConexionBD implements InterfaceCR {
 
                 especieTmp.setIdEspecie(resultSet.getString(1));
                 especieTmp.setTipoEspecie(resultSet.getString(2));
-                System.out.println(especieTmp);
+                out.println(especieTmp);
                 especieArray.add(especieTmp);
 
             }
-        } catch (Exception e) {
-            System.out.println("Error al consultar Agenda " + e.toString());
+        } catch (SQLException e) {
+            out.println("Error al consultar Agenda " + e.toString());
         }
         return especieArray;
     }

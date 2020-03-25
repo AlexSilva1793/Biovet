@@ -5,8 +5,10 @@
  */
 package modeloDAO;
 
+import static java.lang.System.out;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import modeloVO.AgendaVO;
@@ -42,8 +44,8 @@ public class AgendaDAO extends ConexionBD implements InterfaceCrud {
             fkMascota = agendaVO.getFkMascota();
             fkEstadoAgenda = agendaVO.getFkEstadoAgenda();
 
-        } catch (Exception e) {
-            System.out.println("Error" + e.toString());
+        } catch (SQLException e) {
+            out.println("Error" + e.toString());
         }
 
     }
@@ -57,8 +59,8 @@ public class AgendaDAO extends ConexionBD implements InterfaceCrud {
             statement.executeUpdate(query);
             operacion = true;
 
-        } catch (Exception e) {
-            System.out.println("Error al registrar Agenda" + e.toString());
+        } catch (SQLException e) {
+            out.println("Error al registrar Agenda" + e.toString());
         }
         return operacion;
     }
@@ -77,12 +79,12 @@ public class AgendaDAO extends ConexionBD implements InterfaceCrud {
                 agendaTmp.setFkServicio(resultSet.getString(3));
                 agendaTmp.setFkMascota(resultSet.getString(4));
                 agendaTmp.setFkEstadoAgenda(resultSet.getString(5));
-                System.out.println(agendaTmp);
+                out.println(agendaTmp);
                 agendaArray.add(agendaTmp);
 
             }
-        } catch (Exception e) {
-            System.out.println("Error al consultar Agenda " + e.toString());
+        } catch (SQLException e) {
+            out.println("Error al consultar Agenda " + e.toString());
         }
         return agendaArray;
     }
@@ -102,12 +104,12 @@ public class AgendaDAO extends ConexionBD implements InterfaceCrud {
                 agendaTmp.setFkServicio(resultSet.getString(3));
                 agendaTmp.setFkMascota(resultSet.getString(4));
                 agendaTmp.setFkEstadoAgenda(resultSet.getString(5));
-                System.out.println(agendaTmp);
+                out.println(agendaTmp);
                 agendaArray.add(agendaTmp);
 
             }
-        } catch (Exception e) {
-            System.out.println("Error al consultar la Agenda " + e.toString());
+        } catch (SQLException e) {
+            out.println("Error al consultar la Agenda " + e.toString());
         }
         return agendaArray;
     }
@@ -120,8 +122,8 @@ public class AgendaDAO extends ConexionBD implements InterfaceCrud {
             statement.executeUpdate(query);
             operacion = true;
 
-        } catch (Exception e) {
-            System.out.println("Error al actualizar la agenda " + e.toString());
+        } catch (SQLException e) {
+            out.println("Error al actualizar la agenda " + e.toString());
         }
         return operacion;
     }
@@ -133,8 +135,8 @@ public class AgendaDAO extends ConexionBD implements InterfaceCrud {
             query = "UPDATE agenda SET fkEstadoAgenda = '" + 3 + "' WHERE idAgenda = '" + idAgenda + "';";
             statement.executeUpdate(query);
             operacion = true;
-        } catch (Exception e) {
-            System.out.println("Error al cancelar la cita " + e.toString());
+        } catch (SQLException e) {
+            out.println("Error al cancelar la cita " + e.toString());
         }
         return operacion;
     }

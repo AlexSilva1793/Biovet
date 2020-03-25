@@ -30,6 +30,7 @@
     </head>
 </head>
 <body>
+    <!-- Inicio Area Formulario-->
     <div class="main-wrapper account-wrapper">
         <div class="account-page">
             <div class="account-center">
@@ -60,6 +61,32 @@
             </div>
         </div>
     </div>
+    <!-- Fin Area Formulario-->
+    <!-- Inicio Area Footer  -->
+        <footer class="footer">
+            <div class="footer_top">
+                <div class="container">
+                    <div class="bordered_1px"></div>
+                    <div class="row">
+                        <div class="col-md-3 col-lg-9">
+                            <p class="copy_right text-center">
+                            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                            </p>
+                        </div>
+                        <div class="col-md-9 col-lg-3">
+                            <div class="footer_logo">
+                                <a href="index.jsp">
+                                    <img src="img/logo.png" alt="">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Fin Area Footer  -->
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>

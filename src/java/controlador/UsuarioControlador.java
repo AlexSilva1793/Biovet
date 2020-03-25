@@ -7,6 +7,12 @@ package controlador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.Integer.parseInt;
+import static java.lang.Integer.parseInt;
+import static java.lang.Integer.parseInt;
+import static java.lang.Integer.parseInt;
+import static java.lang.Integer.parseInt;
+import static java.lang.System.out;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -38,7 +44,7 @@ public class UsuarioControlador extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
-        int opcion = Integer.parseInt(request.getParameter("opcion"));
+        int opcion = parseInt(request.getParameter("opcion"));
         String idUsuario = request.getParameter("textIdUsuario");
         String cedula = request.getParameter("textCedula");
         String nombreUsuario = request.getParameter("textNombreUsuario");
@@ -74,10 +80,10 @@ public class UsuarioControlador extends HttpServlet {
                 if (usuarioDAO.actualizarRegistro()) {
                     usuariosArray = usuarioDAO.consultarRegistro();
 
-                    if (Integer.parseInt(usuariosArray.get(0).getFkRol()) == 1) {
+                    if (parseInt(usuariosArray.get(0).getFkRol()) == 1) {
                         session.setAttribute("usuariosArray", usuariosArray);
                         request.getRequestDispatcher("homeAdministrador.jsp").forward(request, response);
-                    } else if (Integer.parseInt(usuariosArray.get(0).getFkRol()) == 2) {
+                    } else if (parseInt(usuariosArray.get(0).getFkRol()) == 2) {
                         session.setAttribute("usuariosArray", usuariosArray);
                         request.getRequestDispatcher("homeUsuario.jsp").forward(request, response);
                     }
@@ -96,10 +102,10 @@ public class UsuarioControlador extends HttpServlet {
                 if (usuarioDAO.iniciarSesion()) {
                     usuariosArray = usuarioDAO.consultarRegistro();
 
-                    if (Integer.parseInt(usuariosArray.get(0).getFkRol()) == 1) {
+                    if (parseInt(usuariosArray.get(0).getFkRol()) == 1) {
                         session.setAttribute("usuariosArray", usuariosArray);
                         request.getRequestDispatcher("homeAdministrador.jsp").forward(request, response);
-                    } else if (Integer.parseInt(usuariosArray.get(0).getFkRol()) == 2) {
+                    } else if (parseInt(usuariosArray.get(0).getFkRol()) == 2) {
                         session.setAttribute("usuariosArray", usuariosArray);
                         request.getRequestDispatcher("homeUsuario.jsp").forward(request, response);
                     }
@@ -111,13 +117,13 @@ public class UsuarioControlador extends HttpServlet {
                 }
                 break;
             case 6://Salir sesiòn
-                System.out.println("Entre a cerrar sesion");
+                out.println("Entre a cerrar sesion");
                 session = request.getSession();
                 session.removeAttribute("usuariosArray");
                 session.invalidate();
                 request.getRequestDispatcher("login.jsp").forward(request, response);
                 break;
-            case 7:
+            case 7://Desactivar Usuario
                 if (usuarioDAO.eliminarRegistro()) {
                     request.getRequestDispatcher("listaUsuarios.jsp").forward(request, response);
                 } else {

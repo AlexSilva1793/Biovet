@@ -5,8 +5,10 @@
  */
 package modeloDAO;
 
+import static java.lang.System.out;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import modeloVO.RolVO;
@@ -40,8 +42,8 @@ public class RolDAO extends ConexionBD implements InterfaceCR {
             idRol = rolVO.getIdRol();
             tipoRol = rolVO.getTipoRol();
 
-        } catch (Exception e) {
-            System.out.println("Error" + e.toString());
+        } catch (SQLException e) {
+            out.println("Error" + e.toString());
         }
     }
 
@@ -51,8 +53,8 @@ public class RolDAO extends ConexionBD implements InterfaceCR {
             query = "select into rol (tipoRol) values('" + tipoRol + "')";
             statement.executeLargeUpdate(query);
             operacion = true;
-        } catch (Exception e) {
-            System.out.println("Error" + e.toString());
+        } catch (SQLException e) {
+            out.println("Error" + e.toString());
         }
         return operacion;
     }
@@ -74,8 +76,8 @@ public class RolDAO extends ConexionBD implements InterfaceCR {
                 rolArray.add(roltmp);
 
             }
-        } catch (Exception e) {
-            System.out.println("Error"+e.toString());
+        } catch (SQLException e) {
+            out.println("Error"+e.toString());
         }
         return rolArray;
     }
@@ -97,8 +99,8 @@ public class RolDAO extends ConexionBD implements InterfaceCR {
                 rolArray.add(roltmp);
 
             }
-        } catch (Exception e) {
-            System.out.println("Error"+e.toString());
+        } catch (SQLException e) {
+            out.println("Error"+e.toString());
         }
         return rolArray;
     }
