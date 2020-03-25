@@ -48,7 +48,6 @@
         <link rel="stylesheet" type="text/css" href="css/dataTables.bootstrap4.min.css">
         <link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css">
         <link rel="stylesheet" type="text/css" href="css/style.css">
-
     </head>
     <body>
         <!-- Inicio de Header -->            
@@ -121,7 +120,7 @@
         <div class="page-wrapper">
             <div class="content">
                 <div class="row">
-                    <div class="col-sm-4 col-3">
+                    <div class="col-sm-12">
                         <h4 class="page-title">Clientes Registrados</h4>
                     </div>
                 </div>
