@@ -82,7 +82,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
                     <div class="dropdown-menu dropdown-menu-right">
                         <a class="dropdown-item" href="actualizarUsuario.jsp">Actualizar Datos</a>
-                        <a class="dropdown-item" href="listaMascotas.jsp">Listado de Mascotas</a>               
+                        <a class="dropdown-item" href="Usuario?opcion=6">Cerrar Sesión</a>               
                     </div>
                 </div>
             </div>                        
@@ -101,7 +101,10 @@
                             <a href="listaMascotas.jsp"><i class="fa fa-paw"></i> <span>Mascotas</span></a>
                         </li>
                         <li>
-                            <a href="registrarAgenda.jsp"><i class="fa fa-calendar"></i> <span>Calendario</span></a>
+                            <a href="homeAdministrador.jsp"><i class="fa fa-calendar"></i> <span>Calendario</span></a>
+                        </li>
+                        <li>
+                            <a href="actualizarUsuario.jsp"><i class="fa fa-address-card-o"></i> <span>Actualizar Datos</span></a>
                         </li>
                         <li class="submenu">
                             <a href="#"><i class="fa fa-folder-open-o"></i> <span> Reportes </span> <span class="menu-arrow"></span></a>
@@ -184,20 +187,42 @@
                 </div>
                 <!-- Fin Tabla -->
             </div>
+            <!-- Inicio Area Footer  -->
+            <footer class="footer">
+                <div class="footer_top">
+                    <div class="container">
+                        <div class="bordered_1px"></div>
+                        <div class="row">
+                            <div class="col-md-3 col-lg-9">
+                                <p class="copy_right text-center">
+                                <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved
+                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                                </p>
+                            </div>
+                            <div class="col-md-9 col-lg-3">
+                                <div class="footer_logo">
+                                    <a href="index.jsp">
+                                        <img src="img/logo.png" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <!-- Fin Area Footer  -->
         </div>
-
-    </div>
-</div>
-<div class="sidebar-overlay" data-reff=""></div>
-<script src="js/jquery-3.2.1.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.slimscroll.js"></script>
-<script src="js/select2.min.js"></script>
-<script src="js/jquery.dataTables.min.js"></script>
-<script src="js/dataTables.bootstrap4.min.js"></script>
-<script src="js/moment.min.js"></script>
-<script src="js/bootstrap-datetimepicker.min.js"></script>
-<script src="js/app.js"></script>
-</body>
+        <div class="sidebar-overlay" data-reff=""></div>
+        <script src="js/jquery-3.2.1.min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/jquery.slimscroll.js"></script>
+        <script src="js/select2.min.js"></script>
+        <script src="js/jquery.dataTables.min.js"></script>
+        <script src="js/dataTables.bootstrap4.min.js"></script>
+        <script src="js/moment.min.js"></script>
+        <script src="js/bootstrap-datetimepicker.min.js"></script>
+        <script src="js/app.js"></script>
+    </body>
 </html>

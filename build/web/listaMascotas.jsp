@@ -51,7 +51,7 @@
         <link rel="stylesheet" type="text/css" href="css/style.css">
     </head>
     <body>
-        <!-- Inicio de Header -->            
+        <!-- Inicio de Header -->      
         <div class="header">
             <div class="row">
                 <div class="col-md-2">
@@ -73,7 +73,6 @@
                                 <span><%=nombreUsuario%></span>
                             </a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="actualizarUsuario.jsp">Actualizar Datos</a>
                                 <a class="dropdown-item" href="Usuario?opcion=6">Cerrar Sesión</a>
                             </div>
                         </li>
@@ -82,8 +81,7 @@
                 <div class="dropdown mobile-user-menu float-right">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="actualizarUsuario.jsp">Actualizar Datos</a>
-                        <a class="dropdown-item" href="listaMascotas.jsp">Listado de Mascotas</a>               
+                        <a class="dropdown-item" href="Usuario?opcion=6">Cerrar Sesión</a>               
                     </div>
                 </div>
             </div>                        
@@ -104,8 +102,11 @@
                         <li>
                             <a href="registrarAgenda.jsp"><i class="fa fa-calendar"></i> <span>Calendario</span></a>
                         </li>
+                        <li>
+                            <a href="actualizarUsuario.jsp"><i class="fa fa-address-card-o"></i> <span>Actualizar Datos</span></a>
+                        </li>
                         <li class="submenu">
-                            <a href="#"><i class="fa fa-folder-open-o"></i> <span> Reportes </span> <span class="menu-arrow"></span></a>
+                            <a href="#"><i class="fa fa-folder-open-o"></i> <span>Reportes</span> <span class="menu-arrow"></span></a>
                             <ul style="display: none;">
                                 <a class="dropdown-item" href="Reportes?opcion=1">Reporte Cx</a><br>
                                 <a class="dropdown-item" href="Reportes?opcion=2">Reporte Examenes</a><br>
@@ -185,6 +186,7 @@
                                         <th>Genero</th>
                                         <th>Color</th>
                                         <th>Historial Medico</th>
+                                        <th>Agendar Servicio</th>
                                     </tr>
                                 </thead>
                                 <%
@@ -201,7 +203,8 @@
                                         <td><%=mascotaVO.getFkRaza()%></td>
                                         <td><%=mascotaVO.getFkGenero()%></td>
                                         <td><%=mascotaVO.getColorMascota()%></td>
-                                        <td><a href="historiaClinica?opcion=1&textFkMascota=<%=mascotaVO.getIdMascota()%>" class="btn btn-success">Ver</a></td>                            
+                                        <td><a href="historiaClinica?opcion=1&textFkMascota=<%=mascotaVO.getIdMascota()%>" class="btn btn-success">Ver</a></td>
+                                        <td><a href="registrarAgenda.jsp" class="btn btn-primary">Agendar</a></td>
                                     </tr>
                                     <%}
                                         }%>
@@ -211,6 +214,31 @@
                     </div>
                 </div>
             </div>
+            <!-- Inicio Area Footer  -->
+            <footer class="footer">
+                <div class="footer_top">
+                    <div class="container">
+                        <div class="bordered_1px"></div>
+                        <div class="row">
+                            <div class="col-md-3 col-lg-9">
+                                <p class="copy_right text-center">
+                                <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved
+                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                                </p>
+                            </div>
+                            <div class="col-md-9 col-lg-3">
+                                <div class="footer_logo">
+                                    <a href="index.jsp">
+                                        <img src="img/logo.png" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <!-- Fin Area Footer  -->
         </div>
         <!--Fin listado de todas las mascotas-->
         <div class="sidebar-overlay" data-reff=""></div>

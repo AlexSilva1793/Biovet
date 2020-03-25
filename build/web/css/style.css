@@ -1822,7 +1822,7 @@ textarea.form-control {
 
 }
 .login-link{
-    margin: 40px 10px;
+    margin: 20px 10px;
 }
 .account-page {
     display: table-row;
@@ -1872,7 +1872,7 @@ textarea.form-control {
 }
 .account-box .form-control {
     border: 1px solid #eaeaea;
-    border-radius: 0;
+    border-radius: 10px;
     box-shadow: inherit;
     font-size: 14px;
     height: 40px;

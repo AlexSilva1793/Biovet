@@ -95,42 +95,31 @@
                 <div class="dropdown mobile-user-menu float-right">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="actualizarUsuario.jsp">Actualizar Datos</a>
-                        <a class="dropdown-item" href="listaMascotas.jsp">Listado de Mascotas</a>               
+                        <a class="dropdown-item" href="Usuario?opcion=6">Cerrar Sesión</a>               
                     </div>
                 </div>
             </div>                        
         </div>
         <!--Fin Header-->
-        <!--Inicio SideBar-->                                
         <div class="sidebar" id="sidebar">
             <div class="sidebar-inner slimscroll">
                 <div id="sidebar-menu" class="sidebar-menu">
                     <ul>
                         <li class="menu-title">Menú</li>
                         <li>
-                            <a href="listaUsuarios.jsp"><i class="fa fa-user"></i> <span>Usuarios</span></a>
+                            <a href="actualizarUsuario.jsp"><i class="fa fa-address-card-o"></i> <span>Actualizar Datos</span></a>
+                        </li>
+                        <!-- Si es administrador de salir Calendario, si es usuario debe aparecer Mascotas-->
+                        <li>
+                            <a href="homeUsuario.jsp"><i class="fa fa-paw"></i> <span>Mascotas</span></a>
                         </li>
                         <li>
-                            <a href="listaMascotas.jsp"><i class="fa fa-paw"></i> <span>Mascotas</span></a>
+                            <a href="homeAdministrador.jsp"><i class="fa fa-calendar"></i> <span>Calendario</span></a>
                         </li>
-                        <li>
-                            <a href="registrarAgenda.jsp"><i class="fa fa-calendar"></i> <span>Calendario</span></a>
-                        </li>
-                        <li class="submenu">
-                            <a href="#"><i class="fa fa-folder-open-o"></i> <span> Reportes </span> <span class="menu-arrow"></span></a>
-                            <ul style="display: none;">
-                                <a class="dropdown-item" href="Reportes?opcion=1">Reporte Cx</a><br>
-                                <a class="dropdown-item" href="Reportes?opcion=2">Reporte Examenes</a><br>
-                                <a class="dropdown-item" href="Reportes?opcion=3">Reporte Vacunas</a><br>
-                            </ul>
-                        </li>
-
                     </ul>
                 </div>
             </div>
         </div>
-        <!--Fin SideBar-->
         <div class="page-wrapper">
             <div class="content">
                 <div class="row">
@@ -188,6 +177,31 @@
                     </div>
                 </div>               
             </div>
+            <!-- Inicio Area Footer  -->
+            <footer class="footer">
+                <div class="footer_top">
+                    <div class="container">
+                        <div class="bordered_1px"></div>
+                        <div class="row">
+                            <div class="col-md-3 col-lg-9">
+                                <p class="copy_right text-center">
+                                <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved
+                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                                </p>
+                            </div>
+                            <div class="col-md-9 col-lg-3">
+                                <div class="footer_logo">
+                                    <a href="index.jsp">
+                                        <img src="img/logo.png" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <!-- Fin Area Footer  -->
         </div>
         <% if (request.getAttribute("mensajeError") != null) {  %> 
         ${mensajeError}

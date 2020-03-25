@@ -293,8 +293,6 @@
             </div>
         </footer>
         <!-- Fin Area Footer  -->
-
-
         <!-- JS here -->
         <script src="js/vendor/modernizr-3.5.0.min.js"></script>
         <script src="js/vendor/jquery-1.12.4.min.js"></script>
@@ -321,7 +319,6 @@
         <script src="js/jquery.form.js"></script>
         <script src="js/jquery.validate.min.js"></script>
         <script src="js/mail-script.js"></script>
-
         <script src="js/main.js"></script>
     </body>
 </html>
