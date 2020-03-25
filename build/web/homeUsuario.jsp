@@ -92,7 +92,7 @@
 
             <div>
                 <label>Fecha de Nacimiento</label>
-                <input type="text" name="textFechaNacimiento" class="form-control">
+                <input type="date" name="textFechaNacimiento" class="form-control">
             </div>
 
             <div>

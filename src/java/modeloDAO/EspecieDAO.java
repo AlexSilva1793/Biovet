@@ -76,7 +76,7 @@ public class EspecieDAO extends ConexionBD implements InterfaceCR {
 
                 especieTmp.setIdEspecie(resultSet.getString(1));
                 especieTmp.setTipoEspecie(resultSet.getString(2));
-                out.println(especieTmp);
+                
                 especieArray.add(especieTmp);
 
             }
@@ -97,7 +97,7 @@ public class EspecieDAO extends ConexionBD implements InterfaceCR {
 
                 especieTmp.setIdEspecie(resultSet.getString(1));
                 especieTmp.setTipoEspecie(resultSet.getString(2));
-                out.println(especieTmp);
+                
                 especieArray.add(especieTmp);
 
             }

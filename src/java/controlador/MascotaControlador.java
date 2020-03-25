@@ -53,7 +53,7 @@ public class MascotaControlador extends HttpServlet {
         ArrayList<MascotaVO> arrayMascotas;
 
         switch (opcion) {
-            case 1://Agregar Registro
+            case 1://Agregar Registro                           
                 if (mascotaDAO.agregarRegistro()) {
                     request.setAttribute("MensajeExito", "La mascota fue agregada correctamente!");
                 } else {
