@@ -43,7 +43,6 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">        
     </head>
     <body>
-        <div class="main-wrapper account-wrapper">
             <!-- Inicio de Header -->            
             <div class="header">
                 <div class="row">
@@ -61,7 +60,7 @@
                             <li class="nav-item dropdown has-arrow">
                                 <a href="#" class="dropdown-toggle nav-link user-link" data-toggle="dropdown">
                                     <span class="user-img">
-                                        <img class="rounded-circle" src="assets/img/user.jpg" width="24" alt="<%=nombreUsuario%>">
+                                    <i class="fa fa-user-circle-o"></i>
                                     </span>
                                     <span><%=nombreUsuario%></span>
                                 </a>
@@ -89,16 +88,16 @@
                         <ul>
                             <li class="menu-title">Menú</li>
                             <li>
-                                <a href="listaUsuarios.jsp"><i class="fa fa-user-md"></i> <span>Usuarios</span></a>
+                                <a href="listaUsuarios.jsp"><i class="fa fa-user"></i> <span>Usuarios</span></a>
                             </li>
                             <li>
-                                <a href="listaMascotas.jsp"><i class="fa fa-wheelchair"></i> <span>Mascotas</span></a>
+                                <a href="listaMascotas.jsp"><i class="fa fa-paw"></i> <span>Mascotas</span></a>
                             </li>
                             <li>
                                 <a href="registrarAgenda.jsp"><i class="fa fa-calendar"></i> <span>Calendario</span></a>
                             </li>
                             <li class="submenu">
-                                <a href="#"><i class="fa fa-flag-o"></i> <span> Reportes </span> <span class="menu-arrow"></span></a>
+                                <a href="#"><i class="fa fa-folder-open-o"></i> <span> Reportes </span> <span class="menu-arrow"></span></a>
                                 <ul style="display: none;">
                                     <a class="dropdown-item" href="Reportes?opcion=1">Reporte Cx</a><br>
                                     <a class="dropdown-item" href="Reportes?opcion=2">Reporte Examenes</a><br>
@@ -177,7 +176,6 @@
                     </div>
                 </div>
             </div>
-        </div>
         <%         if (request.getAttribute("mensajeError") != null) {        %>
         ${mensajeError}
         <%            } else { %>
