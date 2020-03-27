@@ -114,7 +114,7 @@ public class historiaClinicaControlador extends HttpServlet {
 
                 arrayHistorias = historiaClinicaDAO.consultarRegistro();
                 arrayConsultasMedicas = consultaMedicaDAO.consultarRegistro();
-
+                
                 request.setAttribute("arrayConsultasMedicas", arrayConsultasMedicas);
                 request.setAttribute("fkMascota", fkMascota);
                 request.setAttribute("historialMedico", arrayHistorias);
