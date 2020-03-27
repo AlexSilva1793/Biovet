@@ -53,7 +53,7 @@ public class MascotaControlador extends HttpServlet {
         ArrayList<MascotaVO> arrayMascotas;
 
         switch (opcion) {
-            case 1://Agregar Registro
+            case 1://Agregar Registro                           
                 if (mascotaDAO.agregarRegistro()) {
                     request.setAttribute("MensajeExito", "La mascota fue agregada correctamente!");
                 } else {
@@ -77,7 +77,7 @@ public class MascotaControlador extends HttpServlet {
                     request.setAttribute("mascotas", arrayMascotas);
                     request.getRequestDispatcher("listaMascotas.jsp").forward(request, response);
                 } else {
-                    request.setAttribute("MascotasError", "Id de usuario erroneo o no existe!");
+                    request.setAttribute("MascotasError", "Id de usuario erroneo o no tiene Mascotas!");
                     request.getRequestDispatcher("listaMascotas.jsp").forward(request, response);
                 }
                 break;

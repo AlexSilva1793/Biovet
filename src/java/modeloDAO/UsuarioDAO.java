@@ -190,7 +190,7 @@ public class UsuarioDAO extends ConexionBD implements InterfaceCrud {
         return operacion;
     }
 
-    public static void main(String[] args) {
+   // public static void main(String[] args) {
 //        UsuarioVO usuarioVO = new UsuarioVO();
 //        //ArrayList<UsuarioVO> usuArray = new ArrayList<>();
 
@@ -210,5 +210,5 @@ public class UsuarioDAO extends ConexionBD implements InterfaceCrud {
 //        UsuarioDAO usuarioDAO = new UsuarioDAO();
 //        System.out.println(usuarioDAO.consultarGeneral());
 //        usuarioDAO.eliminarRegistro();
-    }
+   // }
 }

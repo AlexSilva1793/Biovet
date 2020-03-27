@@ -4,6 +4,7 @@
     Author     : master
 --%>
 
+<%@page import="modeloVO.MascotaVO"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="modeloVO.HistoriaClinicaVO"%>
 <%@page import="modeloVO.UsuarioVO"%>
@@ -17,8 +18,14 @@
     //response.setHeader("Expires", "0");
 
     String nombreUsuario = "";
+    String nombreMascota = "";
+    String fechaNacimiento = "";
+    String colorMascota = "";
+    String razaMascota = "";
+
     ArrayList<UsuarioVO> usuarioVOSesion = (ArrayList<UsuarioVO>) session.getAttribute("usuariosArray");
     ArrayList<HistoriaClinicaVO> arrayHistoriaClinica = (ArrayList<HistoriaClinicaVO>) request.getAttribute("historialMedico");
+    ArrayList<MascotaVO> arrayMascota = (ArrayList<MascotaVO>) request.getAttribute("mascota");
 
     String redirectURL = "index.jsp";
 
@@ -31,7 +38,12 @@
 
         response.sendRedirect(redirectURL);
     }
-
+    if (!arrayMascota.isEmpty()) {
+        nombreMascota = arrayMascota.get(0).getNombreMascota();
+        fechaNacimiento = arrayMascota.get(0).getFechaNacimiento();
+        colorMascota = arrayMascota.get(0).getColorMascota();
+        razaMascota = arrayMascota.get(0).getFkRaza();
+    }
 %>
 <html>
     <head>        
@@ -125,12 +137,16 @@
                     </div>
                     <div class="col-sm-8 col-4">
                         <h2 class="page-sub-title">Fecha y hora de apertura <%=arrayHistoriaClinica.get(0).getFechaApertura()%></h2>
+                        <h2 class="page-sub-title">Nombre: <%=nombreMascota%></h2>
+                        <h2 class="page-sub-title">Fecha de Nacminieto: <%=fechaNacimiento%></h2>
+                        <h2 class="page-sub-title">Color: <%=colorMascota%></h2>
+                        <h2 class="page-sub-title">Raza: <%=razaMascota%></h2>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card-box">
-                            <form action="Usuario" method="get">
+                            <form action="historiaClinica" method="POST" class="form-signin">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
