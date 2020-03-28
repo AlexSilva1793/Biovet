@@ -4,6 +4,8 @@
     Author     : master
 --%>
 
+<%@page import="modeloDAO.EspecieDAO"%>
+<%@page import="modeloVO.EspecieVO"%>
 <%@page import="modeloDAO.MascotaDAO"%>
 <%@page import="modeloVO.MascotaVO"%>
 <%@page import="modeloDAO.RazaDAO"%>
@@ -38,14 +40,18 @@
     GeneroDAO generosDAO = new GeneroDAO();
     RazaVO razaVO = new RazaVO();
     RazaDAO razaDAO = new RazaDAO();
+    EspecieVO especieVO = new EspecieVO();
+    EspecieDAO especieDAO = new EspecieDAO();
 
     MascotaVO mascotaVO = new MascotaVO();
     mascotaVO.setFkUsuario(fkUsuario);
     MascotaDAO mascotaDAO = new MascotaDAO(mascotaVO);
 
     ArrayList<GeneroVO> arrayGeneros = generosDAO.consultarGeneral();
+    ArrayList<EspecieVO> arrayEspecie = especieDAO.consultarGeneral();
     ArrayList<RazaVO> arrayRazas = razaDAO.consultarGeneral();
     ArrayList<MascotaVO> arrayMascotas = mascotaDAO.consultarRegistro();
+
 %>
 <html>
     <head>
@@ -135,7 +141,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Fecha de Nacimiento</label>
-                                            <input type="text" name="textFechaNacimiento" class="form-control datetimepicker">
+                                            <input type="date" name="textFechaNacimiento" class="form-control">
                                         </div>
                                         <div class="form-group">
                                             <label>Color Mascota</label>
@@ -144,9 +150,19 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div>
+                                            <label>Especie</label>
+                                            <select class="form-control" id="raza" name="textFkRaza" required>
+                                                <%for (int i = 0; i < arrayEspecie.size(); i++) {
+                                                        especieVO = arrayEspecie.get(i);%>
+                                                <option value="<%=especieVO.getIdEspecie()%>"> <%=especieVO.getTipoEspecie()%></option>
+                                                <%}%>        
+                                            </select>
+
+                                        </div>
+                                        <div>
                                             <label>Raza</label>
                                             <select class="form-control" id="raza" name="textFkRaza" required>
-                                                <%for (int i = 0; i < arrayRazas.size() - 1; i++) {
+                                                <%for (int i = 0; i < arrayRazas.size(); i++) {
                                                         razaVO = arrayRazas.get(i);%>
                                                 <option value="<%=razaVO.getIdRaza()%>"> <%=razaVO.getTipoRaza()%></option>
                                                 <%}%>        

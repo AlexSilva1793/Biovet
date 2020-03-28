@@ -17,8 +17,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modeloDAO.ConsultaMedicaDAO;
 import modeloDAO.HistoriaClinicaDAO;
+import modeloDAO.MascotaDAO;
 import modeloVO.ConsultaMedicaVO;
 import modeloVO.HistoriaClinicaVO;
+import modeloVO.MascotaVO;
 
 /**
  *
@@ -64,7 +66,12 @@ public class historiaClinicaControlador extends HttpServlet {
 
         ArrayList<ConsultaMedicaVO> arrayConsultasMedicas;
 
-        //
+        //Mascotas
+        MascotaVO mascotaVO = new MascotaVO();
+        mascotaVO.setIdMascota(fkMascota);
+        MascotaDAO mascotaDAO = new MascotaDAO(mascotaVO);
+        ArrayList<MascotaVO> arrayMascotas;
+
         switch (opcion) {
             case 1://Validar si la historia clinica existe si no crearla
 
@@ -76,6 +83,8 @@ public class historiaClinicaControlador extends HttpServlet {
                     ConsultaMedicaDAO consultaMedicaDAO = new ConsultaMedicaDAO(consultaMedicaVO);
                     arrayConsultasMedicas = consultaMedicaDAO.consultarRegistro();
 
+                    arrayMascotas = mascotaDAO.consultarRegistroPorId();
+                    request.setAttribute("mascota", arrayMascotas);
                     request.setAttribute("arrayConsultasMedicas", arrayConsultasMedicas);
                     request.setAttribute("fkMascota", fkMascota);
                     request.setAttribute("historialMedico", arrayHistorias);
@@ -106,6 +115,8 @@ public class historiaClinicaControlador extends HttpServlet {
                 arrayHistorias = historiaClinicaDAO.consultarRegistro();
                 arrayConsultasMedicas = consultaMedicaDAO.consultarRegistro();
 
+                arrayMascotas = mascotaDAO.consultarRegistroPorId();
+                request.setAttribute("mascota", arrayMascotas);
                 request.setAttribute("arrayConsultasMedicas", arrayConsultasMedicas);
                 request.setAttribute("fkMascota", fkMascota);
                 request.setAttribute("historialMedico", arrayHistorias);
