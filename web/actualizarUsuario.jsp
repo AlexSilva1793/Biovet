@@ -25,7 +25,7 @@
     String nombreUsuario = "";
 
     ArrayList<UsuarioVO> usuarioVOSesion = (ArrayList<UsuarioVO>) session.getAttribute("usuariosArray");
-    String redirectURL = "index.jsp";
+    String redirectURL = "index.jsp", mascotasUrl = "";
 
     if (usuarioVOSesion != null) {
         nombreUsuario = usuarioVOSesion.get(0).getNombreUsuario();
@@ -41,6 +41,11 @@
             } else {
                 idGeneroUsu = "1";
                 generoUsu = "Selecciona tu Genero";
+            }
+            if (Integer.parseInt(usuarioVOSesion.get(0).getFkRol()) == 1) {
+                mascotasUrl = "listaMascotas.jsp";
+            } else if (Integer.parseInt(usuarioVOSesion.get(0).getFkRol()) == 2) {
+                mascotasUrl = "homeUsuario.jsp";
             }
         }
 
@@ -111,7 +116,7 @@
                         </li>
                         <!-- Si es administrador de salir Calendario, si es usuario debe aparecer Mascotas-->
                         <li>
-                            <a href="homeUsuario.jsp"><i class="fa fa-paw"></i> <span>Mascotas</span></a>
+                            <a href="<%=mascotasUrl%>"><i class="fa fa-paw"></i> <span>Mascotas</span></a>
                         </li>
                         <li>
                             <a href="homeAdministrador.jsp"><i class="fa fa-calendar"></i> <span>Calendario</span></a>
