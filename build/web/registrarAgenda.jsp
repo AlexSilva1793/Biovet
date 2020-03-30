@@ -20,7 +20,7 @@
 
     if (usuarioVOSesion != null) {
         nombreUsuario = usuarioVOSesion.get(0).getNombreUsuario();
-        if (Integer.parseInt(usuarioVOSesion.get(0).getFkRol()) != 1) {
+        if (Integer.parseInt(usuarioVOSesion.get(0).getFkRol()) != 2) {
             response.sendRedirect(redirectURL);
         }
     } else {
@@ -89,18 +89,14 @@
                 <div id="sidebar-menu" class="sidebar-menu">
                     <ul>
                         <li class="menu-title">Menú</li>
-                        <li>
-                            <a href="listaUsuarios.jsp"><i class="fa fa-user"></i> <span>Usuarios</span></a>
-                        </li>
+
                         <li>
                             <a href="listaMascotas.jsp"><i class="fa fa-paw"></i> <span>Mascotas</span></a>
                         </li>
                         <li>
                             <a href="actualizarUsuario.jsp"><i class="fa fa-address-card-o"></i> <span>Actualizar Datos</span></a>
                         </li>
-                        <li>
-                            <a href="homeAdministrador.jsp"><i class="fa fa-calendar"></i> <span>Calendario</span></a>
-                        </li>
+
                     </ul>
                 </div>
             </div>

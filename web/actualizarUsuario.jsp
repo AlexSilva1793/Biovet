@@ -118,9 +118,24 @@
                         <li>
                             <a href="<%=mascotasUrl%>"><i class="fa fa-paw"></i> <span>Mascotas</span></a>
                         </li>
+                        <%if (Integer.parseInt(usuarioVOSesion.get(0).getFkRol()) == 1) {%>
+                        
+                        <li>
+                            <a href="listaUsuarios.jsp"><i class="fa fa-user"></i> <span>Usuarios</span></a>
+                        </li>
                         <li>
                             <a href="homeAdministrador.jsp"><i class="fa fa-calendar"></i> <span>Calendario</span></a>
                         </li>
+
+                        <li class="submenu">
+                            <a href="#"><i class="fa fa-folder-open-o"></i> <span> Reportes </span> <span class="menu-arrow"></span></a>
+                            <ul style="display: none;">
+                                <a class="dropdown-item" href="Reportes?opcion=1">Reporte Cx</a><br>
+                                <a class="dropdown-item" href="Reportes?opcion=2">Reporte Examenes</a><br>
+                                <a class="dropdown-item" href="Reportes?opcion=3">Reporte Vacunas</a><br>
+                            </ul>
+                        </li>
+                        <%}%>
                     </ul>
                 </div>
             </div>
