@@ -47,7 +47,7 @@ public class AgendaControlador extends HttpServlet {
 
         int opcion = parseInt(request.getParameter("opcion"));
         String enviarCorreo = request.getParameter("enviarCorreo");
-        String idAgenda = request.getParameter("txtIdAgenda");
+        String idAgenda = request.getParameter("textIdAgenda");
         String fechaAgenda = request.getParameter("textFechaAgenda");
         String fkServicio = request.getParameter("txtFkServicio");
         String fkMascota = request.getParameter("textFkMascota");
@@ -87,6 +87,14 @@ public class AgendaControlador extends HttpServlet {
 //                request.setAttribute("arrayAgenda", arrayAgendas);
 //                request.setAttribute("fkMascota", fkMascota);
 //                request.getRequestDispatcher("registrarAgenda.jsp").forward(request, response);
+                break;
+            case 3://Cncelar Cita
+                agendaDAO.eliminarRegistro();
+                arrayAgendas = agendaDAO.consultarAgendaPorMascota();
+
+                request.setAttribute("arrayAgendas", arrayAgendas);
+                request.setAttribute("fkMascota", fkMascota);
+                request.getRequestDispatcher("registrarAgenda.jsp").forward(request, response);
                 break;
             case 4: //Consulta agenda por mascota
                 arrayAgendas = agendaDAO.consultarAgendaPorMascota();

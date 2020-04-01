@@ -159,7 +159,8 @@
                                         <th>Id</th>
                                         <th>Fecha Agenda</th>
                                         <th>Servicio</th>
-                                        <th>Accion</th>
+                                        <th>Estado</th>
+                                        <th>Cancelar Cita</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -168,7 +169,8 @@
                                             <td><c:out value="${agenda.getIdAgenda()}"/></td>
                                             <td><c:out value="${agenda.getFechaAgenda()}"/></td>
                                             <td><c:out value="${agenda.getFkServicio()}"/></td>
-                                            <td><c:out value="${agenda.getFkMascota()}"/></td>
+                                            <td><c:out value="${agenda.getFkEstadoAgenda()}"/></td>
+                                            <td><a href="Agenda?opcion=3&textFkMascota=<%=request.getAttribute("fkMascota")%>&textIdAgenda=${agenda.getIdAgenda()}" class="btn-delete"></a></td>
                                         </tr>
                                     </c:forEach>
                                 </tbody>
