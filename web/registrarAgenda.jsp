@@ -5,6 +5,7 @@
 --%>
 
 <%@page import="modeloDAO.ServicioDAO"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="modeloVO.ServicioVO"%>
 <%@page import="modeloVO.AgendaVO"%>
 <%@page import="modeloVO.UsuarioVO"%>
@@ -125,7 +126,7 @@
                                             <%for (int i = 0; i < arrayServicios.size(); i++) {%>
 
                                             <option value="<%=arrayServicios.get(i).getIdServicio()%>"> <%=arrayServicios.get(i).getDescripcionServicio()%></option>
-                                            
+
                                             <%}%> 
                                         </select>
                                     </div>
@@ -149,49 +150,71 @@
                         </div>
                     </div>
                 </div>
-            </div><br><br><br><br><br><br><br><br><br>
-            <!-- Inicio Area Footer  -->
-            <footer class="footer">
-                <div class="footer_top">
-                    <div class="container">
-                        <div class="bordered_1px"></div>
-                        <div class="row">
-                            <div class="col-md-3 col-lg-9">
-                                <p class="copy_right text-center">
-                                <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                    Derechos de autor &copy;<script>document.write(new Date().getFullYear());</script> reservados BIOVET
-                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-                                </p>
-                            </div>
-                            <div class="col-md-9 col-lg-3">
-                                <div class="footer_logo">
-                                    <a href="index.jsp">
-                                        <img src="img/logo.png" alt="">
-                                    </a>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="table-responsive">
+                            <table class="table table-border table-striped custom-table datatable mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Fecha Agenda</th>
+                                        <th>Servicio</th>
+                                        <th>Accion</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <c:forEach var="agenda" items="${arrayAgendas}" >
+                                        <tr>
+                                            <td><c:out value="${agenda.getIdAgenda()}"/></td>
+                                            <td><c:out value="${agenda.getFechaAgenda()}"/></td>
+                                            <td><c:out value="${agenda.getFkServicio()}"/></td>
+                                            <td><c:out value="${agenda.getFkMascota()}"/></td>
+                                        </tr>
+                                    </c:forEach>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div><br><br><br><br><br><br><br><br><br>
+                <!-- Inicio Area Footer  -->
+                <footer class="footer">
+                    <div class="footer_top">
+                        <div class="container">
+                            <div class="bordered_1px"></div>
+                            <div class="row">
+                                <div class="col-md-3 col-lg-9">
+                                    <p class="copy_right text-center">
+                                    <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                        Derechos de autor &copy;<script>document.write(new Date().getFullYear());</script> reservados BIOVET
+                                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                                    </p>
+                                </div>
+                                <div class="col-md-9 col-lg-3">
+                                    <div class="footer_logo">
+                                        <a href="index.jsp">
+                                            <img src="img/logo.png" alt="">
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </footer>
-            <!-- Fin Area Footer  -->
-        </div>
-        <%         if (request.getAttribute("mensajeError") != null) {        %>
-        ${mensajeError}
-        <%            } else { %>
-        ${mensajeExito}
-        <% }%>
-        <div class="sidebar-overlay" data-reff=""></div>
-        <script src="js/jquery-3.2.1.min.js"></script>
-        <script src="js/popper.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/jquery.slimscroll.js"></script>
-        <script src="js/select2.min.js"></script>
-        <script src="js/moment.min.js"></script>
-        <script src="js/jquery-ui.min.html"></script>
-        <script src="js/fullcalendar.min.js"></script>
-        <script src="js/jquery.fullcalendar.js"></script>
-        <script src="js/bootstrap-datetimepicker.min.js"></script>
-        <script src="js/app.js"></script>   
+                </footer>
+                <!-- Fin Area Footer  -->
+            </div>
+
+            <div class="sidebar-overlay" data-reff=""></div>
+            <script src="js/jquery-3.2.1.min.js"></script>
+            <script src="js/popper.min.js"></script>
+            <script src="js/bootstrap.min.js"></script>
+            <script src="js/jquery.slimscroll.js"></script>
+            <script src="js/select2.min.js"></script>
+            <script src="js/moment.min.js"></script>
+            <script src="js/jquery-ui.min.html"></script>
+            <script src="js/fullcalendar.min.js"></script>
+            <script src="js/jquery.fullcalendar.js"></script>
+            <script src="js/bootstrap-datetimepicker.min.js"></script>
+            <script src="js/app.js"></script>   
     </body>
 </html>

@@ -66,7 +66,6 @@ public class AgendaControlador extends HttpServlet {
         switch (opcion) {
 
             case 1: //agregar agenda
-                
 
 //                arrayAgendas=agendaDAO.consultarRegistro();
 //                if (arrayAgendas.isEmpty()) {
@@ -84,9 +83,15 @@ public class AgendaControlador extends HttpServlet {
 //                    out.println(fechaAgenda);
 //
 //                }
+//                arrayAgendas=agendaDAO.consultarAgendaPorMascota();
+//                request.setAttribute("arrayAgenda", arrayAgendas);
+//                request.setAttribute("fkMascota", fkMascota);
 //                request.getRequestDispatcher("registrarAgenda.jsp").forward(request, response);
                 break;
             case 4: //Consulta agenda por mascota
+                arrayAgendas = agendaDAO.consultarAgendaPorMascota();
+
+                request.setAttribute("arrayAgendas", arrayAgendas);
                 request.setAttribute("fkMascota", fkMascota);
                 request.getRequestDispatcher("registrarAgenda.jsp").forward(request, response);
                 break;
