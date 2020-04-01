@@ -93,31 +93,26 @@
                 <div id="sidebar-menu" class="sidebar-menu">
                     <ul>
                         <li class="menu-title">Menú</li>
-
-                        <li>
-                            <a href="actualizarUsuario.jsp"><i class="fa fa-address-card-o"></i> <span>Actualizar Datos</span></a>
-                        </li>
-
-                        <li>
-                            <a href="listaMascotas.jsp"><i class="fa fa-paw"></i> <span>Mascotas</span></a>
-                        </li>
-
                         <li>
                             <a href="listaUsuarios.jsp"><i class="fa fa-user"></i> <span>Usuarios</span></a>
                         </li>
                         <li>
-                            <a href="registrarAgenda.jsp"><i class="fa fa-calendar"></i> <span>Calendario</span></a>
-                        </li>
-
+                            <a href="listaMascotas.jsp"><i class="fa fa-paw"></i> <span>Mascotas</span></a>
+                        </li>                        
+                        <li>
+                            <a href="homeAdministrador.jsp"><i class="fa fa-calendar"></i> <span>Calendario</span></a>
+                        </li>                        
                         <li class="submenu">
-                            <a href="#"><i class="fa fa-folder-open-o"></i> <span>Reportes</span> <span class="menu-arrow"></span></a>
+                            <a href="#"><i class="fa fa-folder-open"></i> <span>Reportes</span> <span class="menu-arrow"></span></a>
                             <ul style="display: none;">
                                 <a class="dropdown-item" href="Reportes?opcion=1">Reporte Cx</a><br>
-                                <a class="dropdown-item" href="Reportes?opcion=2">Reporte Examenes</a><br>
+                                <a class="dropdown-item" href="Reportes?opcion=2">Reporte Exámenes</a><br>
                                 <a class="dropdown-item" href="Reportes?opcion=3">Reporte Vacunas</a><br>
                             </ul>
                         </li>
-
+                        <li>
+                            <a href="actualizarUsuario.jsp"><i class="fa fa-address-card"></i> <span>Actualizar Datos</span></a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -134,7 +129,7 @@
                 <div class="row">               
                     <form action="Mascota" method="POST">
                         <div class="col">
-                            Escribe codigo de Usuario: 
+                            Escribe código de Usuario: 
                             <input type="search" name="textFkUsuario">
                             <button class="btn btn-primary account-btn" name="opcion" value="3" type="submit">Buscar</button>
                         </div>
@@ -162,7 +157,7 @@
                                             <td><c:out value="${mascota.getNombreMascota()}"/></td>
                                             <td><c:out value="${mascota.getFechaNacimiento()}"/></td>
                                             <td><c:out value="${mascota.getColorMascota()}"/></td>
-                                            <td><a href="historiaClinica?opcion=1&textFkMascota=${mascota.getIdMascota()}" class="btn btn-success">Ver</a></td>                            
+                                            <td><a href="historiaClinica?opcion=1&textFkMascota=${mascota.getIdMascota()}" class="btn-see"></a></td>                            
                                         </tr>
                                     </c:forEach>
 
@@ -207,7 +202,7 @@
                                         <td><%=mascotaVO.getFkRaza()%></td>
                                         <td><%=mascotaVO.getFkGenero()%></td>
                                         <td><%=mascotaVO.getColorMascota()%></td>
-                                        <td><a href="historiaClinica?opcion=1&textFkMascota=<%=mascotaVO.getIdMascota()%>" class="btn btn-success">Ver</a></td>
+                                        <td><a href="historiaClinica?opcion=1&textFkMascota=<%=mascotaVO.getIdMascota()%>" class="btn-see"></a></td>
                                     </tr>
                                     <%}
                                         }%>
@@ -226,7 +221,7 @@
                             <div class="col-md-3 col-lg-9">
                                 <p class="copy_right text-center">
                                 <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved
+                                    Derechos de autor &copy;<script>document.write(new Date().getFullYear());</script> reservados BIOVET
                                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
                                 </p>
                             </div>

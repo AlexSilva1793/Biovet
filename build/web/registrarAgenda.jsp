@@ -94,7 +94,7 @@
                             <a href="listaMascotas.jsp"><i class="fa fa-paw"></i> <span>Mascotas</span></a>
                         </li>
                         <li>
-                            <a href="actualizarUsuario.jsp"><i class="fa fa-address-card-o"></i> <span>Actualizar Datos</span></a>
+                            <a href="actualizarUsuario.jsp"><i class="fa fa-address-card"></i> <span>Actualizar Datos</span></a>
                         </li>
 
                     </ul>
@@ -142,7 +142,7 @@
                             <div class="col-md-3 col-lg-9">
                                 <p class="copy_right text-center">
                                 <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved
+                                    Derechos de autor &copy;<script>document.write(new Date().getFullYear());</script> reservados BIOVET
                                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
                                 </p>
                             </div>

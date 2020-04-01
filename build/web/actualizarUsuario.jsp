@@ -110,30 +110,29 @@
             <div class="sidebar-inner slimscroll">
                 <div id="sidebar-menu" class="sidebar-menu">
                     <ul>
-                        <li class="menu-title">Menú</li>
-                        <li>
-                            <a href="actualizarUsuario.jsp"><i class="fa fa-address-card-o"></i> <span>Actualizar Datos</span></a>
-                        </li>
+                        <li class="menu-title">Menú</li>                        
                         <!-- Si es administrador de salir Calendario, si es usuario debe aparecer Mascotas-->
                         <li>
                             <a href="<%=mascotasUrl%>"><i class="fa fa-paw"></i> <span>Mascotas</span></a>
                         </li>
-                        <%if (Integer.parseInt(usuarioVOSesion.get(0).getFkRol()) == 1) {%>
-                        
                         <li>
-                            <a href="listaUsuarios.jsp"><i class="fa fa-user"></i> <span>Usuarios</span></a>
+                            <a href="actualizarUsuario.jsp"><i class="fa fa-address-card"></i> <span>Actualizar Datos</span></a>
                         </li>
+                        <%if (Integer.parseInt(usuarioVOSesion.get(0).getFkRol()) == 1) {%>
                         <li>
                             <a href="homeAdministrador.jsp"><i class="fa fa-calendar"></i> <span>Calendario</span></a>
                         </li>
 
                         <li class="submenu">
-                            <a href="#"><i class="fa fa-folder-open-o"></i> <span> Reportes </span> <span class="menu-arrow"></span></a>
+                            <a href="#"><i class="fa fa-folder-open"></i> <span> Reportes </span> <span class="menu-arrow"></span></a>
                             <ul style="display: none;">
                                 <a class="dropdown-item" href="Reportes?opcion=1">Reporte Cx</a><br>
-                                <a class="dropdown-item" href="Reportes?opcion=2">Reporte Examenes</a><br>
+                                <a class="dropdown-item" href="Reportes?opcion=2">Reporte Exámenes</a><br>
                                 <a class="dropdown-item" href="Reportes?opcion=3">Reporte Vacunas</a><br>
                             </ul>
+                        </li>
+                        <li>
+                            <a href="actualizarUsuario.jsp"><i class="fa fa-address-card"></i> <span>Actualizar Datos</span></a>
                         </li>
                         <%}%>
                     </ul>
@@ -154,26 +153,12 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Contraseña</label>
-                                            <input type="password" name="textContrasena" value="<%=usuarioVOSesion.get(0).getContraseñaUsuario()%>" class="form-control">
-                                        </div>
-                                        <div class="form-group">
                                             <label>Dirección</label>
                                             <input type="text" name="textContrasena" value="<%=usuarioVOSesion.get(0).getDireccion()%>" class="form-control">
                                         </div>
                                         <div class="form-group">
                                             <label>Celular</label>
                                             <input type="text" name="textContrasena" value="<%=usuarioVOSesion.get(0).getCelular()%>" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Telefono Fijo</label>
-                                            <input type="text" name="textContrasena" value="<%=usuarioVOSesion.get(0).getTelefonoFijo()%>" class="form-control">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Correo Electrónico</label>
-                                            <input type="text" name="textContrasena" value="<%=usuarioVOSesion.get(0).getCorreoUsuario()%>" class="form-control">
                                         </div>
                                         <div class="form-group">
                                             <label>Genero</label>
@@ -186,6 +171,20 @@
                                                 <%}%>        
                                             </select>
                                             <input type="hidden" name="textIdUsuario" value="<%=usuarioVOSesion.get(0).getIdUsuario()%>">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Teléfono Fijo</label>
+                                            <input type="text" name="textContrasena" value="<%=usuarioVOSesion.get(0).getTelefonoFijo()%>" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Correo Electrónico</label>
+                                            <input type="text" name="textContrasena" value="<%=usuarioVOSesion.get(0).getCorreoUsuario()%>" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Contraseña</label>
+                                            <input type="password" name="textContrasena" value="<%=usuarioVOSesion.get(0).getContraseñaUsuario()%>" class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -206,7 +205,7 @@
                             <div class="col-md-3 col-lg-9">
                                 <p class="copy_right text-center">
                                 <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved
+                                    Derechos de autor &copy;<script>document.write(new Date().getFullYear());</script> reservados BIOVET
                                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
                                 </p>
                             </div>
