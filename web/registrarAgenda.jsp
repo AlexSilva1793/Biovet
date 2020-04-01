@@ -13,6 +13,7 @@
 <!DOCTYPE html>
 <%
     String nombreUsuario = "";
+    String correoUsuario = "";
 
     ArrayList<UsuarioVO> usuarioVOSesion = (ArrayList<UsuarioVO>) session.getAttribute("usuariosArray");
 
@@ -20,6 +21,7 @@
 
     if (usuarioVOSesion != null) {
         nombreUsuario = usuarioVOSesion.get(0).getNombreUsuario();
+        correoUsuario = usuarioVOSesion.get(0).getCorreoUsuario();
         if (Integer.parseInt(usuarioVOSesion.get(0).getFkRol()) != 2) {
             response.sendRedirect(redirectURL);
         }
@@ -123,7 +125,7 @@
                                             <%for (int i = 0; i < arrayServicios.size(); i++) {%>
 
                                             <option value="<%=arrayServicios.get(i).getIdServicio()%>"> <%=arrayServicios.get(i).getDescripcionServicio()%></option>
-
+                                            
                                             <%}%> 
                                         </select>
                                     </div>
@@ -133,11 +135,11 @@
                                     </div>
                                     <div class="col-md-6">
                                         <label>Enviar notificación al correo</label>
-                                        <input type="checkbox" id="correo" name="correoNotificacion" value="1">
+                                        <input type="checkbox" id="correo" name="enviarCorreo" value="1">
                                     </div>
 
                                 </div>
-
+                                <input type="hidden" name="textCorreoUsuario" value="<%=correoUsuario%>">
                                 <input type="hidden" name="textFkMascota" value="<%=request.getAttribute("fkMascota")%>">
 
                                 <div class="text-right">

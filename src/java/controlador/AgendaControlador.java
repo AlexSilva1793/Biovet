@@ -9,13 +9,20 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.Integer.parseInt;
 import static java.lang.System.out;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.MessagingException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modeloDAO.AgendaDAO;
+import modeloDAO.ServicioDAO;
 import modeloVO.AgendaVO;
+import modeloVO.ServicioVO;
+import util.Correo;
 
 /**
  *
@@ -34,30 +41,41 @@ public class AgendaControlador extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, MessagingException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
         int opcion = parseInt(request.getParameter("opcion"));
-        String correoNotificacion = request.getParameter("correoNotificacion");
+        String enviarCorreo = request.getParameter("enviarCorreo");
         String idAgenda = request.getParameter("txtIdAgenda");
         String fechaAgenda = request.getParameter("textFechaAgenda");
         String fkServicio = request.getParameter("txtFkServicio");
         String fkMascota = request.getParameter("textFkMascota");
         String fkEstadoAgenda = request.getParameter("txtFkEstadoAgenda");
+        String correoUsuario = request.getParameter("textCorreoUsuario");
+        String servicio = "";
 
         AgendaVO agendaVO = new AgendaVO(idAgenda, fechaAgenda, fkServicio, fkMascota, fkEstadoAgenda);
         AgendaDAO agendaDAO = new AgendaDAO(agendaVO);
+        ArrayList<AgendaVO> arrayAgendas;
+
+        ServicioVO servicioVO = new ServicioVO();
+        servicioVO.setIdServicio(fkServicio);
+        ServicioDAO servicioDAO = new ServicioDAO(servicioVO);
 
         switch (opcion) {
 
             case 1: //agregar agenda
-                System.out.println("fk SErvicio ---- " +fkServicio);
-                System.out.println("fechaAgenda ---- " +fechaAgenda);
-                System.out.println("fkMascota ---- " +fkMascota);
-                System.out.println("correoNotificacion ---- " +correoNotificacion);
-//                if ((agendaDAO.agregarRegistro())) {
-//
+                
+
+//                arrayAgendas=agendaDAO.consultarRegistro();
+//                if (arrayAgendas.isEmpty()) {
+//                    agendaDAO.agregarRegistro();
+//                    if(enviarCorreo == "1"){
+//                       ArrayList<ServicioVO> arrayServicios = servicioDAO.consultarRegistro();
+//                        servicio = arrayServicios.get(0).getDescripcionServicio();
+//                        Correo c = new Correo(correoUsuario, servicio, fechaAgenda);
+//                    }
 //                    request.setAttribute("mensajeExito", "¡ La agenda se realizo exitosamente!");
 //
 //                } else {
@@ -88,7 +106,11 @@ public class AgendaControlador extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (MessagingException ex) {
+            Logger.getLogger(AgendaControlador.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -102,7 +124,11 @@ public class AgendaControlador extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (MessagingException ex) {
+            Logger.getLogger(AgendaControlador.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
