@@ -132,7 +132,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card-box">
-                            <form action="Mascota" method="POST" class="form-signin">
+                            <form action="Mascota" method="GET" class="form-signin">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -151,7 +151,7 @@
                                     <div class="col-md-6">
                                         <div>
                                             <label>Especie</label>
-                                            <select class="form-control" id="raza" name="textFkRaza" required>
+                                            <select class="form-control" id="especie" name="" required>
                                                 <%for (int i = 0; i < arrayEspecie.size(); i++) {
                                                         especieVO = arrayEspecie.get(i);%>
                                                 <option value="<%=especieVO.getIdEspecie()%>"> <%=especieVO.getTipoEspecie()%></option>
@@ -165,7 +165,7 @@
                                                 <%for (int i = 0; i < arrayRazas.size(); i++) {
                                                         razaVO = arrayRazas.get(i);%>
                                                 <option value="<%=razaVO.getIdRaza()%>"> <%=razaVO.getTipoRaza()%></option>
-                                                <%}%>        
+                                                <%}%>      
                                             </select>
                                         </div>
                                         <div>
