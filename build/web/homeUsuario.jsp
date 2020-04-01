@@ -112,10 +112,10 @@
                     <ul>
                         <li class="menu-title">Menú</li>
                         <li>
-                            <a href="actualizarUsuario.jsp"><i class="fa fa-address-card-o"></i> <span>Actualizar Datos</span></a>
+                            <a href="homeUsuario.jsp"><i class="fa fa-paw"></i> <span>Mascotas</span></a>
                         </li>
                         <li>
-                            <a href="homeUsuario.jsp"><i class="fa fa-paw"></i> <span>Mascotas</span></a>
+                            <a href="actualizarUsuario.jsp"><i class="fa fa-address-card"></i> <span>Actualizar Datos</span></a>
                         </li>
                     </ul>
                 </div>
@@ -126,7 +126,7 @@
             <div class="content">
                 <div class="row">
                     <div class="col-sm-8 col-4">
-                        <h4 class="page-title"><%=nombreUsuario%> tu codigo de usuario es: <%=fkUsuario%></h4>
+                        <h4 class="page-title"><%=nombreUsuario%> tu código de usuario es: <%=fkUsuario%></h4>
                     </div>
                 </div>
                 <div class="row">
@@ -221,7 +221,7 @@
                                         <td><%=mascotaVO.getFkRaza()%></td>
                                         <td><%=mascotaVO.getFkGenero()%></td>
                                         <td><%=mascotaVO.getColorMascota()%></td>
-                                        <td><a href="registrarAgenda.jsp" class="btn btn-primary">Agendar</a></td>
+                                        <td><a href="registrarAgenda.jsp" class="btn-add"></a></td>
                                     </tr>
                                     <%}
                                         }%>
@@ -239,7 +239,7 @@
                                 <div class="col-md-3 col-lg-9">
                                     <p class="copy_right text-center">
                                     <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved
+                                        Derechos de autor &copy;<script>document.write(new Date().getFullYear());</script> reservados BIOVET
                                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
                                     </p>
                                 </div>

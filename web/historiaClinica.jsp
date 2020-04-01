@@ -109,18 +109,17 @@
                         <li>
                             <a href="homeAdministrador.jsp"><i class="fa fa-calendar"></i> <span>Calendario</span></a>
                         </li>
-                        <li>
-                            <a href="actualizarUsuario.jsp"><i class="fa fa-address-card-o"></i> <span>Actualizar Datos</span></a>
-                        </li>
                         <li class="submenu">
-                            <a href="#"><i class="fa fa-folder-open-o"></i> <span> Reportes </span> <span class="menu-arrow"></span></a>
+                            <a href="#"><i class="fa fa-folder-open"></i> <span> Reportes </span> <span class="menu-arrow"></span></a>
                             <ul style="display: none;">
                                 <a class="dropdown-item" href="Reportes?opcion=1">Reporte Cx</a><br>
-                                <a class="dropdown-item" href="Reportes?opcion=2">Reporte Examenes</a><br>
+                                <a class="dropdown-item" href="Reportes?opcion=2">Reporte Exámenes</a><br>
                                 <a class="dropdown-item" href="Reportes?opcion=3">Reporte Vacunas</a><br>
                             </ul>
+                        </li>                        
+                        <li>
+                            <a href="actualizarUsuario.jsp"><i class="fa fa-address-card"></i> <span>Actualizar Datos</span></a>
                         </li>
-
                     </ul>
                 </div>
             </div>
@@ -133,14 +132,16 @@
                         <h4>Esta mascota no tiene apertura del historial medico.</h4>
                         <a href="historiaClinica?opcion=2&textFkMascota=<%=request.getAttribute("fkMascota")%>">Abrir historial Medico</a>
                         <% } else {%><!--TODO CODIGO PARA REGISTRAR CONSULTAS DEBE IR DENTRO DE ESTE ELSE-->
-                        <h4 class="page-title">Calendario de Citas</h4>
+                        <h4 class="page-title">Historial de Consultas</h4>
                     </div>
                     <div class="col-sm-8 col-4">
                         <h2 class="page-sub-title">Fecha y hora de apertura <%=arrayHistoriaClinica.get(0).getFechaApertura()%></h2>
-                        <h2 class="page-sub-title">Nombre: <%=nombreMascota%></h2>
-                        <h2 class="page-sub-title">Fecha de Nacminieto: <%=fechaNacimiento%></h2>
-                        <h2 class="page-sub-title">Color: <%=colorMascota%></h2>
+                        <h2 class="page-sub-title">Fecha de Nacimiento: <%=fechaNacimiento%></h2>
                         <h2 class="page-sub-title">Raza: <%=razaMascota%></h2>
+                    </div>
+                    <div class="col-sm-4 col-4">
+                        <h2 class="page-sub-title">Nombre: <%=nombreMascota%></h2>
+                        <h2 class="page-sub-title">Color: <%=colorMascota%></h2>
                     </div>
                 </div>
                 <div class="row">
@@ -153,15 +154,24 @@
                                             <label>Motivo Consulta</label>
                                             <input type="text" name="txtMotivoConsulta" class="form-control">
                                         </div>
+                                    </div>
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Peso</label>
                                             <input type="text" name="txtPeso" class="form-control">
                                         </div>
+                                    </div>
+                                    <div class="col-md-12">
                                         <div class="form-group">
-                                            <label>Descripcion consulta</label>
-                                            <input type="textarea" name="txtDescripcionConsulta" class="form-control">
+                                            <label>Descripción consulta</label>
+                                            <textarea type="text" name="txtDescripcionConsulta" class="form-control"></textarea>
                                         </div>
-                                        <!--ACA VA EL INPUT PARA SUBIR LOS ARCHIVOS-->
+                                        <div class="form-group">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" id="" lang="es">
+                                                <label class="custom-file-label">Seleccionar Archivo</label>
+                                            </div>
+                                        </div>
                                         <input type="hidden" name="txtFkHistoriaClinica" value="<%=arrayHistoriaClinica.get(0).getIdHistoriaClinica()%>">
                                         <input type="hidden" name="textFkMascota" value="<%=request.getAttribute("fkMascota")%>">
                                     </div>
@@ -179,7 +189,7 @@
                                                     <th>Motivo Consulta</th>
                                                     <th>Fecha Consulta</th>
                                                     <th>Peso</th>
-                                                    <th>Descripcion de la Consulta</th>
+                                                    <th>Descripción de la Consulta</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -210,7 +220,7 @@
                             <div class="col-md-3 col-lg-9">
                                 <p class="copy_right text-center">
                                 <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved
+                                    Derechos de autor &copy;<script>document.write(new Date().getFullYear());</script> reservados BIOVET
                                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
                                 </p>
                             </div>
@@ -225,17 +235,18 @@
                     </div>
                 </div>
             </footer>
-            <!-- Fin Area Footer  --> 
-            <div class="sidebar-overlay" data-reff=""></div>
-            <script src="js/jquery-3.2.1.min.js"></script>
-            <script src="js/popper.min.js"></script>
-            <script src="js/bootstrap.min.js"></script>
-            <script src="js/jquery.slimscroll.js"></script>
-            <script src="js/select2.min.js"></script>
-            <script src="js/jquery.dataTables.min.js"></script>
-            <script src="js/dataTables.bootstrap4.min.js"></script>
-            <script src="js/moment.min.js"></script>
-            <script src="js/bootstrap-datetimepicker.min.js"></script>
-            <script src="js/app.js"></script>
+        </div>
+        <!-- Fin Area Footer  --> 
+        <div class="sidebar-overlay" data-reff=""></div>
+        <script src="js/jquery-3.2.1.min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/jquery.slimscroll.js"></script>
+        <script src="js/select2.min.js"></script>
+        <script src="js/jquery.dataTables.min.js"></script>
+        <script src="js/dataTables.bootstrap4.min.js"></script>
+        <script src="js/moment.min.js"></script>
+        <script src="js/bootstrap-datetimepicker.min.js"></script>
+        <script src="js/app.js"></script>
     </body>
 </html>
