@@ -114,7 +114,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card-box">
-                            <form action="Usuario" method="get">
+                            <form action="Agenda" method="POST">
                                 <div class="form-row">
                                     <div class="col-md-6">
                                         <label>Servicio</label>
@@ -129,13 +129,21 @@
                                     </div>
                                     <div class="col-md-6">
                                         <label>Fecha Agenda</label>
-                                        <input class="form-control datetimepicker" type="text">
+                                        <input class="form-control datetimepicker " name="textFechaAgenda" type="datetime-local">
                                     </div>
+                                    <div class="col-md-6">
+                                        <label>Enviar notificación al correo</label>
+                                        <input type="checkbox" id="correo" name="correoNotificacion" value="1">
+                                    </div>
+
                                 </div>
-                        </div>
-                        <%=request.getAttribute("fkMascota")%>
-                        <div class="text-right">
-                            <button type="submit" name="opcion" value="2" class="btn btn-primary">Registrar</button>
+
+                                <input type="hidden" name="textFkMascota" value="<%=request.getAttribute("fkMascota")%>">
+
+                                <div class="text-right">
+                                    <button type="submit" name="opcion" value="1" class="btn btn-primary">Registrar</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>

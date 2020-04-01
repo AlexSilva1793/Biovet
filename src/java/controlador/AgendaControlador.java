@@ -39,8 +39,9 @@ public class AgendaControlador extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         int opcion = parseInt(request.getParameter("opcion"));
+        String correoNotificacion = request.getParameter("correoNotificacion");
         String idAgenda = request.getParameter("txtIdAgenda");
-        String fechaAgenda = request.getParameter("txtFechaAgenda");
+        String fechaAgenda = request.getParameter("textFechaAgenda");
         String fkServicio = request.getParameter("txtFkServicio");
         String fkMascota = request.getParameter("textFkMascota");
         String fkEstadoAgenda = request.getParameter("txtFkEstadoAgenda");
@@ -51,17 +52,21 @@ public class AgendaControlador extends HttpServlet {
         switch (opcion) {
 
             case 1: //agregar agenda
-                if ((agendaDAO.agregarRegistro())) {
-
-                    request.setAttribute("mensajeExito", "¡ La agenda se realizo exitosamente!");
-
-                } else {
-
-                    request.setAttribute("mensajeError", "¡ No se pudo realizar la agenda correctamente !");
-                    out.println(fechaAgenda);
-
-                }
-                request.getRequestDispatcher("registrarAgenda.jsp").forward(request, response);
+                System.out.println("fk SErvicio ---- " +fkServicio);
+                System.out.println("fechaAgenda ---- " +fechaAgenda);
+                System.out.println("fkMascota ---- " +fkMascota);
+                System.out.println("correoNotificacion ---- " +correoNotificacion);
+//                if ((agendaDAO.agregarRegistro())) {
+//
+//                    request.setAttribute("mensajeExito", "¡ La agenda se realizo exitosamente!");
+//
+//                } else {
+//
+//                    request.setAttribute("mensajeError", "¡ No se pudo realizar la agenda correctamente !");
+//                    out.println(fechaAgenda);
+//
+//                }
+//                request.getRequestDispatcher("registrarAgenda.jsp").forward(request, response);
                 break;
             case 4: //Consulta agenda por mascota
                 request.setAttribute("fkMascota", fkMascota);
