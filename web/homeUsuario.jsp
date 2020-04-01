@@ -221,7 +221,7 @@
                                         <td><%=mascotaVO.getFkRaza()%></td>
                                         <td><%=mascotaVO.getFkGenero()%></td>
                                         <td><%=mascotaVO.getColorMascota()%></td>
-                                        <td><a href="registrarAgenda.jsp" class="btn-add"></a></td>
+                                        <td><a href="Agenda?opcion=4&textFkMascota=<%=mascotaVO.getIdMascota()%>" class="btn-add"></a></td>
                                     </tr>
                                     <%}
                                         }%>

@@ -13,7 +13,7 @@
 <!DOCTYPE html>
 <%
     String nombreUsuario = "";
-    String servicio = "";
+
     ArrayList<UsuarioVO> usuarioVOSesion = (ArrayList<UsuarioVO>) session.getAttribute("usuariosArray");
 
     String redirectURL = "index.jsp";
@@ -27,6 +27,8 @@
 
         response.sendRedirect(redirectURL);
     }
+    ServicioDAO servicioDAO = new ServicioDAO();
+    ArrayList<ServicioVO> arrayServicios = servicioDAO.consultarGeneral();
 %>
 <html>
     <head>
@@ -116,9 +118,13 @@
                                 <div class="form-row">
                                     <div class="col-md-6">
                                         <label>Servicio</label>
-                                        <select  class="custom-select" id="" name="" required>
-                                            <option value="">Consulta Medica</option>
-                                            <option value="">Peluqueria</option>      
+                                        <select  class="custom-select" id="" name="txtFkServicio" required>
+
+                                            <%for (int i = 0; i < arrayServicios.size(); i++) {%>
+
+                                            <option value="<%=arrayServicios.get(i).getIdServicio()%>"> <%=arrayServicios.get(i).getDescripcionServicio()%></option>
+
+                                            <%}%> 
                                         </select>
                                     </div>
                                     <div class="col-md-6">
@@ -127,6 +133,7 @@
                                     </div>
                                 </div>
                         </div>
+                        <%=request.getAttribute("fkMascota")%>
                         <div class="text-right">
                             <button type="submit" name="opcion" value="2" class="btn btn-primary">Registrar</button>
                         </div>

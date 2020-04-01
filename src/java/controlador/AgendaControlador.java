@@ -42,7 +42,7 @@ public class AgendaControlador extends HttpServlet {
         String idAgenda = request.getParameter("txtIdAgenda");
         String fechaAgenda = request.getParameter("txtFechaAgenda");
         String fkServicio = request.getParameter("txtFkServicio");
-        String fkMascota = request.getParameter("txtFkMascota");
+        String fkMascota = request.getParameter("textFkMascota");
         String fkEstadoAgenda = request.getParameter("txtFkEstadoAgenda");
 
         AgendaVO agendaVO = new AgendaVO(idAgenda, fechaAgenda, fkServicio, fkMascota, fkEstadoAgenda);
@@ -63,10 +63,13 @@ public class AgendaControlador extends HttpServlet {
                 }
                 request.getRequestDispatcher("registrarAgenda.jsp").forward(request, response);
                 break;
+            case 4: //Consulta agenda por mascota
+                request.setAttribute("fkMascota", fkMascota);
+                request.getRequestDispatcher("registrarAgenda.jsp").forward(request, response);
+                break;
 
         }
     }
-
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
