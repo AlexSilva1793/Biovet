@@ -132,7 +132,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card-box">
-                            <form action="Mascota" method="GET" class="form-signin">
+                            <form action="Mascota" method="POST" class="form-signin">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
