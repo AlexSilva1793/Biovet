@@ -69,7 +69,7 @@ public class AgendaDAO extends ConexionBD implements InterfaceCrud {
     public ArrayList consultarGeneral() {
         ArrayList<AgendaVO> agendaArray = new ArrayList<>();
         try {
-            query = "SELECT * FROM agenda";
+            query = "SELECT * FROM mascotaagenda";
             resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
                 AgendaVO agendaTmp = new AgendaVO();
@@ -79,7 +79,7 @@ public class AgendaDAO extends ConexionBD implements InterfaceCrud {
                 agendaTmp.setFkServicio(resultSet.getString(3));
                 agendaTmp.setFkMascota(resultSet.getString(4));
                 agendaTmp.setFkEstadoAgenda(resultSet.getString(5));
-                out.println(agendaTmp);
+                out.println("desde dao "+agendaTmp);
                 agendaArray.add(agendaTmp);
 
             }

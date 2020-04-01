@@ -88,7 +88,7 @@ public class AgendaControlador extends HttpServlet {
 //                request.setAttribute("fkMascota", fkMascota);
 //                request.getRequestDispatcher("registrarAgenda.jsp").forward(request, response);
                 break;
-            case 3://Cncelar Cita
+            case 3://Cancelar Cita
                 agendaDAO.eliminarRegistro();
                 arrayAgendas = agendaDAO.consultarAgendaPorMascota();
 
@@ -102,6 +102,12 @@ public class AgendaControlador extends HttpServlet {
                 request.setAttribute("arrayAgendas", arrayAgendas);
                 request.setAttribute("fkMascota", fkMascota);
                 request.getRequestDispatcher("registrarAgenda.jsp").forward(request, response);
+                break;
+            case 5: //Consulta Agenda General
+                arrayAgendas = agendaDAO.consultarGeneral();
+
+                request.setAttribute("arrayAgendas", arrayAgendas);
+                request.getRequestDispatcher("homeAdministrador.jsp").forward(request, response);
                 break;
 
         }

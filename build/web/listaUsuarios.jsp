@@ -99,7 +99,7 @@
                             <a href="listaMascotas.jsp"><i class="fa fa-paw"></i> <span>Mascotas</span></a>
                         </li>
                         <li>
-                            <a href="homeAdministrador.jsp"><i class="fa fa-calendar"></i> <span>Calendario</span></a>
+                            <a href="Agenda?opcion=5"><i class="fa fa-calendar"></i> <span>Calendario</span></a>
                         </li>
                         <li class="submenu">
                             <a href="#"><i class="fa fa-folder-open"></i> <span> Reportes </span> <span class="menu-arrow"></span></a>
