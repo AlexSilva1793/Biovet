@@ -72,7 +72,6 @@
                                 <span><%=nombreUsuario%></span>
                             </a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="actualizarUsuario.jsp">Actualizar Datos</a>
                                 <a class="dropdown-item" href="Usuario?opcion=6">Cerrar Sesión</a>
                             </div>
                         </li>
@@ -81,7 +80,6 @@
                 <div class="dropdown mobile-user-menu float-right">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="actualizarUsuario.jsp">Actualizar Datos</a>
                         <a class="dropdown-item" href="Usuario?opcion=6">Cerrar Sesión</a>               
                     </div>
                 </div>
@@ -94,30 +92,26 @@
                 <div id="sidebar-menu" class="sidebar-menu">
                     <ul>
                         <li class="menu-title">Menú</li>
-
-                        <li>
-                            <a href="actualizarUsuario.jsp"><i class="fa fa-address-card-o"></i> <span>Actualizar Datos</span></a>
-                        </li>
-
-                        <li>
-                            <a href="listaMascotas.jsp"><i class="fa fa-paw"></i> <span>Mascotas</span></a>
-                        </li>
                         <li>
                             <a href="listaUsuarios.jsp"><i class="fa fa-user"></i> <span>Usuarios</span></a>
                         </li>
                         <li>
+                            <a href="listaMascotas.jsp"><i class="fa fa-paw"></i> <span>Mascotas</span></a>
+                        </li>
+                        <li>
                             <a href="homeAdministrador.jsp"><i class="fa fa-calendar"></i> <span>Calendario</span></a>
                         </li>
-
                         <li class="submenu">
-                            <a href="#"><i class="fa fa-folder-open-o"></i> <span> Reportes </span> <span class="menu-arrow"></span></a>
+                            <a href="#"><i class="fa fa-folder-open"></i> <span> Reportes </span> <span class="menu-arrow"></span></a>
                             <ul style="display: none;">
                                 <a class="dropdown-item" href="Reportes?opcion=1">Reporte Cx</a><br>
-                                <a class="dropdown-item" href="Reportes?opcion=2">Reporte Examenes</a><br>
+                                <a class="dropdown-item" href="Reportes?opcion=2">Reporte Exámenes</a><br>
                                 <a class="dropdown-item" href="Reportes?opcion=3">Reporte Vacunas</a><br>
                             </ul>
                         </li>
-
+                        <li>
+                            <a href="actualizarUsuario.jsp"><i class="fa fa-address-card"></i> <span>Actualizar Datos</span></a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -141,8 +135,8 @@
                                         <th>Apellido</th>
                                         <th>Dirección</th>
                                         <th>Celular</th>
-                                        <th>Telefono Fijo</th>
-                                        <th>Correo</th>
+                                        <th>Teléfono Fijo</th>
+                                        <th>Correo Electrónico</th>
                                         <th>Acción</th>
                                     </tr>
                                 </thead>
@@ -158,28 +152,7 @@
                                         <td><%=usuarioVO.getCelular()%></td>
                                         <td><%=usuarioVO.getTelefonoFijo()%></td>
                                         <td><%=usuarioVO.getCorreoUsuario()%></td>
-                                        <td><a href="Usuario?opcion=7&textIdUsuario=<%=usuarioVO.getIdUsuario()%>" class="btn btn-danger">Borrar</a></td>
-                                        <!--                                    <td class="text-right">
-                                                                                <div class="dropdown dropdown-action">
-                                                                                    <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
-                                                                                    <div class="dropdown-menu dropdown-menu-right">
-                                                                                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_patient"><i class="fa fa-trash-o m-r-5"></i>Borrar</a>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </td>
-                                                                    <div id="delete_patient" class="modal fade delete-modal" role="dialog">
-                                                                        <div class="modal-dialog modal-dialog-centered">
-                                                                            <div class="modal-content">
-                                                                                <div class="modal-body text-center">
-                                                                                    <img src="img/sent.png" alt="" width="30" height="26">
-                                                                                    <h3>Esta seguro que desea eliminar este cliente?</h3>
-                                                                                    <div class="m-t-20"> <a href="Usuario?opcion=7&textIdUsuario=<--%=usuarioVO.getIdUsuario()%>" class="btn btn-danger">Borrar</a>
-                                                                                        <a href="#" class="btn btn-white" data-dismiss="modal">Cerrar</a>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>-->
+                                        <td><a href="Usuario?opcion=7&textIdUsuario=<%=usuarioVO.getIdUsuario()%>" class="btn-delete"></a></td>
                                     </tr>
                                     <%}
                                         }%>
@@ -199,7 +172,7 @@
                             <div class="col-md-3 col-lg-9">
                                 <p class="copy_right text-center">
                                 <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved
+                                    Derechos de autor &copy;<script>document.write(new Date().getFullYear());</script> reservados BIOVET
                                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
                                 </p>
                             </div>
@@ -214,8 +187,8 @@
                     </div>
                 </div>
             </footer>
-            <!-- Fin Area Footer  -->
         </div>
+        <!-- Fin Area Footer  -->
         <div class="sidebar-overlay" data-reff=""></div>
         <script src="js/jquery-3.2.1.min.js"></script>
         <script src="js/popper.min.js"></script>

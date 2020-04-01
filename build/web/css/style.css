@@ -1569,7 +1569,8 @@ textarea.form-control {
 }
 .btn-danger {
     background: #f62d51;
-    border: 1px solid #f62d51
+    border: 1px solid #f62d51;
+
 }
 .btn-danger:hover,
 .btn-danger:focus {
@@ -1936,7 +1937,7 @@ textarea.form-control {
     padding: 0 20px;
 }
 .sidebar-menu li a:hover {
-    color: #2AA2DD;
+    color: #CDD43F;
 }
 .sidebar-menu li.active a {
     color: #2AA2DD;
@@ -1989,7 +1990,7 @@ textarea.form-control {
     padding: 0;
 }
 .mobile-user-menu > a:hover {
-    color: #2AA2DD;
+    color: #CDD43F;
 }
 .mobile-user-menu > .dropdown-menu > a {
     line-height: 23px;
@@ -2194,6 +2195,7 @@ table.table td h2 span {
 .custom-modal .profile-widget {
     margin-bottom: 0;
 }
+
 /*-----	7. Select2  -----*/
 
 .select2-container .select2-selection--single {
@@ -3073,4 +3075,24 @@ a.fc-event:not([href]) {
         margin-bottom: 10px;
     }
 }
-
+.btn-delete::before{
+    content:"\f1f8";
+    text-align: right;
+    font-size: 28px;
+    color:  #e6294b;
+    font-family: 'FontAwesome';
+}
+.btn-see::before{
+    content:"\f06e";
+    text-align: right;
+    font-size: 28px;
+    color:  #55ce63;
+    font-family: 'FontAwesome';
+}
+.btn-add::before{
+    content:"\f055";
+    text-align: right;
+    font-size: 28px;
+    color:  #2b5aff;
+    font-family: 'FontAwesome';
+}
