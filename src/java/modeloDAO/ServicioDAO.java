@@ -30,6 +30,17 @@ public class ServicioDAO extends ConexionBD implements InterfaceCR {
 
     private String idServicio = "", descripcionServicio = "";
 
+    public ServicioDAO() {
+        super();
+        try {
+            conection = this.obtenerConexion();
+            statement = conection.createStatement();
+
+        } catch (SQLException e) {
+            out.println("Error" + e.toString());
+        }
+    }
+
     public ServicioDAO(ServicioVO servicioVO) {
         super();
         try {

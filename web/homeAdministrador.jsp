@@ -5,6 +5,7 @@
 --%>
 
 <%@page import="modeloVO.UsuarioVO"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -89,7 +90,7 @@
                             <a href="listaMascotas.jsp"><i class="fa fa-paw"></i> <span>Mascotas</span></a>
                         </li>
                         <li>
-                            <a href="homeAdministrador.jsp"><i class="fa fa-calendar"></i> <span>Calendario</span></a>
+                            <a href="Agenda?opcion=5"><i class="fa fa-calendar"></i> <span>Calendario</span></a>
                         </li>
                         <li class="submenu">
                             <a href="#"><i class="fa fa-folder-open"></i> <span> Reportes </span> <span class="menu-arrow"></span></a>
@@ -118,7 +119,33 @@
                         <div class="card-box mb-0">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div id="calendar"></div>
+                                    <!-- <div id="calendar"></div>-->
+                                    <div class="col-md-12">
+                                        <div class="table-responsive">
+                                            <table class="table table-border table-striped custom-table datatable mb-0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Id</th>
+                                                        <th>Fecha Agenda</th>
+                                                        <th>Servicio</th>
+                                                        <th>Estado</th>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                <c:forEach var="agenda" items="${arrayAgendas}" >
+                                                    <tr>
+                                                        <td><c:out value="${agenda.getIdAgenda()}"/></td>
+                                                    <td><c:out value="${agenda.getFechaAgenda()}"/></td>
+                                                    <td><c:out value="${agenda.getFkServicio()}"/></td>
+                                                    <td><c:out value="${agenda.getFkEstadoAgenda()}"/></td>
+
+                                                    </tr>
+                                                </c:forEach>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

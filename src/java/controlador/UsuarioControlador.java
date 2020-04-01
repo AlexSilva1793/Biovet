@@ -104,7 +104,7 @@ public class UsuarioControlador extends HttpServlet {
 
                     if (parseInt(usuariosArray.get(0).getFkRol()) == 1) {
                         session.setAttribute("usuariosArray", usuariosArray);
-                        request.getRequestDispatcher("homeAdministrador.jsp").forward(request, response);
+                        request.getRequestDispatcher("Agenda?opcion=5").forward(request, response);
                     } else if (parseInt(usuariosArray.get(0).getFkRol()) == 2) {
                         session.setAttribute("usuariosArray", usuariosArray);
                         request.getRequestDispatcher("homeUsuario.jsp").forward(request, response);

@@ -5,6 +5,7 @@
 --%>
 
 <%@page import="modeloDAO.ServicioDAO"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="modeloVO.ServicioVO"%>
 <%@page import="modeloVO.AgendaVO"%>
 <%@page import="modeloVO.UsuarioVO"%>
@@ -13,13 +14,15 @@
 <!DOCTYPE html>
 <%
     String nombreUsuario = "";
-    String servicio = "";
+    String correoUsuario = "";
+
     ArrayList<UsuarioVO> usuarioVOSesion = (ArrayList<UsuarioVO>) session.getAttribute("usuariosArray");
 
     String redirectURL = "index.jsp";
 
     if (usuarioVOSesion != null) {
         nombreUsuario = usuarioVOSesion.get(0).getNombreUsuario();
+        correoUsuario = usuarioVOSesion.get(0).getCorreoUsuario();
         if (Integer.parseInt(usuarioVOSesion.get(0).getFkRol()) != 2) {
             response.sendRedirect(redirectURL);
         }
@@ -27,6 +30,8 @@
 
         response.sendRedirect(redirectURL);
     }
+    ServicioDAO servicioDAO = new ServicioDAO();
+    ArrayList<ServicioVO> arrayServicios = servicioDAO.consultarGeneral();
 %>
 <html>
     <head>
@@ -112,69 +117,106 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card-box">
-                            <form action="Usuario" method="get">
+                            <form action="Agenda" method="POST">
                                 <div class="form-row">
                                     <div class="col-md-6">
                                         <label>Servicio</label>
-                                        <select  class="custom-select" id="" name="" required>
-                                            <option value="">Consulta Medica</option>
-                                            <option value="">Peluqueria</option>      
+                                        <select  class="custom-select" id="" name="txtFkServicio" required>
+
+                                            <%for (int i = 0; i < arrayServicios.size(); i++) {%>
+
+                                            <option value="<%=arrayServicios.get(i).getIdServicio()%>"> <%=arrayServicios.get(i).getDescripcionServicio()%></option>
+
+                                            <%}%> 
                                         </select>
                                     </div>
                                     <div class="col-md-6">
                                         <label>Fecha Agenda</label>
-                                        <input class="form-control datetimepicker" type="text">
+                                        <input class="form-control datetimepicker " name="textFechaAgenda" type="datetime-local">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>Enviar notificación al correo</label>
+                                        <input type="checkbox" id="correo" name="enviarCorreo" value="1">
+                                    </div>
+
+                                </div>
+                                <input type="hidden" name="textCorreoUsuario" value="<%=correoUsuario%>">
+                                <input type="hidden" name="textFkMascota" value="<%=request.getAttribute("fkMascota")%>">
+
+                                <div class="text-right">
+                                    <button type="submit" name="opcion" value="1" class="btn btn-primary">Registrar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="table-responsive">
+                            <table class="table table-border table-striped custom-table datatable mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Fecha Agenda</th>
+                                        <th>Servicio</th>
+                                        <th>Estado</th>
+                                        <th>Cancelar Cita</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <c:forEach var="agenda" items="${arrayAgendas}" >
+                                        <tr>
+                                            <td><c:out value="${agenda.getIdAgenda()}"/></td>
+                                            <td><c:out value="${agenda.getFechaAgenda()}"/></td>
+                                            <td><c:out value="${agenda.getFkServicio()}"/></td>
+                                            <td><c:out value="${agenda.getFkEstadoAgenda()}"/></td>
+                                            <td><a href="Agenda?opcion=3&textFkMascota=<%=request.getAttribute("fkMascota")%>&textIdAgenda=${agenda.getIdAgenda()}" class="btn-delete"></a></td>
+                                        </tr>
+                                    </c:forEach>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div><br><br><br><br><br><br><br><br><br>
+                <!-- Inicio Area Footer  -->
+                <footer class="footer">
+                    <div class="footer_top">
+                        <div class="container">
+                            <div class="bordered_1px"></div>
+                            <div class="row">
+                                <div class="col-md-3 col-lg-9">
+                                    <p class="copy_right text-center">
+                                    <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                        Derechos de autor &copy;<script>document.write(new Date().getFullYear());</script> reservados BIOVET
+                                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                                    </p>
+                                </div>
+                                <div class="col-md-9 col-lg-3">
+                                    <div class="footer_logo">
+                                        <a href="index.jsp">
+                                            <img src="img/logo.png" alt="">
+                                        </a>
                                     </div>
                                 </div>
-                        </div>
-                        <div class="text-right">
-                            <button type="submit" name="opcion" value="2" class="btn btn-primary">Registrar</button>
-                        </div>
-                    </div>
-                </div>
-            </div><br><br><br><br><br><br><br><br><br>
-            <!-- Inicio Area Footer  -->
-            <footer class="footer">
-                <div class="footer_top">
-                    <div class="container">
-                        <div class="bordered_1px"></div>
-                        <div class="row">
-                            <div class="col-md-3 col-lg-9">
-                                <p class="copy_right text-center">
-                                <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                    Derechos de autor &copy;<script>document.write(new Date().getFullYear());</script> reservados BIOVET
-                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-                                </p>
-                            </div>
-                            <div class="col-md-9 col-lg-3">
-                                <div class="footer_logo">
-                                    <a href="index.jsp">
-                                        <img src="img/logo.png" alt="">
-                                    </a>
-                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </footer>
-            <!-- Fin Area Footer  -->
-        </div>
-        <%         if (request.getAttribute("mensajeError") != null) {        %>
-        ${mensajeError}
-        <%            } else { %>
-        ${mensajeExito}
-        <% }%>
-        <div class="sidebar-overlay" data-reff=""></div>
-        <script src="js/jquery-3.2.1.min.js"></script>
-        <script src="js/popper.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/jquery.slimscroll.js"></script>
-        <script src="js/select2.min.js"></script>
-        <script src="js/moment.min.js"></script>
-        <script src="js/jquery-ui.min.html"></script>
-        <script src="js/fullcalendar.min.js"></script>
-        <script src="js/jquery.fullcalendar.js"></script>
-        <script src="js/bootstrap-datetimepicker.min.js"></script>
-        <script src="js/app.js"></script>   
+                </footer>
+                <!-- Fin Area Footer  -->
+            </div>
+
+            <div class="sidebar-overlay" data-reff=""></div>
+            <script src="js/jquery-3.2.1.min.js"></script>
+            <script src="js/popper.min.js"></script>
+            <script src="js/bootstrap.min.js"></script>
+            <script src="js/jquery.slimscroll.js"></script>
+            <script src="js/select2.min.js"></script>
+            <script src="js/moment.min.js"></script>
+            <script src="js/jquery-ui.min.html"></script>
+            <script src="js/fullcalendar.min.js"></script>
+            <script src="js/jquery.fullcalendar.js"></script>
+            <script src="js/bootstrap-datetimepicker.min.js"></script>
+            <script src="js/app.js"></script>   
     </body>
 </html>

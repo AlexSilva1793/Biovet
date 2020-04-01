@@ -120,7 +120,7 @@
                         </li>
                         <%if (Integer.parseInt(usuarioVOSesion.get(0).getFkRol()) == 1) {%>
                         <li>
-                            <a href="homeAdministrador.jsp"><i class="fa fa-calendar"></i> <span>Calendario</span></a>
+                            <a href="Agenda?opcion=5"><i class="fa fa-calendar"></i> <span>Calendario</span></a>
                         </li>
 
                         <li class="submenu">
