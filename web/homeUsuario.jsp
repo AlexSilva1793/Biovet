@@ -151,7 +151,7 @@
                                     <div class="col-md-6">
                                         <div>
                                             <label>Especie</label>
-                                            <select class="form-control" id="raza" name="textFkRaza" required>
+                                            <select class="form-control" id="especie" name="" required>
                                                 <%for (int i = 0; i < arrayEspecie.size(); i++) {
                                                         especieVO = arrayEspecie.get(i);%>
                                                 <option value="<%=especieVO.getIdEspecie()%>"> <%=especieVO.getTipoEspecie()%></option>
@@ -165,7 +165,7 @@
                                                 <%for (int i = 0; i < arrayRazas.size(); i++) {
                                                         razaVO = arrayRazas.get(i);%>
                                                 <option value="<%=razaVO.getIdRaza()%>"> <%=razaVO.getTipoRaza()%></option>
-                                                <%}%>        
+                                                <%}%>      
                                             </select>
                                         </div>
                                         <div>
