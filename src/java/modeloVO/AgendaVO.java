@@ -64,4 +64,9 @@ public class AgendaVO {
         this.fkEstadoAgenda = fkEstadoAgenda;
     }
 
+    @Override
+    public String toString() {
+        return "AgendaVO{" + "idAgenda=" + idAgenda + ", fechaAgenda=" + fechaAgenda + ", fkServicio=" + fkServicio + ", fkMascota=" + fkMascota + ", fkEstadoAgenda=" + fkEstadoAgenda + '}';
+    }
+
 }

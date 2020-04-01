@@ -96,6 +96,33 @@ public class MascotaDAO extends ConexionBD implements InterfaceCrud {
         }
         return mascotArray;
     }
+
+    public ArrayList<MascotaVO> consultarRegistroPorId() {
+        ArrayList<MascotaVO> mascotArray = new ArrayList<>();
+        try {
+            query = "select * from mascotaUsuario where idMascota='" + idMascota + "';";
+            resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+
+                MascotaVO mascotaTemp = new MascotaVO();
+
+                mascotaTemp.setIdMascota(resultSet.getString(1));
+                mascotaTemp.setNombreMascota(resultSet.getString(2));
+                mascotaTemp.setFechaNacimiento(resultSet.getString(3));
+                mascotaTemp.setFkUsuario(resultSet.getString(4));
+                mascotaTemp.setFkRaza(resultSet.getString(5));
+                mascotaTemp.setFkGenero(resultSet.getString(6));
+                mascotaTemp.setColorMascota(resultSet.getString(7));
+                mascotaTemp.setEstadoMascota(resultSet.getString(8));
+                //System.out.println(mascotaTemp);
+                mascotArray.add(mascotaTemp);
+            }
+        } catch (SQLException e) {
+            out.println("Error" + e.toString());
+        }
+        return mascotArray;
+    }
+
     //Este Metodo no se usa.
     @Override
     public boolean actualizarRegistro() {
@@ -156,5 +183,4 @@ public class MascotaDAO extends ConexionBD implements InterfaceCrud {
 //        MascotaDAO mascotaDAO = new MascotaDAO(mascotaVO);
 //        System.out.println(mascotaDAO.consultarGeneral());
 //    }
-
 }

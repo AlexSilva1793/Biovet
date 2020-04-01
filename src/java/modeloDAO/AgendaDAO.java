@@ -69,7 +69,7 @@ public class AgendaDAO extends ConexionBD implements InterfaceCrud {
     public ArrayList consultarGeneral() {
         ArrayList<AgendaVO> agendaArray = new ArrayList<>();
         try {
-            query = "SELECT * FROM agenda";
+            query = "SELECT * FROM mascotaagenda";
             resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
                 AgendaVO agendaTmp = new AgendaVO();
@@ -79,7 +79,7 @@ public class AgendaDAO extends ConexionBD implements InterfaceCrud {
                 agendaTmp.setFkServicio(resultSet.getString(3));
                 agendaTmp.setFkMascota(resultSet.getString(4));
                 agendaTmp.setFkEstadoAgenda(resultSet.getString(5));
-                out.println(agendaTmp);
+                out.println("desde dao "+agendaTmp);
                 agendaArray.add(agendaTmp);
 
             }
@@ -94,7 +94,7 @@ public class AgendaDAO extends ConexionBD implements InterfaceCrud {
 
         ArrayList<AgendaVO> agendaArray = new ArrayList<>();
         try {
-            query = "SELECT * FROM agenda WHERE fechaAgenda = '" + fechaAgenda + "');";
+            query = "SELECT * FROM agenda WHERE fechaAgenda = '" + fechaAgenda;
             resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
                 AgendaVO agendaTmp = new AgendaVO();
@@ -132,13 +132,37 @@ public class AgendaDAO extends ConexionBD implements InterfaceCrud {
     public boolean eliminarRegistro() {
 
         try {
-            query = "UPDATE agenda SET fkEstadoAgenda = '" + 3 + "' WHERE idAgenda = '" + idAgenda + "';";
+            query = "UPDATE agenda SET fkEstadoAgenda = '" + 2 + "' WHERE idAgenda = '" + idAgenda + "';";
             statement.executeUpdate(query);
             operacion = true;
         } catch (SQLException e) {
             out.println("Error al cancelar la cita " + e.toString());
         }
         return operacion;
+    }
+    
+    public ArrayList consultarAgendaPorMascota() {
+
+        ArrayList<AgendaVO> agendaArray = new ArrayList<>();
+        try {
+            query = "SELECT * FROM mascotaagenda WHERE idMascota = " + fkMascota ;
+            resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                AgendaVO agendaTmp = new AgendaVO();
+
+                agendaTmp.setIdAgenda(resultSet.getString(1));
+                agendaTmp.setFechaAgenda(resultSet.getString(2));
+                agendaTmp.setFkServicio(resultSet.getString(3));
+                agendaTmp.setFkMascota(resultSet.getString(4));
+                agendaTmp.setFkEstadoAgenda(resultSet.getString(5));
+                
+                agendaArray.add(agendaTmp);
+
+            }
+        } catch (SQLException e) {
+            out.println("Error al consultar la Agenda " + e.toString());
+        }
+        return agendaArray;
     }
 
 }
